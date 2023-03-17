@@ -3,10 +3,9 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from mixup_class import mixup
 from network import Net
 
-def train_mixup(trainloader, testloader, sampling_method, device):
+def train(trainloader, testloader, device, lossfn):
     # Print the device being used
     print(f"Using device for training: {device}")
     
@@ -16,17 +15,15 @@ def train_mixup(trainloader, testloader, sampling_method, device):
     num_epochs = 2
     alpha = 1.0
     
-    mixup_transform = mixup(alpha=alpha, sampling_method=sampling_method)
-    
     # Initialize the neural network
     net = Net().to(device)
     
     # Define loss function and optimizer
-    criterion = nn.CrossEntropyLoss().to(device)
+    criterion = lossfn.to(device)
     optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
     
     # Train the neural network
-    print(f'Starting training with Mixup sampling method {sampling_method}...')
+    print(f'Starting training...')
     
     for epoch in range(num_epochs):
         running_loss = 0.0
@@ -34,17 +31,14 @@ def train_mixup(trainloader, testloader, sampling_method, device):
         for i, data in enumerate(trainloader, 0):
             # get the inputs; data is a list of [inputs, labels]
             inputs, labels = data
-            
-            # apply the mixup transformation
-            inputs_mix, labels_mix = mixup_transform(inputs, labels)
-            inputs_mix, labels_mix = inputs_mix.to(device), labels_mix.to(device)
+            inputs, labels = inputs.to(device), labels.to(device)
             
             # zero the parameter gradients
             optimizer.zero_grad()
             
             # forward + backward + optimize
-            outputs = net(inputs_mix)
-            loss = criterion(outputs, labels_mix)
+            outputs = net(inputs)
+            loss = criterion(outputs)
             loss.backward()
             optimizer.step()
             
@@ -75,10 +69,10 @@ def train_mixup(trainloader, testloader, sampling_method, device):
         print(f"Accuracy on test set after epoch {epoch+1}: {accuracy:.2f}%")
         accuracy_log.append(accuracy)
         
-    print(f'Training with Mixup sampling method {sampling_method} done.')
+    print(f'Training done.')
     
     # save trained model
-    torch.save(net.state_dict(), f'saved_model_{sampling_method}.pt')
-    print(f'Model with Mixup sampling method {sampling_method} saved.')
+    torch.save(net.state_dict(), f'saved_model_{lossfn}.pt')
+    print(f'Model with loss fn {lossfn} saved.')
     
     return accuracy_log
