@@ -9,7 +9,6 @@ all_files_name = os.path.join("annotations", 'list.txt')
 train_path = os.path.join("annotations", 'trainval.txt')
 test_path = os.path.join("annotations", 'test.txt')
 
-
 f_train = open(train_path, 'r').readlines()
 labels = {}
 for i in range(len(f_train)):

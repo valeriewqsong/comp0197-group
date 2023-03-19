@@ -1,3 +1,9 @@
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+from train.py import semi_supervised_dice_loss, semi_supervised_iou_loss
+
 def train_segmentation_model(model, train_loader_with_label, train_loader_without_label, test_loader, device, epochs=50, alpha=0.5, learning_rate=1e-4, model_path="best_model.pth"):
     """
     Train a semi-supervised segmentation model with labeled and unlabeled data.
@@ -18,7 +24,7 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
     """
 
     model = model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     best_iou = 0.0
 
     for epoch in range(epochs):
