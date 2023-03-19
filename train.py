@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from train.py import semi_supervised_dice_loss, semi_supervised_iou_loss
+from train.py import semisup_dice_loss, semisup_iou_loss, dice_score, iou_score
 
 def train_segmentation_model(model, train_loader_with_label, train_loader_without_label, test_loader, device, epochs=50, alpha=0.5, learning_rate=1e-4, model_path="best_model.pth"):
     """
@@ -47,8 +47,8 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
             # Compute the pseudo labels for the unlabeled data
             target_unlabeled = (pred_without_label > 0.5).float()
 
-            loss_dice = semi_supervised_dice_loss(pred_with_label, labels, pred_without_label, target_unlabeled, alpha)
-            loss_iou = semi_supervised_iou_loss(pred_with_label, labels, pred_without_label, target_unlabeled, alpha)
+            loss_dice = semisup_dice_loss(pred_with_label, labels, pred_without_label, target_unlabeled, alpha)
+            loss_iou = semisup_iou_loss(pred_with_label, labels, pred_without_label, target_unlabeled, alpha)
 
             loss = loss_dice + loss_iou
 

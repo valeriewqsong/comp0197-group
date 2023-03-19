@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 
-def semi_supervised_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
+def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     """
     Computes the semi-supervised Dice loss between labeled and unlabeled predictions and targets.
     
@@ -33,7 +33,8 @@ def semi_supervised_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
 
     return loss
 
-def semi_supervised_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
+
+def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     """
     Computes the semi-supervised IoU loss between labeled and unlabeled predictions and targets.
     
@@ -57,3 +58,17 @@ def semi_supervised_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     true_label_unlabeled = (pred_unlabeled > 0.5).float()
     intersection_unlabeled = (pred_unlabeled * true_label_unlabeled).sum(dim=(2, 3))
     union_unlabeled = pred
+
+def dice_score(pred, target):
+    intersection = (pred * target).sum(dim=2).sum(dim=2)
+    numerator = 2 * intersection
+    denominator = pred.sum(dim=2).sum(dim=2) + target.sum(dim=2).sum(dim=2)
+    dice = (numerator + 1e-6) / (denominator + 1e-6)
+    return dice.mean().item()
+
+def iou_score(pred, target):
+    intersection = (pred * target).sum(dim=2).sum(dim=2)
+    union = pred.sum(dim=2).sum(dim=2) + target.sum(dim=2).sum(dim=2) - intersection
+    iou = (intersection + 1e-6) / (union + 1e-6)
+    return iou.mean().item()
+
