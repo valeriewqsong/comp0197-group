@@ -23,7 +23,7 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
         nn.Module: The trained segmentation model.
     """
 
-    model = model.to(device)
+    model = model.to(device)    
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     best_iou = 0.0
 
@@ -61,7 +61,8 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
 
         model.eval()
         with torch.no_grad():
-            iou_score = 0.0
+            iou_total = 0.0
+            dice_total = 0.0
             total_samples = 0
 
             for images, labels in test_loader:
@@ -69,17 +70,21 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
                 pred = model(images)
                 pred = (pred > 0.5).float()
 
-                intersection = (pred * labels).sum(dim=2).sum(dim=2)
-                union = pred.sum(dim=2).sum(dim=2) + labels.sum(dim=2).sum(dim=2) - intersection
-                iou = (intersection + 1e-6) / (union + 1e-6)
-                iou_score += iou.sum().item()
+                # Calculate IoU
+                iou_total += iou_score(pred, labels)
+
+                # Calculate Dice
+                dice_total += dice_score(pred, labels)
+     
                 total_samples += labels.size(0)
 
-            iou_score /= total_samples
-            print(f"Epoch [{epoch+1}/{epochs}], IoU Score: {iou_score}")
+            iou_avg = iou_total / total_samples
+            dice_avg = dice_total / total_samples
+            print(f"Epoch [{epoch+1}/{epochs}], IoU Score: {iou_avg}, Dice Score: {dice_avg}")
 
-            if iou_score > best_iou:
-                best_iou = iou_score
+            # saving model based on best iou score
+            if iou_avg > best_iou:
+                best_iou = iou_avg
                 torch.save(model.state_dict(), model_path)
                 print(f"Best IoU Score updated: {best_iou}, Model saved to {model_path}")
 
