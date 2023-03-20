@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from train.py import semisup_dice_loss, semisup_iou_loss, dice_score, iou_score
+from lossfn import semisup_dice_loss, semisup_iou_loss, dice_score, iou_score
 
 def train_segmentation_model(model, train_loader_with_label, train_loader_without_label, test_loader, device, epochs=50, alpha=0.5, learning_rate=1e-4, model_path="best_model.pth"):
     """
