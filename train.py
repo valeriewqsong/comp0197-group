@@ -22,7 +22,7 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
     Returns:
         nn.Module: The trained segmentation model.
     """
-
+    # Initialize the neural network
     model = model.to(device)    
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     best_iou = 0.0
@@ -40,13 +40,18 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
 
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
+            print(images_with_label.size())
+            print(images_without_label.size())
+            print(labels)
 
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
+            print(pred_with_label.size())
+            print(pred_without_label.size())
 
             # Compute the pseudo labels for the unlabeled data
             target_unlabeled = (pred_without_label > 0.5).float()
-
+            
             loss_dice = semisup_dice_loss(pred_with_label, labels, pred_without_label, target_unlabeled, alpha)
             loss_iou = semisup_iou_loss(pred_with_label, labels, pred_without_label, target_unlabeled, alpha)
 

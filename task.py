@@ -4,7 +4,7 @@ from train import train_segmentation_model
 import torch
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = link_net(classes=37)  
+model = link_net(classes=37)
 trained_model = train_segmentation_model(
     model,
     train_loader_with_label,
