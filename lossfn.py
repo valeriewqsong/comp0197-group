@@ -82,6 +82,8 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     intersection_unlabeled = (pred_unlabeled * true_label_unlabeled).sum(dim=(2, 3))
     union_unlabeled = pred
     
+    return loss
+    
 def dice_loss_and_score(pred, target, smooth=1):
     """
     Computes the Dice loss between predictions and targets and returns the loss and score.

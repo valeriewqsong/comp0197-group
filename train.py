@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss, iou_loss, dice_loss_and_score, iou_loss_and_score
+from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss_and_score, iou_loss_and_score
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, alpha=0.5, lr=1e-4, use_dice=True):
     """
@@ -28,9 +28,9 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
     if use_dice:
-        print("Training with dice loss function...\n")
+        print("Training with dice loss function...")
     else:
-        print("Training with iou loss function..\n")
+        print("Training with iou loss function..")
     for epoch in range(num_epochs):
         running_loss = 0.0
         
@@ -97,10 +97,10 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 accuracy += correct / total
                 
         if use_dice:
-            print('Epoch: {} Test Loss: {:.6f} Dice Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_loss/len(test_loader), total_dice_score/len(test_loader), accuracy/len(test_loader)))
+            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader), accuracy/len(test_loader)))
         else:
-            print('Epoch: {} Test Loss: {:.6f} IoU Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_loss/len(test_loader), total_iou_score/len(test_loader), accuracy/len(test_loader)))
+            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader), accuracy/len(test_loader)))
 
-        print("\n training completed.")
+        print("Training completed.")
 
     return model
