@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss, iou_loss, dice_score, iou_score
+from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss, iou_loss, dice_loss_and_score, iou_loss_and_score
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, alpha=0.5, lr=1e-4, use_dice=True):
     """
@@ -71,7 +71,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
 
         # Evaluate the model on the test set
         model.eval()
-        
+
         test_loss = 0
         total_iou_score = 0
         total_dice_score = 0
@@ -81,22 +81,26 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             for data, target in test_loader:
                 data, target = data.to(device), target.to(device)
                 output = model(data)
+                
                 if use_dice:
-                    test_loss += dice_loss(output, target).item()
-                    total_dice_score += dice_score(output.argmax(dim=1), target)
+                    dice_loss, dice_score = dice_loss_and_score(output, target)
+                    test_loss += dice_loss.item()
+                    total_dice_score += dice_score
+                    
                 else:
-                    test_loss += iou_loss(output, target).item()
-                    total_iou_score += iou_score(output.argmax(dim=1), target)
+                    iou_loss, iou_score = iou_loss_and_score(output, target)
+                    test_loss += iou_loss.item()
+                    total_iou_score += iou_score
                     
                 correct = (output.argmax(dim=1) == target).sum().item()
                 total = target.size(0) * target.size(1) * target.size(2)
                 accuracy += correct / total
-
+                
         if use_dice:
-            print('Epoch: {} Test Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), dice_score/len(test_loader), accuracy/len(test_loader)))
+            print('Epoch: {} Test Loss: {:.6f} Dice Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_loss/len(test_loader), total_dice_score/len(test_loader), accuracy/len(test_loader)))
         else:
-            print('Epoch: {} Test Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), iou_score/len(test_loader), accuracy/len(test_loader)))
-        
+            print('Epoch: {} Test Loss: {:.6f} IoU Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_loss/len(test_loader), total_iou_score/len(test_loader), accuracy/len(test_loader)))
+
         print("\n training completed.")
 
     return model

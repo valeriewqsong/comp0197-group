@@ -82,9 +82,9 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     intersection_unlabeled = (pred_unlabeled * true_label_unlabeled).sum(dim=(2, 3))
     union_unlabeled = pred
     
-def dice_loss(pred, target, smooth=1):
+def dice_loss_and_score(pred, target, smooth=1):
     """
-    Computes the Dice loss between predictions and targets.
+    Computes the Dice loss between predictions and targets and returns the loss and score.
     
     Args:
         pred (torch.Tensor): Predictions, shape (N, C, H, W)
@@ -92,16 +92,17 @@ def dice_loss(pred, target, smooth=1):
         smooth (float, optional): Smoothing factor to avoid division by zero, default=1
 
     Returns:
-        torch.Tensor: The Dice loss
+        Tuple[torch.Tensor, float]: The Dice loss and score
     """
     target_one_hot = to_one_hot(target, num_classes=37)
     intersection = (pred * target_one_hot).sum(dim=(2, 3))
     union = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3))
     dice = (2 * intersection + smooth) / (union + smooth)
     dice_loss = 1 - dice.mean()
-    return dice_loss
+    dice_score = dice.mean().item()
+    return dice_loss, dice_score
 
-def iou_loss(pred, target, eps=1e-6):
+def iou_loss_and_score(pred, target, eps=1e-6):
     """
     Computes the IoU loss between predictions and targets.
     
@@ -111,55 +112,13 @@ def iou_loss(pred, target, eps=1e-6):
         eps (float, optional): Small constant to avoid division by zero, default=1e-6
 
     Returns:
-        torch.Tensor: The IoU loss
+        tuple(torch.Tensor, float): The IoU loss and the average IoU score
     """
     target_one_hot = to_one_hot(target, num_classes=37)
     intersection = (pred * target_one_hot).sum(dim=(2, 3))
     union = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3)) - intersection
     iou = (intersection + eps) / (union + eps)
     iou_loss = 1 - iou.mean()
-    return iou_loss
-
-def dice_score(pred, target):
-    """
-    Computes the Dice coefficient between two tensors.
-
-    The Dice coefficient is a measure of the overlap between two sets, defined as:
-        Dice = (2 * intersection) / (pred + target)
-
-    Args:
-        pred (torch.Tensor): The predicted tensor of shape (N, C, H, W)
-        target (torch.Tensor): The target tensor of shape (N, H, W)
-
-    Returns:
-        float: The average Dice coefficient between the predictions and targets
-    """
-    target_one_hot = to_one_hot(target, num_classes=37)
-    intersection = (pred * target_one_hot).sum(dim=2).sum(dim=2)
-    numerator = 2 * intersection
-    denominator = pred.sum(dim=2).sum(dim=2) + target_one_hot.sum(dim=2).sum(dim=2)
-    dice = (numerator + 1e-6) / (denominator + 1e-6)
-    return dice.mean().item()
-
-
-def iou_score(pred, target):
-    """
-    Computes the intersection over union (IoU) between two tensors.
-
-    The IoU is a measure of the overlap between two sets, defined as:
-        IoU = intersection / union
-
-    Args:
-        pred (torch.Tensor): The predicted tensor of shape (N, C, H, W)
-        target (torch.Tensor): The target tensor of shape (N, H, W)
-
-    Returns:
-        float: The average IoU between the predictions and targets
-    """
-    target_one_hot = to_one_hot(target, num_classes=37)
-    intersection = (pred * target_one_hot).sum(dim=2).sum(dim=2)
-    union = pred.sum(dim=2).sum(dim=2) + target_one_hot.sum(dim=2).sum(dim=2) - intersection
-    iou = (intersection + 1e-6) / (union + 1e-6)
-    return iou.mean().item()
-
+    iou_score = iou.mean().item()
+    return iou_loss, iou_score
 
