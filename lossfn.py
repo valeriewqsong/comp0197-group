@@ -21,6 +21,7 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
         torch.Tensor: The combined Dice loss for labeled and unlabeled data
     """
     target_one_hot = to_one_hot(target, num_classes=37)
+    
     # Labeled data
     intersection_labeled = (pred * target_one_hot).sum(dim=(2, 3))
     union_labeled = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3))
@@ -55,6 +56,7 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
         torch.Tensor: The combined IoU loss for labeled and unlabeled data
     """
     target_one_hot = to_one_hot(target, num_classes=37)
+    
     # Labeled data
     intersection_labeled = (pred * target_one_hot).sum(dim=(2, 3))
     union_labeled = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3)) - intersection_labeled
