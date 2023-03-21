@@ -83,15 +83,43 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     union_unlabeled = pred
 
 def dice_score(pred, target):
+    """
+    Computes the Dice coefficient between two tensors.
+
+    The Dice coefficient is a measure of the overlap between two sets, defined as:
+        Dice = (2 * intersection) / (pred + target)
+
+    Args:
+        pred (torch.Tensor): The predicted tensor of shape (N, C, H, W)
+        target (torch.Tensor): The target tensor of shape (N, H, W)
+
+    Returns:
+        float: The average Dice coefficient between the predictions and targets
+    """
     intersection = (pred * target).sum(dim=2).sum(dim=2)
     numerator = 2 * intersection
     denominator = pred.sum(dim=2).sum(dim=2) + target.sum(dim=2).sum(dim=2)
     dice = (numerator + 1e-6) / (denominator + 1e-6)
     return dice.mean().item()
 
+
 def iou_score(pred, target):
+    """
+    Computes the intersection over union (IoU) between two tensors.
+
+    The IoU is a measure of the overlap between two sets, defined as:
+        IoU = intersection / union
+
+    Args:
+        pred (torch.Tensor): The predicted tensor of shape (N, C, H, W)
+        target (torch.Tensor): The target tensor of shape (N, H, W)
+
+    Returns:
+        float: The average IoU between the predictions and targets
+    """
     intersection = (pred * target).sum(dim=2).sum(dim=2)
     union = pred.sum(dim=2).sum(dim=2) + target.sum(dim=2).sum(dim=2) - intersection
     iou = (intersection + 1e-6) / (union + 1e-6)
     return iou.mean().item()
+
 
