@@ -2,6 +2,16 @@ import torch
 import torch.nn.functional as F
 
 def to_one_hot(tensor, num_classes):
+    """
+    Converts a tensor of shape (N, H, W) into a one-hot encoded tensor of shape (N, num_classes, H, W).
+
+    Args:
+        tensor (torch.Tensor): The tensor to be one-hot encoded.
+        num_classes (int): The number of classes in the one-hot encoded tensor.
+
+    Returns:
+        torch.Tensor: The one-hot encoded tensor.
+    """
     tensor = tensor.unsqueeze(1)
     one_hot = torch.zeros(tensor.size(0), num_classes, tensor.size(2), tensor.size(3), device=tensor.device)
     return one_hot.scatter_(1, tensor.long(), 1)
@@ -10,9 +20,12 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     """
     Computes the semi-supervised Dice loss between labeled and unlabeled predictions and targets.
     
+    Dice loss is a measure of the overlap between two sets, defined as:
+        Dice = (2 * intersection + smooth) / (union + smooth)
+        
     Args:
         pred (torch.Tensor): Labeled data predictions, shape (N, C, H, W)
-        target (torch.Tensor): Labeled data targets, shape (N, C, H, W)
+        target (torch.Tensor): Labeled data targets, shape (N, H, W)
         pred_unlabeled (torch.Tensor): Unlabeled data predictions, shape (N, C, H, W)
         alpha (float): The balancing factor between the labeled and unlabeled data contributions
         smooth (float, optional): Smoothing factor to avoid division by zero, default=1
@@ -40,14 +53,15 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
 
     return loss
 
-
 def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     """
     Computes the semi-supervised IoU loss between labeled and unlabeled predictions and targets.
     
+    The IoU loss is a measure of the overlap between two sets, defined as:
+        IoU = (intersection + eps) / (union + eps)
     Args:
         pred (torch.Tensor): Labeled data predictions, shape (N, C, H, W)
-        target (torch.Tensor): Labeled data targets, shape (N, C, H, W)
+        target (torch.Tensor): Labeled data targets, shape (N, H, W)
         pred_unlabeled (torch.Tensor): Unlabeled data predictions, shape (N, C, H, W)
         alpha (float): The balancing factor between the labeled and unlabeled data contributions
         eps (float, optional): Small constant to avoid division by zero, default=1e-6
