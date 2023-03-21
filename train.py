@@ -63,15 +63,19 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             loss.backward()
             optimizer.step()
 
-            # print statistics every 50 batches
-            if i % 50 == 0:
-                print(f"Epoch [{epoch+1}/{num_epochs}], Step [{i}/{len(train_loader_with_label)}], Loss: {loss.item()}")
+            # print statistics every 50 iteratrions
+            running_loss += loss.item()
+            if i % 50 == 49:
+                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.3f}")
+                running_loss = 0.0
 
         # Evaluate the model on the test set
         model.eval()
+        
         test_loss = 0
         iou_score = 0
         dice_score = 0
+        accuracy = 0
         
         with torch.no_grad():
             for data, target in test_loader:
@@ -83,11 +87,15 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 else:
                     test_loss += semisup_iou_loss(output, target).item()
                     iou_score += iou_score(output.argmax(dim=1), target)
+                    
+                correct = (output.argmax(dim=1) == target).sum().item()
+                total = target.size(0) * target.size(1) * target.size(2)
+                accuracy += correct / total
 
         if use_dice:
-            print('Epoch: {} Test Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), dice_score/len(test_loader)))
+            print('Epoch: {} Test Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), dice_score/len(test_loader), accuracy/len(test_loader)))
         else:
-            print('Epoch: {} Test Loss: {:.6f} IoU: {:.6f}'.format(epoch+1, test_loss/len(test_loader), iou_score/len(test_loader)))
+            print('Epoch: {} Test Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), iou_score/len(test_loader), accuracy/len(test_loader)))
         
         print("\n training completed.")
 
