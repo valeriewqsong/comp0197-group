@@ -73,8 +73,8 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         model.eval()
         
         test_loss = 0
-        iou_score = 0
-        dice_score = 0
+        total_iou_score = 0
+        total_dice_score = 0
         accuracy = 0
         
         with torch.no_grad():
@@ -83,10 +83,10 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 output = model(data)
                 if use_dice:
                     test_loss += dice_loss(output, target).item()
-                    dice_score += dice_score(output.argmax(dim=1), target)
+                    total_dice_score += dice_score(output.argmax(dim=1), target)
                 else:
                     test_loss += iou_loss(output, target).item()
-                    iou_score += iou_score(output.argmax(dim=1), target)
+                    total_iou_score += iou_score(output.argmax(dim=1), target)
                     
                 correct = (output.argmax(dim=1) == target).sum().item()
                 total = target.size(0) * target.size(1) * target.size(2)
