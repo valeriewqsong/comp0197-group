@@ -80,7 +80,12 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     # Unlabeled data
     true_label_unlabeled = (pred_unlabeled > 0.5).float()
     intersection_unlabeled = (pred_unlabeled * true_label_unlabeled).sum(dim=(2, 3))
-    union_unlabeled = pred
+    union_unlabeled = pred_unlabeled.sum(dim=(2, 3)) + true_label_unlabeled.sum(dim=(2, 3)) - intersection_unlabeled
+    iou_unlabeled = (intersection_unlabeled + eps) / (union_unlabeled + eps)
+    iou_loss_unlabeled = 1 - iou_unlabeled.mean()
+    
+    # Combined loss
+    loss = alpha * iou_loss_labeled + (1 - alpha) * iou_loss_unlabeled
     
     return loss
     
