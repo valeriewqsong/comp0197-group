@@ -134,9 +134,10 @@ def dice_score(pred, target):
     Returns:
         float: The average Dice coefficient between the predictions and targets
     """
-    intersection = (pred * target).sum(dim=2).sum(dim=2)
+    target_one_hot = to_one_hot(target, num_classes=37)
+    intersection = (pred * target_one_hot).sum(dim=2).sum(dim=2)
     numerator = 2 * intersection
-    denominator = pred.sum(dim=2).sum(dim=2) + target.sum(dim=2).sum(dim=2)
+    denominator = pred.sum(dim=2).sum(dim=2) + target_one_hot.sum(dim=2).sum(dim=2)
     dice = (numerator + 1e-6) / (denominator + 1e-6)
     return dice.mean().item()
 
@@ -155,8 +156,9 @@ def iou_score(pred, target):
     Returns:
         float: The average IoU between the predictions and targets
     """
-    intersection = (pred * target).sum(dim=2).sum(dim=2)
-    union = pred.sum(dim=2).sum(dim=2) + target.sum(dim=2).sum(dim=2) - intersection
+    target_one_hot = to_one_hot(target, num_classes=37)
+    intersection = (pred * target_one_hot).sum(dim=2).sum(dim=2)
+    union = pred.sum(dim=2).sum(dim=2) + target_one_hot.sum(dim=2).sum(dim=2) - intersection
     iou = (intersection + 1e-6) / (union + 1e-6)
     return iou.mean().item()
 
