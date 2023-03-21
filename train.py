@@ -37,7 +37,6 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
         for i, (images_with_label, labels) in enumerate(train_loader_with_label):
-            
             try:
                 images_without_label = next(train_iter_without_label)
             except StopIteration:
@@ -101,6 +100,6 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         else:
             print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader), accuracy/len(test_loader)))
 
-        print("Training completed.")
+    print("Training completed.")
 
     return model
