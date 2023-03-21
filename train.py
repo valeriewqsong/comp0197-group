@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import semisup_dice_loss, semisup_iou_loss
+from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss, iou_loss, dice_score, iou_score
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, alpha=0.5, lr=1e-4, use_dice=True):
     """
@@ -82,10 +82,10 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 data, target = data.to(device), target.to(device)
                 output = model(data)
                 if use_dice:
-                    test_loss += semisup_dice_loss(output, target).item()
+                    test_loss += dice_loss(output, target).item()
                     dice_score += dice_score(output.argmax(dim=1), target)
                 else:
-                    test_loss += semisup_iou_loss(output, target).item()
+                    test_loss += iou_loss(output, target).item()
                     iou_score += iou_score(output.argmax(dim=1), target)
                     
                 correct = (output.argmax(dim=1) == target).sum().item()

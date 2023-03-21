@@ -81,6 +81,42 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     true_label_unlabeled = (pred_unlabeled > 0.5).float()
     intersection_unlabeled = (pred_unlabeled * true_label_unlabeled).sum(dim=(2, 3))
     union_unlabeled = pred
+    
+def dice_loss(pred, target, smooth=1):
+    """
+    Computes the Dice loss between predictions and targets.
+    
+    Args:
+        pred (torch.Tensor): Predictions, shape (N, C, H, W)
+        target (torch.Tensor): Targets, shape (N, C, H, W)
+        smooth (float, optional): Smoothing factor to avoid division by zero, default=1
+
+    Returns:
+        torch.Tensor: The Dice loss
+    """
+    intersection = (pred * target).sum(dim=(2, 3))
+    union = pred.sum(dim=(2, 3)) + target.sum(dim=(2, 3))
+    dice = (2 * intersection + smooth) / (union + smooth)
+    dice_loss = 1 - dice.mean()
+    return dice_loss
+
+def iou_loss(pred, target, eps=1e-6):
+    """
+    Computes the IoU loss between predictions and targets.
+    
+    Args:
+        pred (torch.Tensor): Predictions, shape (N, C, H, W)
+        target (torch.Tensor): Targets, shape (N, C, H, W)
+        eps (float, optional): Small constant to avoid division by zero, default=1e-6
+
+    Returns:
+        torch.Tensor: The IoU loss
+    """
+    intersection = (pred * target).sum(dim=(2, 3))
+    union = pred.sum(dim=(2, 3)) + target.sum(dim=(2, 3)) - intersection
+    iou = (intersection + eps) / (union + eps)
+    iou_loss = 1 - iou.mean()
+    return iou_loss
 
 def dice_score(pred, target):
     """
