@@ -43,7 +43,7 @@ def train_segmentation_model(model, train_loader_with_label, train_loader_withou
 
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
-
+            
             # Compute the pseudo labels for the unlabeled data
             target_unlabeled = (pred_without_label > 0.5).float()
             

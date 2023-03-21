@@ -15,7 +15,7 @@ class decoder_block(nn.Module):
         self.norm1 = nn.BatchNorm2d(in_size//4)
         self.relu1 = nn.ReLU(inplace=True)
 
-        self.deconv2 = nn.ConvTranspose2d(in_size/4, in_size//4, 3,
+        self.deconv2 = nn.ConvTranspose2d(in_size//4, in_size//4, 3,
                                           stride=2, padding=1, output_padding=1)
         self.norm2 = nn.BatchNorm2d(in_size//4)
         self.relu2 = nn.ReLU(inplace=True)

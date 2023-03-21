@@ -1,6 +1,11 @@
 import torch
 import torch.nn.functional as F
 
+def to_one_hot(tensor, num_classes):
+    tensor = tensor.unsqueeze(1)
+    one_hot = torch.zeros(tensor.size(0), num_classes, tensor.size(2), tensor.size(3), device=tensor.device)
+    return one_hot.scatter_(1, tensor.long(), 1)
+
 def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     """
     Computes the semi-supervised Dice loss between labeled and unlabeled predictions and targets.
@@ -15,9 +20,10 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     Returns:
         torch.Tensor: The combined Dice loss for labeled and unlabeled data
     """
+    target_one_hot = to_one_hot(target, num_classes=37)
     # Labeled data
-    intersection_labeled = (pred * target).sum(dim=(2, 3))
-    union_labeled = pred.sum(dim=(2, 3)) + target.sum(dim=(2, 3))
+    intersection_labeled = (pred * target_one_hot).sum(dim=(2, 3))
+    union_labeled = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3))
     dice_labeled = (2 * intersection_labeled + smooth) / (union_labeled + smooth)
     dice_loss_labeled = 1 - dice_labeled.mean()
 
@@ -48,9 +54,10 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
     Returns:
         torch.Tensor: The combined IoU loss for labeled and unlabeled data
     """
+    target_one_hot = to_one_hot(target, num_classes=37)
     # Labeled data
-    intersection_labeled = (pred * target).sum(dim=(2, 3))
-    union_labeled = pred.sum(dim=(2, 3)) + target.sum(dim=(2, 3)) - intersection_labeled
+    intersection_labeled = (pred * target_one_hot).sum(dim=(2, 3))
+    union_labeled = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3)) - intersection_labeled
     iou_labeled = (intersection_labeled + eps) / (union_labeled + eps)
     iou_loss_labeled = 1 - iou_labeled.mean()
 
