@@ -94,8 +94,9 @@ def dice_loss(pred, target, smooth=1):
     Returns:
         torch.Tensor: The Dice loss
     """
-    intersection = (pred * target).sum(dim=(2, 3))
-    union = pred.sum(dim=(2, 3)) + target.sum(dim=(2, 3))
+    target_one_hot = to_one_hot(target, num_classes=37)
+    intersection = (pred * target_one_hot).sum(dim=(2, 3))
+    union = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3))
     dice = (2 * intersection + smooth) / (union + smooth)
     dice_loss = 1 - dice.mean()
     return dice_loss
@@ -112,8 +113,9 @@ def iou_loss(pred, target, eps=1e-6):
     Returns:
         torch.Tensor: The IoU loss
     """
-    intersection = (pred * target).sum(dim=(2, 3))
-    union = pred.sum(dim=(2, 3)) + target.sum(dim=(2, 3)) - intersection
+    target_one_hot = to_one_hot(target, num_classes=37)
+    intersection = (pred * target_one_hot).sum(dim=(2, 3))
+    union = pred.sum(dim=(2, 3)) + target_one_hot.sum(dim=(2, 3)) - intersection
     iou = (intersection + eps) / (union + eps)
     iou_loss = 1 - iou.mean()
     return iou_loss
