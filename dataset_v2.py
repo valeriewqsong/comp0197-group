@@ -22,7 +22,8 @@ class OxfordPetsDataset(Dataset):
             transform (callable, optional): Optional transform to be applied on a sample.
             labeled (bool): Whether the dataset should be labeled or not.
         """
-        self.img_labels = img_labels if labeled else [("", -1) for _ in range(len(img_labels))]
+        self.img_names = [img_label[0] for img_label in img_labels]
+        self.img_labels = img_labels if labeled else [(img_name, -1) for img_name, _ in img_labels]
         self.img_dir = img_dir
         self.transform = transform
 
@@ -46,8 +47,6 @@ class OxfordPetsDataset(Dataset):
         if self.transform:
             image = self.transform(image)
             
-        print("Image:", type(image), "Label:", type(label))  # Add this line for debugging
-        
         return image, label
 
 def split_data(annotations_file, labeled_fraction=0.1):
@@ -93,7 +92,7 @@ def get_data_loader(batch_size=32, num_workers=0, labeled_fraction=0.1):
     train_labeled_data, train_unlabeled_data = split_data('annotations/trainval.txt', labeled_fraction=labeled_fraction)
     with open('annotations/test.txt', 'r') as f:
         test_img_labels = [tuple(line.strip().split(' ')[:2]) for line in f if line.strip() and line.strip().split(' ')[0]]
-    test_img_labels = split_data('annotations/test.txt', labeled_fraction=1.0)  # Get all test data as labeled
+    test_img_labels, _ = split_data('annotations/test.txt', labeled_fraction=1.0)  # Get all test data as labeled
 
     train_labeled_loader = DataLoader(OxfordPetsDataset('images', img_labels=train_labeled_data, transform=data_transforms), batch_size=batch_size, shuffle=True, num_workers=num_workers)
     train_unlabeled_loader = DataLoader(OxfordPetsDataset('images', img_labels=train_unlabeled_data, transform=data_transforms, labeled=False), batch_size=batch_size, shuffle=True, num_workers=num_workers)
