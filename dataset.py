@@ -41,17 +41,18 @@ else:
             train_total[name] = []
         train_total[name].append(line.split(" ")[0])
 
-    # Split the data into labeled and unlabeled sets
+    # Split the data into labeled and unlabeled sets (1:10 ratio)
     for k in train_total:
         files = train_total[k] # get all the training files of the same label
-        seg_len = len(files)//2
-        for_label = random.sample(files, seg_len)
-
-        for f in files:
-            if f in for_label:
-                f1.write(f+"\n")
-            else:
-                f2.write(f+"\n")
+        num_unlabeled = len(files) // 10  # 10:1 ratio of unlabeled to labeled data
+        labeled_files = files[num_unlabeled:]
+        unlabeled_files = files[:num_unlabeled]
+    
+        for f in labeled_files:
+            f1.write(f+"\n")
+    
+        for f in unlabeled_files:
+            f2.write(f+"\n")
 
     f1.close()
     f2.close()
