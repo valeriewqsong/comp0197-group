@@ -32,7 +32,6 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
     else:
         print("Training with iou loss function..")
     for epoch in range(num_epochs):
-        running_loss = 0.0
         
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
@@ -53,6 +52,9 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 except StopIteration:
                     train_iter_without_label = iter(train_loader_without_label)
                     images_without_label_batch = next(train_iter_without_label)
+                    
+                images_without_label_batch = images_without_label_batch[0].to(device)
+                
                 if j == 0:
                     images_without_label = images_without_label_batch
                 else:
