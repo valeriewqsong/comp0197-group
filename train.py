@@ -79,12 +79,15 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             
             loss.backward()
             optimizer.step()
+            
+            # print statistics every iteration
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.3f}")
 
-            # print statistics every 50 iteratrions
-            running_loss += loss.item()
-            if i % 50 == 49:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.3f}")
-                running_loss = 0.0
+            # # print statistics every 10 iteratrions
+            # running_loss += loss.item()
+            # if i % 10 == 9:
+            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.3f}")
+            #     running_loss = 0.0
 
         # Evaluate the model on the test set
         model.eval()

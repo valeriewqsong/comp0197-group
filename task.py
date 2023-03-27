@@ -1,9 +1,11 @@
-from dataset import train_loader_with_label, train_loader_without_label, test_loader
+from dataset_v2 import get_data_loader
 from train import train_segmentation_model
 import torch
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
+
+train_loader_with_label, train_loader_without_label, test_loader = get_data_loader()
 
 # train model with dice loss
 dice_trained_model = train_segmentation_model(
