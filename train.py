@@ -32,6 +32,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
     else:
         print("Training with iou loss function..")
     for epoch in range(num_epochs):
+        running_loss = 0.0
         
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
@@ -46,22 +47,15 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 images_with_label, labels = next(train_iter_with_label)
 
             # Use 256 (32 * 8) examples of unlabeled data per epoch
-            for j in range(8):
-                try:
-                    images_without_label_batch = next(train_iter_without_label)
-                except StopIteration:
-                    train_iter_without_label = iter(train_loader_without_label)
-                    images_without_label_batch = next(train_iter_without_label)
-                    
-                images_without_label_batch = images_without_label_batch[0].to(device)
-                
-                if j == 0:
-                    images_without_label = images_without_label_batch
-                else:
-                    images_without_label = torch.cat((images_without_label, images_without_label_batch), 0)
-
-            images_with_label, labels = images_with_label.to(device), labels.to(device)
-            images_without_label = images_without_label.to(device)
+            try:
+                images_without_label = next(train_iter_without_label)
+                for j in range(7):
+                    images_without_label = torch.cat((images_without_label, next(train_iter_without_label)), 0)
+            except StopIteration:
+                train_iter_without_label = iter(train_loader_without_label)
+                images_without_label = next(train_iter_without_label)
+                for j in range(7):
+                    images_without_label = torch.cat((images_without_label, next(train_iter_without_label)), 0)
 
             # Set alpha based on epoch number
             t1 = 100
@@ -76,14 +70,9 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             # zero the parameter gradients
             optimizer.zero_grad()
             
-            # forward + backward + optimize
-            print("doing labelled fwd pass..")
+            # forward pass
             pred_with_label = model(images_with_label)
-            print("labelled fwd pass done")
-            
-            print("doing unlabelled fwd pass..")
             pred_without_label = model(images_without_label)
-            print("unlabelled fwd pass done")
             
             # determine the loss function used
             if use_dice:
@@ -91,19 +80,19 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             else:
                 loss = semisup_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             
+            # backward pass
             loss.backward()
-            print("backward pass done")
             
+            # optimise
             optimizer.step()
-            print("optim done")
-            
-            # print statistics every iteration
-            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.3f}")
 
-            # # print statistics every 10 iteratrions
+            # print statistics every iteration
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.5f}")
+            
+            # print statistics every 4 iteratrions
             # running_loss += loss.item()
-            # if i % 10 == 9:
-            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.3f}")
+            # if i % 4 == 3:
+            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 4:.5f}")
             #     running_loss = 0.0
 
         # Evaluate the model on the test set
