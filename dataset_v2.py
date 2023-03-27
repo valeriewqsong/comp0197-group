@@ -5,7 +5,7 @@ import torchvision
 from torchvision import transforms
 from PIL import Image
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import random
 
 
@@ -45,7 +45,9 @@ class OxfordPetsDataset(Dataset):
 
         if self.transform:
             image = self.transform(image)
-
+            
+        print("Image:", type(image), "Label:", type(label))  # Add this line for debugging
+        
         return image, label
 
 def split_data(annotations_file, labeled_fraction=0.1):
@@ -59,7 +61,7 @@ def split_data(annotations_file, labeled_fraction=0.1):
         tuple: (labeled_data, unlabeled_data) where each is a list of tuples containing image names and labels.
     """
     with open(annotations_file, 'r') as f:
-        img_labels = [tuple(line.strip().split(' ')[:2]) for line in f if line.strip() and line.strip().split(' ')[0]]
+        img_labels = [(img_name, int(label)) for img_name, label in (line.strip().split(' ')[:2] for line in f if line.strip() and line.strip().split(' ')[0])]
     
     np.random.shuffle(img_labels)
     
@@ -100,27 +102,27 @@ def get_data_loader(batch_size=32, num_workers=0, labeled_fraction=0.1):
     return train_labeled_loader, train_unlabeled_loader, test_loader
 
 
-# def imshow(img):
-#     img = img * torch.tensor([0.229, 0.224, 0.225])[:, None, None] + torch.tensor([0.485, 0.456, 0.406])[:, None, None]  # unnormalize
-#     npimg = img.numpy()
-#     plt.imshow(np.transpose(npimg, (1, 2, 0)))
-#     plt.show()
+def imshow(img):
+    img = img * torch.tensor([0.229, 0.224, 0.225])[:, None, None] + torch.tensor([0.485, 0.456, 0.406])[:, None, None]  # unnormalize
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.show()
 
-# if __name__ == "__main__":
-#     # Set desired number of labeled samples
-#     labeled_samples = 100
+if __name__ == "__main__":
+    # Set desired fraction of labeled samples
+    labeled_fraction = 0.1
 
-#     # Create the data loaders
-#     train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(labeled_samples=labeled_samples)
+    # Create the data loaders
+    train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(labeled_fraction=labeled_fraction)
 
-#     # Display some images from the labeled and unlabeled training sets
-#     images, labels = next(iter(train_labeled_loader))
-#     imshow(torchvision.utils.make_grid(images))
-#     print("Labeled training images:")
-#     print("Labels:", labels.tolist())
+    # Display some images from the labeled and unlabeled training sets
+    images, labels = next(iter(train_labeled_loader))
+    imshow(torchvision.utils.make_grid(images))
+    print("Labeled training images:")
+    print("Labels:", labels.tolist())
 
-#     images, _ = next(iter(train_unlabeled_loader))
-#     imshow(torchvision.utils.make_grid(images))
-#     print("Unlabeled training images:")
+    images, _ = next(iter(train_unlabeled_loader))
+    imshow(torchvision.utils.make_grid(images))
+    print("Unlabeled training images:")
 
-#     exit()
+    exit()
