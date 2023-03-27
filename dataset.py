@@ -78,7 +78,6 @@ class segmentDataset_With_Label(Dataset):
         img_name = training1[index]
         path = os.path.join('images', img_name.strip()+".jpg")
         
-        
         img = Image.open(path).convert('RGB')   # To read image file as PIL object
         label = Image.open("annotations/trimaps/"+img_name.strip()+".png").convert('L') # To return labels as single-channel tensor wit integer values corresponding to the class labels for each pixel
 

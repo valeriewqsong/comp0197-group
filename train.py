@@ -77,8 +77,13 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             optimizer.zero_grad()
             
             # forward + backward + optimize
+            print("doing labelled fwd pass..")
             pred_with_label = model(images_with_label)
+            print("labelled fwd pass done")
+            
+            print("doing unlabelled fwd pass..")
             pred_without_label = model(images_without_label)
+            print("unlabelled fwd pass done")
             
             # determine the loss function used
             if use_dice:
@@ -87,7 +92,10 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 loss = semisup_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             
             loss.backward()
+            print("backward pass done")
+            
             optimizer.step()
+            print("optim done")
             
             # print statistics every iteration
             print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.3f}")
