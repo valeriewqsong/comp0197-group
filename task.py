@@ -8,7 +8,7 @@ print(device)
 train_loader_with_label, train_loader_without_label, test_loader = get_data_loader()
 
 # train model with dice loss
-dice_trained_model = train_segmentation_model(
+dice_trained_model = train_segmentation_model( 
     train_loader_with_label,
     train_loader_without_label,
     test_loader,

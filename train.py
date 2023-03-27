@@ -47,10 +47,17 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 images_with_label, labels = next(train_iter_with_label)
 
             # Use 256 (32 * 8) examples of unlabeled data per epoch
-            images_without_label = next(train_iter_without_label)
-            for j in range(7):
-                images_without_label = torch.cat((images_without_label, next(train_iter_without_label)), 0)
-                
+            for j in range(8):
+                try:
+                    images_without_label_batch = next(train_iter_without_label)
+                except StopIteration:
+                    train_iter_without_label = iter(train_loader_without_label)
+                    images_without_label_batch = next(train_iter_without_label)
+                if j == 0:
+                    images_without_label = images_without_label_batch
+                else:
+                    images_without_label = torch.cat((images_without_label, images_without_label_batch), 0)
+
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
 
