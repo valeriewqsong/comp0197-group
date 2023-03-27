@@ -17,7 +17,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         alpha (float, optional): Weight for the unlabeled loss. Default is 0.5.
         lr (float, optional): Learning rate for the optimizer. Default is 1e-4.
         use_dice (bool, optional): If True, semisup_dice_loss used. If False, semisup_iou_loss used. Default is True.
-
+        
     Returns:
         nn.Module: The trained segmentation model.
     """
@@ -54,6 +54,16 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
 
+            # Set alpha based on epoch number
+            t1 = 100
+            t2 = 600
+            if epoch < t1:
+                alpha = 0
+            elif epoch < t2:
+                alpha = (epoch - t1) / (t2 - t1)
+            else:
+                alpha = 3
+            
             # zero the parameter gradients
             optimizer.zero_grad()
             
