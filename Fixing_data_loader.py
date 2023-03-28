@@ -1,0 +1,180 @@
+import os
+import torch
+from torch.utils.data import Dataset, DataLoader
+import torchvision
+from torchvision import transforms
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+
+
+class OxfordPetsDataset(Dataset):
+    """Oxford-IIIT Pet dataset."""
+
+    def __init__(self, img_dir, img_labels=None, seg_masks=None, transform=None, labeled=True):
+        """
+        Initialize the dataset.
+
+        Args:
+            img_dir (str): Path to the directory containing the images.
+            img_labels (list): List of tuples containing image names and labels.
+            seg_masks (list): List of tuples containing image names and segmentation masks.
+            transform (callable, optional): Optional transform to be applied on a sample.
+            labeled (bool): Whether the dataset should be labeled or not.
+        """
+        self.img_labels = img_labels if labeled else [("", -1) for _ in range(len(img_labels))]
+        if seg_masks is not None:
+            self.seg_masks = seg_masks if labeled else [("", None) for _ in range(len(seg_masks))]
+        else:
+            self.seg_masks = [("", None) for _ in range(len(self.img_labels))]
+        self.img_dir = img_dir
+        self.transform = transform
+
+    def __len__(self):
+        """Return the number of samples in the dataset."""
+        return len(self.img_labels)
+    
+    def __getitem__(self, idx):
+        """Get a sample from the dataset given an index.
+
+        Args:
+            idx (int): Index of the sample to retrieve.
+
+        Returns:
+            tuple: (image, label, seg_mask) where image and seg_mask are PIL.Image.Image instances and label is an integer.
+        """
+        img_path = os.path.join(self.img_dir, self.img_labels[idx][0] + ".jpg")
+        image = Image.open(img_path).convert("RGB")
+        label = self.img_labels[idx][1]
+        
+        #seg_mask_path = os.path.join(self.img_dir, self.seg_masks[idx][0] + ".png")
+        seg_mask_path = os.path.join(self.img_dir, self.seg_masks[idx][0] + ".jpg")
+        seg_mask = Image.open(seg_mask_path)
+
+        if self.transform:
+            image = self.transform(image)
+            seg_mask = self.transform(seg_mask)
+
+        return image, label, seg_mask
+
+
+
+def split_data(annotations_file, labeled_samples=100):
+    """Split the data into labeled and unlabeled sets based on random sampling.
+
+    Args:
+        annotations_file (str): Path to the annotations file containing image names and labels.
+        labeled_samples (int): Number of labeled samples in the resulting split.
+
+    Returns:
+        tuple: (labeled_data, labeled_masks, unlabeled_data, unlabeled_masks) where each is a list of tuples containing image names and labels/segmentation masks.
+    """
+    with open(annotations_file, 'r') as f:
+        img_labels = [tuple(line.strip().split(' ')[:2]) for line in f if line.strip() and line.strip().split(' ')[0]]
+
+    np.random.shuffle(img_labels)
+
+    labeled_data = img_labels[:labeled_samples]
+    labeled_masks = [(img_name, img_name.split('/')[-1]) for img_name, _ in labeled_data]
+    unlabeled_data = img_labels[labeled_samples:]
+    unlabeled_masks = [(img_name, img_name.split('/')[-1]) for img_name, _ in unlabeled_data]
+    #labeled_masks and unlabeled_masks contain tuples of (img_name, mask_name). img_name is name of input image and
+    #mask_name is name of corresponding mask file.
+    #Here, we assume that segmentation mask files have same name as input files, put with .png
+
+    print("labeled_data:", print(len(labeled_data)))
+    print("labeled_masks:", print(len(labeled_masks)))
+    #print("unlabeled_data:", print(unlabeled_data.shape))
+    #print("unlabeled_masks:", print(unlabeled_masks.shape))
+    
+    return labeled_data, labeled_masks, unlabeled_data, unlabeled_masks
+
+
+
+def get_data_loader(batch_size=32, num_workers=0, labeled_samples=100):
+    """Create and return Data Loaders for semi-supervised learning.
+
+    Args:
+        batch_size (int, optional): Number of samples per batch. Default is 32.
+        num_workers (int, optional): Number of workers for data loading. Default is 0.
+        labeled_samples (int, optional): Number of labeled samples in the training dataset. Default is 100.
+
+    Returns:
+        tuple: (train_labeled_loader, train_unlabeled_loader, test_labeled_loader, test_unlabeled_loader) where each is a torch.utils.data.DataLoader instance.
+    """
+    data_transforms = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+
+    labeled_data, labeled_masks, unlabeled_data, unlabeled_masks = split_data('annotations/trainval.txt', labeled_samples)
+    test_labeled_data, test_labeled_masks, test_unlabeled_data, test_unlabeled_masks = split_data('annotations/test.txt', labeled_samples)
+    
+    train_labeled_dataset = OxfordPetsDataset('images', img_labels=labeled_data, seg_masks=labeled_masks, transform=data_transforms)
+    train_unlabeled_dataset = OxfordPetsDataset('images', img_labels=unlabeled_data, seg_masks=unlabeled_masks, transform=data_transforms, labeled=False)
+    test_labeled_dataset = OxfordPetsDataset('images', img_labels=test_labeled_data, seg_masks=test_labeled_masks, transform=data_transforms)
+    test_unlabeled_dataset = OxfordPetsDataset('images', img_labels=test_unlabeled_data, seg_masks=test_unlabeled_masks, transform=data_transforms, labeled=False)
+
+    train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+    test_unlabeled_loader = DataLoader(test_unlabeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+
+    return train_labeled_loader, train_unlabeled_loader, test_labeled_loader, test_unlabeled_loader
+
+
+
+
+
+
+def imshow(img, mask=None):
+    """Show an image and an optional segmentation mask."""
+    img = img * torch.tensor([0.229, 0.224, 0.225])[:, None, None] + torch.tensor([0.485, 0.456, 0.406])[:, None, None]  # unnormalize
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    
+    # Show the segmentation mask if it's provided
+    if mask is not None:
+        plt.imshow(mask.squeeze(), alpha=0.5, cmap='Reds')
+    
+    plt.show()
+
+# Checking code
+if __name__ == "__main__":
+
+    labeled_samples = 100
+
+    print("Splitting data...")
+    # Split the data into labeled and unlabeled sets
+    labeled_data, labeled_masks, unlabeled_data, unlabeled_masks = split_data('annotations/trainval.txt', labeled_samples=labeled_samples)
+
+    print("Creating data loaders...")
+    # Create the data loaders
+    train_labeled_loader, train_unlabeled_loader, test_labeled_loader, test_unlabeled_loader = get_data_loader(labeled_samples=labeled_samples)
+
+    print("Getting sample from data loaders...")
+    # Display some images and labels from the data loaders
+    print(next(iter(train_labeled_loader))[0].shape)
+    images, labels = next(iter(train_labeled_loader))
+    print("Labeled training images:")
+    print("Labels:", labels.tolist())
+
+    images, _ = next(iter(train_unlabeled_loader))
+    print("Unlabeled training images:")
+
+    images, labels = next(iter(test_labeled_loader))
+    print("Labeled test images:")
+    print("Labels:", labels.tolist())
+
+    images = next(iter(test_unlabeled_loader))
+    print("Unlabeled test images:")
+
+
+
+
+
+
+
