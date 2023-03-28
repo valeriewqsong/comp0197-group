@@ -49,7 +49,7 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     dice_loss_unlabeled = 1 - dice_unlabeled.mean()
 
     # Combining the losses
-    loss = alpha * dice_loss_labeled + (1 - alpha) * dice_loss_unlabeled
+    loss = dice_loss_labeled + alpha * dice_loss_unlabeled
 
     return loss
 
