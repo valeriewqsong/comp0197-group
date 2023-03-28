@@ -12,7 +12,6 @@ dice_trained_model = train_segmentation_model(
     test_loader,
     device,
     num_epochs=2,          
-    alpha=0.5,          
     lr=1e-4, 
     use_dice = True
 )
@@ -27,7 +26,6 @@ iou_trained_model = train_segmentation_model(
     test_loader,
     device,
     num_epochs=2,        
-    alpha=0.5,         
     lr=1e-4, 
     use_dice = False
 )

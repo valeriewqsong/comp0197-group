@@ -4,7 +4,7 @@ import torch.optim as optim
 from linknet import link_net
 from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss_and_score, iou_loss_and_score
 
-def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, alpha=0.5, lr=1e-4, use_dice=True):
+def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
     """
     Train a semi-supervised segmentation model with labeled and unlabeled data.
 
@@ -14,7 +14,6 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         test_loader (DataLoader): Test/validation data loader.
         device (str): Device to run the training on, e.g., "cpu" or "cuda".
         num_epochs (int, optional): Number of training epochs. Default is 50.
-        alpha (float, optional): Weight for the unlabeled loss. Default is 0.5.
         lr (float, optional): Learning rate for the optimizer. Default is 1e-4.
         use_dice (bool, optional): If True, semisup_dice_loss used. If False, semisup_iou_loss used. Default is True.
 
@@ -45,6 +44,16 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
 
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
+            
+            # Set alpha based on epoch number
+            t1 = 100
+            t2 = 600
+            if epoch < t1:
+                alpha = 0
+            elif epoch < t2:
+                alpha = (epoch - t1) / (t2 - t1)
+            else:
+                alpha = 3
 
             # zero the parameter gradients
             optimizer.zero_grad()
@@ -61,11 +70,11 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             
             loss.backward()
             optimizer.step()
-
+            
             # print statistics every 50 iteratrions
             running_loss += loss.item()
             if i % 50 == 49:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.3f}")
+                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
                 running_loss = 0.0
 
         # Evaluate the model on the test set
