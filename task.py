@@ -1,4 +1,4 @@
-from dataset import train_loader_with_label, train_loader_without_label, test_loader
+from dataset_semi import train_loader_with_label, train_loader_without_label, test_loader
 from train import train_segmentation_model
 import torch
 

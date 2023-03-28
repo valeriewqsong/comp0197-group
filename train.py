@@ -45,13 +45,13 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
             
-            # Set alpha based on epoch number
+            # Set alpha based on epoch number (or i?)
             t1 = 100
             t2 = 600
-            if epoch < t1:
+            if i < t1:
                 alpha = 0
-            elif epoch < t2:
-                alpha = (epoch - t1) / (t2 - t1)
+            elif i < t2:
+                alpha = (i - t1) / (t2 - t1)
             else:
                 alpha = 3
 
@@ -71,11 +71,14 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             loss.backward()
             optimizer.step()
             
-            # print statistics every 50 iteratrions
-            running_loss += loss.item()
-            if i % 50 == 49:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
-                running_loss = 0.0
+            # print stats every iteration
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
+            
+            # # print statistics every 50 iteratrions
+            # running_loss += loss.item()
+            # if i % 50 == 49:
+            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
+            #     running_loss = 0.0
 
         # Evaluate the model on the test set
         model.eval()

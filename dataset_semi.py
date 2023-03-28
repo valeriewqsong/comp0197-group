@@ -41,17 +41,18 @@ else:
             train_total[name] = []
         train_total[name].append(line.split(" ")[0])
 
-    # Split the data into labeled and unlabeled sets
+    # Split the data into labeled and unlabeled sets (1:10 ratio)
     for k in train_total:
         files = train_total[k] # get all the training files of the same label
-        seg_len = len(files)//2
-        for_label = random.sample(files, seg_len)
-
-        for f in files:
-            if f in for_label:
-                f1.write(f+"\n")
-            else:
-                f2.write(f+"\n")
+        num_unlabeled = len(files) // 10  # 10:1 ratio of unlabeled to labeled data
+        labeled_files = files[num_unlabeled:]
+        unlabeled_files = files[:num_unlabeled]
+    
+        for f in labeled_files:
+            f1.write(f+"\n")
+    
+        for f in unlabeled_files:
+            f2.write(f+"\n")
 
     f1.close()
     f2.close()
@@ -76,7 +77,6 @@ class segmentDataset_With_Label(Dataset):
     def __getitem__(self, index):    
         img_name = training1[index]
         path = os.path.join('images', img_name.strip()+".jpg")
-        
         
         img = Image.open(path).convert('RGB')   # To read image file as PIL object
         label = Image.open("annotations/trimaps/"+img_name.strip()+".png").convert('L') # To return labels as single-channel tensor wit integer values corresponding to the class labels for each pixel
@@ -116,5 +116,4 @@ from torch.utils.data import DataLoader
 
 train_loader_with_label = DataLoader(trainset1, batch_size=4, shuffle=True, drop_last=True)
 train_loader_without_label = DataLoader(trainset2, batch_size=4, shuffle=True, drop_last=True)
-
 test_loader = DataLoader(trainset1, batch_size=4, shuffle=True, drop_last=False)
