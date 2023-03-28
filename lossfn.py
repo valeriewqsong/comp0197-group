@@ -3,18 +3,23 @@ import torch.nn.functional as F
 
 def to_one_hot(tensor, num_classes):
     """
-    Converts a tensor of shape (N, H, W) into a one-hot encoded tensor of shape (N, num_classes, H, W).
-
+    Converts a tensor of shape (N,) into a one-hot encoded tensor of shape (N, num_classes, H, W).
     Args:
         tensor (torch.Tensor): The tensor to be one-hot encoded.
         num_classes (int): The number of classes in the one-hot encoded tensor.
-
     Returns:
         torch.Tensor: The one-hot encoded tensor.
     """
-    tensor = tensor.unsqueeze(1)
-    one_hot = torch.zeros(tensor.size(0), num_classes, tensor.size(2), tensor.size(3), device=tensor.device)
-    return one_hot.scatter_(1, tensor.long(), 1)
+    # Get the shape of the input tensor
+    shape = tensor.shape
+
+    # Create an empty tensor of shape (N, num_classes)
+    one_hot = torch.zeros(shape[0], num_classes, dtype=torch.float32)
+
+    # Fill the one_hot tensor with ones at the indices corresponding to the input tensor
+    one_hot.scatter_(1, tensor.unsqueeze(1), 1)
+
+    return one_hot.unsqueeze(2).unsqueeze(3)
 
 def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     """
@@ -25,7 +30,7 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
         
     Args:
         pred (torch.Tensor): Labeled data predictions, shape (N, C, H, W)
-        target (torch.Tensor): Labeled data targets, shape (N, H, W)
+        target (torch.Tensor): Labeled data targets, shape (N,)
         pred_unlabeled (torch.Tensor): Unlabeled data predictions, shape (N, C, H, W)
         alpha (float): The balancing factor between the labeled and unlabeled data contributions
         smooth (float, optional): Smoothing factor to avoid division by zero, default=1
@@ -61,7 +66,7 @@ def semisup_iou_loss(pred, target, pred_unlabeled, alpha, eps=1e-6):
         IoU = (intersection + eps) / (union + eps)
     Args:
         pred (torch.Tensor): Labeled data predictions, shape (N, C, H, W)
-        target (torch.Tensor): Labeled data targets, shape (N, H, W)
+        target (torch.Tensor): Labeled data targets, shape (N,)
         pred_unlabeled (torch.Tensor): Unlabeled data predictions, shape (N, C, H, W)
         alpha (float): The balancing factor between the labeled and unlabeled data contributions
         eps (float, optional): Small constant to avoid division by zero, default=1e-6
@@ -95,7 +100,7 @@ def dice_loss_and_score(pred, target, smooth=1):
     
     Args:
         pred (torch.Tensor): Predictions, shape (N, C, H, W)
-        target (torch.Tensor): Targets, shape (N, C, H, W)
+        target (torch.Tensor): Targets, shape (N,)
         smooth (float, optional): Smoothing factor to avoid division by zero, default=1
 
     Returns:
@@ -115,7 +120,7 @@ def iou_loss_and_score(pred, target, eps=1e-6):
     
     Args:
         pred (torch.Tensor): Predictions, shape (N, C, H, W)
-        target (torch.Tensor): Targets, shape (N, C, H, W)
+        target (torch.Tensor): Targets, shape (N,)
         eps (float, optional): Small constant to avoid division by zero, default=1e-6
 
     Returns:
@@ -129,3 +134,27 @@ def iou_loss_and_score(pred, target, eps=1e-6):
     iou_score = iou.mean().item()
     return iou_loss, iou_score
 
+def accuracy_score(outputs, target):
+    """
+    Computes the accuracy between predictions and targets.
+
+    Args:
+        outputs (torch.Tensor): Predictions, shape (N, C, H, W)
+        target (torch.Tensor): Targets, shape (N,)
+
+    Returns:
+        accuracy (float): The accuracy of the prediction
+    """
+    # Get the class with the highest probability for each pixel
+    predicted = outputs.argmax(dim=1)
+
+    # Convert target tensor to one-hot encoding
+    target_one_hot = torch.zeros_like(outputs)
+    target_expanded = target.view(-1, 1, 1).expand_as(outputs[:, 0, :, :])
+    target_one_hot.scatter_(1, target_expanded.unsqueeze(1), 1)
+
+    # Compare the predicted segmentation masks with the ground truth labels
+    correct_pixels = (predicted == target_one_hot.argmax(dim=1)).float()
+    accuracy = correct_pixels.sum() / (correct_pixels.numel())
+
+    return accuracy.item()

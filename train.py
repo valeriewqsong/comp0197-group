@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss_and_score, iou_loss_and_score
+from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss_and_score, iou_loss_and_score, accuracy_score
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, alpha=0.5, lr=1e-4, use_dice=True):
     """
@@ -31,31 +31,21 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         print("Training with dice loss function...")
     else:
         print("Training with iou loss function..")
+        
     for epoch in range(num_epochs):
         running_loss = 0.0
         
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
-        train_iter_with_label = iter(train_loader_with_label)
-        
-        # Use 32 examples of labeled data per epoch
-        for i in range(32):
+        for i, (images_with_label, labels) in enumerate(train_loader_with_label):
             try:
-                images_with_label, labels = next(train_iter_with_label)
-            except StopIteration:
-                train_iter_with_label = iter(train_loader_with_label)
-                images_with_label, labels = next(train_iter_with_label)
-
-            # Use 256 (32 * 8) examples of unlabeled data per epoch
-            try:
-                images_without_label = next(train_iter_without_label)
-                for j in range(7):
-                    images_without_label = torch.cat((images_without_label, next(train_iter_without_label)), 0)
+                images_without_label, _ = next(train_iter_without_label)
             except StopIteration:
                 train_iter_without_label = iter(train_loader_without_label)
-                images_without_label = next(train_iter_without_label)
-                for j in range(7):
-                    images_without_label = torch.cat((images_without_label, next(train_iter_without_label)), 0)
+                images_without_label, _ = next(train_iter_without_label)
+                    
+            images_with_label, labels = images_with_label.to(device), labels.to(device)
+            images_without_label = images_without_label.to(device)
 
             # Set alpha based on epoch number
             t1 = 100
@@ -66,35 +56,35 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 alpha = (epoch - t1) / (t2 - t1)
             else:
                 alpha = 3
-            
+
             # zero the parameter gradients
             optimizer.zero_grad()
-            
+
             # forward pass
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
-            
+
             # determine the loss function used
             if use_dice:
                 loss = semisup_dice_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             else:
                 loss = semisup_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
-            
+
             # backward pass
             loss.backward()
-            
+
             # optimise
             optimizer.step()
 
             # print statistics every iteration
             print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.5f}")
-            
+
             # print statistics every 4 iteratrions
             # running_loss += loss.item()
             # if i % 4 == 3:
             #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 4:.5f}")
             #     running_loss = 0.0
-
+        
         # Evaluate the model on the test set
         model.eval()
 
@@ -117,10 +107,8 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                     iou_loss, iou_score = iou_loss_and_score(output, target)
                     test_loss += iou_loss.item()
                     total_iou_score += iou_score
-                    
-                correct = (output.argmax(dim=1) == target).sum().item()
-                total = target.size(0) * target.size(1) * target.size(2)
-                accuracy += correct / total
+                
+                accuracy += accuracy_score(output, target)
                 
         if use_dice:
             print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader), accuracy/len(test_loader)))

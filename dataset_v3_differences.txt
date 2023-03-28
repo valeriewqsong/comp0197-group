@@ -1,0 +1,6 @@
+1. takes in labeled_fraction instead of labeled_number, so dataset can be split to 10% labeled and 90% unlabeled
+2. renamed img_labels to img_names_and_labels, renamed test_img_labels to test_img_data too
+3. edited img_labels line in split_data function such that img label is an int instead of str
+4. in split_data, changed it such that labels are from 0 to 36 instead of 1 to 37
+with open(annotations_file, 'r') as f:
+        img_names_and_labels = [(img_name, int(label) - 1) for img_name, label in (line.strip().split(' ')[:2] for line in f if line.strip() and line.strip().split(' ')[0])]

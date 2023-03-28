@@ -8,7 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-
 class OxfordPetsDataset(Dataset):
     """Oxford-IIIT Pet dataset."""
 
@@ -57,19 +56,18 @@ def split_data(annotations_file, labeled_fraction=0.1):
         labeled_fraction (float): Fraction of labeled samples in the resulting split. Default is 0.1.
 
     Returns:
-        tuple: (labeled_data, unlabeled_data) where labeled_data is a list of tuples containing image names (str) and labels (int) and unlabeled data is a list of strings.
+        tuple: (labeled_data, unlabeled_data) where each is a list of tuples containing image names and labels.
     """
     with open(annotations_file, 'r') as f:
-        img_names_and_labels = [(img_name, int(label)) for img_name, label in (line.strip().split(' ')[:2] for line in f if line.strip() and line.strip().split(' ')[0])]
+        img_names_and_labels = [(img_name, int(label) - 1) for img_name, label in (line.strip().split(' ')[:2] for line in f if line.strip() and line.strip().split(' ')[0])]
     
     np.random.shuffle(img_names_and_labels)
     
     n_labeled = int(len(img_names_and_labels) * labeled_fraction)
     labeled_data = img_names_and_labels[:n_labeled]
-    unlabeled_data = [img_name_and_label[0] for img_name_and_label in img_names_and_labels[n_labeled:]]
+    unlabeled_data = img_names_and_labels[n_labeled:]
     
     return labeled_data, unlabeled_data
-
 
 def get_data_loader(batch_size=32, num_workers=0, labeled_fraction=0.1):
     """Create and return Data Loaders for semi-supervised learning.
@@ -107,21 +105,21 @@ def imshow(img):
     plt.imshow(np.transpose(npimg, (1, 2, 0)))
     plt.show()
 
-if __name__ == "__main__":
-    # Set desired fraction of labeled samples
-    labeled_fraction = 0.1
+# if __name__ == "__main__":
+#     # Set desired fraction of labeled samples
+#     labeled_fraction = 0.1
 
-    # Create the data loaders
-    train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(labeled_fraction=labeled_fraction)
+#     # Create the data loaders
+#     train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(labeled_fraction=labeled_fraction)
 
-    # Display some images from the labeled and unlabeled training sets
-    images, labels = next(iter(train_labeled_loader))
-    imshow(torchvision.utils.make_grid(images))
-    print("Labeled training images:")
-    print("Labels:", labels.tolist())
+#     # Display some images from the labeled and unlabeled training sets
+#     images, labels = next(iter(train_labeled_loader))
+#     imshow(torchvision.utils.make_grid(images))
+#     print("Labeled training images:")
+#     print("Labels:", labels.tolist())
 
-    images, _ = next(iter(train_unlabeled_loader))
-    imshow(torchvision.utils.make_grid(images))
-    print("Unlabeled training images:")
+#     images, _ = next(iter(train_unlabeled_loader))
+#     imshow(torchvision.utils.make_grid(images))
+#     print("Unlabeled training images:")
 
-    exit()
+#     exit()
