@@ -6,8 +6,16 @@ from torchvision import transforms
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
+from tensorflow.keras.utils import to_categorical
 import random
 
+
+
+def preprocess_mask(mask, label):
+    mask = np.float32(mask)
+    mask[mask == 2.0] = 0.0
+    mask[(mask == 1.0) | (mask == 3.0)] = label
+    return mask
 
 class OxfordPetsDataset(Dataset):
     """Oxford-IIIT Pet dataset."""
@@ -23,13 +31,18 @@ class OxfordPetsDataset(Dataset):
             transform (callable, optional): Optional transform to be applied on a sample.
             labeled (bool): Whether the dataset should be labeled or not.
         """
-        self.img_labels = img_labels if labeled else [("", -1) for _ in range(len(img_labels))]
+        self.img_labels = img_labels
         if seg_masks is not None:
             self.seg_masks = seg_masks if labeled else [("", None) for _ in range(len(seg_masks))]
         else:
             self.seg_masks = [("", None) for _ in range(len(self.img_labels))]
         self.img_dir = img_dir
+        self.mask_dir = os.path.join("annotations", "trimaps")
         self.transform = transform
+        self.mask_transform = transforms.Compose([transforms.ToTensor(),     
+                            transforms.Resize((24, 24)),
+                            transforms.CenterCrop(24),  
+                            transforms.Lambda(lambda x: (x).squeeze().type(torch.LongTensor)) ])
 
     def __len__(self):
         """Return the number of samples in the dataset."""
@@ -47,15 +60,13 @@ class OxfordPetsDataset(Dataset):
         img_path = os.path.join(self.img_dir, self.img_labels[idx][0] + ".jpg")
         image = Image.open(img_path).convert("RGB")
         label = self.img_labels[idx][1]
-        
         #seg_mask_path = os.path.join(self.img_dir, self.seg_masks[idx][0] + ".png")
-        seg_mask_path = os.path.join(self.img_dir, self.seg_masks[idx][0] + ".jpg")
-        seg_mask = Image.open(seg_mask_path)
-
+        seg_mask_path = os.path.join(self.mask_dir, self.img_labels[idx][0] + ".png")
+        seg_mask = preprocess_mask(Image.open(seg_mask_path), float(label))
+        seg_mask = to_categorical(seg_mask, num_classes=38)
         if self.transform:
             image = self.transform(image)
-            seg_mask = self.transform(seg_mask)
-
+            seg_mask = self.mask_transform(seg_mask)
         return image, label, seg_mask
 
 
@@ -83,10 +94,10 @@ def split_data(annotations_file, labeled_samples=100):
     #mask_name is name of corresponding mask file.
     #Here, we assume that segmentation mask files have same name as input files, put with .png
 
-    print("labeled_data:", print(len(labeled_data)))
-    print("labeled_masks:", print(len(labeled_masks)))
-    #print("unlabeled_data:", print(unlabeled_data.shape))
-    #print("unlabeled_masks:", print(unlabeled_masks.shape))
+    print("labeled_data:", len(labeled_data))
+    print("labeled_masks:", len(labeled_masks))
+    print("unlabeled_data:", len(unlabeled_data))
+    print("unlabeled_masks:", len(unlabeled_masks))
     
     return labeled_data, labeled_masks, unlabeled_data, unlabeled_masks
 
@@ -122,6 +133,8 @@ def get_data_loader(batch_size=32, num_workers=0, labeled_samples=100):
     train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
     test_unlabeled_loader = DataLoader(test_unlabeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+    print(len(train_unlabeled_dataset), "This motherfucking loader has this many examples")
+    print(unlabeled_data)
 
     return train_labeled_loader, train_unlabeled_loader, test_labeled_loader, test_unlabeled_loader
 
@@ -130,17 +143,31 @@ def get_data_loader(batch_size=32, num_workers=0, labeled_samples=100):
 
 
 
-def imshow(img, mask=None):
+def imshow(img,label, mask=None, vs=None):
     """Show an image and an optional segmentation mask."""
     img = img * torch.tensor([0.229, 0.224, 0.225])[:, None, None] + torch.tensor([0.485, 0.456, 0.406])[:, None, None]  # unnormalize
     npimg = img.numpy()
-    plt.imshow(np.transpose(npimg, (1, 2, 0)))
-    
-    # Show the segmentation mask if it's provided
-    if mask is not None:
-        plt.imshow(mask.squeeze(), alpha=0.5, cmap='Reds')
-    
+    print(label)
+    # plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    if vs is None : 
+        # Show the segmentation mask if it's provided
+        if mask is not None :
+            plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(label)], cmap='Reds')
+            plt.show()
+            plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(1)], cmap='Reds')
+
+    else :
+        fig, ax = plt.subplots()
+        im = ax.imshow(np.transpose(mask.numpy(), (1, 2, 0)) , cmap='Reds')
+        for i in range(mask.shape[1]):
+            for j in range(mask.shape[2]):
+                text = ax.text(j, i, mask[0, i, j].item(),
+                    ha="center", va="center", color="b")
     plt.show()
+    plt.imshow(np.transpose(img.numpy(), (1, 2, 0)), cmap='Reds')
+    plt.show()
+
+
 
 # Checking code
 if __name__ == "__main__":
@@ -158,18 +185,19 @@ if __name__ == "__main__":
     print("Getting sample from data loaders...")
     # Display some images and labels from the data loaders
     print(next(iter(train_labeled_loader))[0].shape)
-    images, labels = next(iter(train_labeled_loader))
+    images, labels, mask = next(iter(train_labeled_loader))
     print("Labeled training images:")
-    print("Labels:", labels.tolist())
+    print("Labels:", labels)
+    imshow(images[0], labels[0], mask[0])
 
-    images, _ = next(iter(train_unlabeled_loader))
+    images, *_ = next(iter(train_unlabeled_loader))
     print("Unlabeled training images:")
 
-    images, labels = next(iter(test_labeled_loader))
+    images, labels, *_ = next(iter(test_labeled_loader))
     print("Labeled test images:")
-    print("Labels:", labels.tolist())
+    print("Labels:", list(labels))
 
-    images = next(iter(test_unlabeled_loader))
+    images, *_ = next(iter(test_unlabeled_loader))
     print("Unlabeled test images:")
 
 
