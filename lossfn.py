@@ -33,7 +33,8 @@ def semisup_dice_loss(pred, target, pred_unlabeled, alpha, smooth=1):
     Returns:
         torch.Tensor: The combined Dice loss for labeled and unlabeled data
     """
-    target_one_hot = to_one_hot(target, num_classes=37)
+    num_classes = pred.shape[1]
+    target_one_hot = to_one_hot(target, num_classes=num_classes)
     
     # Labeled data
     intersection_labeled = (pred * target_one_hot).sum(dim=(2, 3))
