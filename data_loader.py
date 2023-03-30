@@ -35,8 +35,8 @@ class OxfordPetsDataset(Dataset):
         self.mask_dir = os.path.join("annotations", "trimaps")
         self.transform = transform
         self.mask_transform = transforms.Compose([transforms.ToTensor(),     
-                            transforms.Resize((24, 24)),
-                            transforms.CenterCrop(24),  
+                            transforms.Resize((256, 256)),
+                            transforms.CenterCrop(224),  
                             transforms.Lambda(lambda x: (x).squeeze().type(torch.LongTensor)) ])
 
     def __len__(self):
@@ -183,9 +183,6 @@ if __name__ == "__main__":
     images, labels, *_ = next(iter(test_labeled_loader))
     print("Labeled test images:")
     print("Labels:", list(labels))
-
-    images, *_ = next(iter(test_unlabeled_loader))
-    print("Unlabeled test images:")
 
 
 
