@@ -109,20 +109,11 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                     test_loss += iou_loss.item()
                     total_iou_score += iou_score
                     
-                # Convert logits to probabilities
-                probabilities = torch.sigmoid(output)
-                # Convert probabilities to binary masks
-                binary_output = create_pseudo_labels(probabilities)
-                    
-                correct = (binary_output.argmax(dim=1) == target).sum().item()
-                # correct = (output.argmax(dim=1) == target).sum().item()
-                total = target.size(0) * target.size(1) * target.size(2)
-                accuracy += correct / total
                 
         if use_dice:
-            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader), accuracy/len(test_loader)))
+            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader)))
         else:
-            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f} Accuracy: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader), accuracy/len(test_loader)))
+            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader)))
 
     print("Training completed.")
 
