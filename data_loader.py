@@ -126,7 +126,7 @@ def get_data_loader(batch_size=32, num_workers=0, labeled_samples=100):
     print(len(train_unlabeled_dataset), "This motherfucking loader has this many examples")
     print(unlabeled_data)
 
-    return train_labeled_loader, train_unlabeled_loader, test_labeled_loader, test_unlabeled_loader
+    return train_labeled_loader, train_unlabeled_loader, test_labeled_loader
 
 
 
@@ -167,7 +167,7 @@ if __name__ == "__main__":
 
     print("Creating data loaders...")
     # Create the data loaders
-    train_labeled_loader, train_unlabeled_loader, test_labeled_loader, test_unlabeled_loader = get_data_loader(labeled_samples=labeled_samples)
+    train_labeled_loader, train_unlabeled_loader, test_labeled_loader = get_data_loader(labeled_samples=labeled_samples)
 
     print("Getting sample from data loaders...")
     # Display some images and labels from the data loaders
