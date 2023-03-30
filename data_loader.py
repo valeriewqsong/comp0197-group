@@ -125,7 +125,7 @@ def get_data_loader(batch_size=32, num_workers=0):
     train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=256, shuffle=True, num_workers=num_workers)
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-    print(len(train_unlabeled_dataset), "This motherfucking loader has this many examples")
+    print(len(train_unlabeled_dataset), "This loader has this many examples")
     print(unlabeled_data)
 
     return train_labeled_loader, train_unlabeled_loader, test_labeled_loader
