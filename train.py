@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss
+from lossfn import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
 # from tensorflow.tensorboard import SummaryWriter 
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
@@ -75,14 +75,14 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             loss.backward()
             optimizer.step()
             
-            # # print stats every iteration
-            # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
+            # print stats every iteration
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
             
-            # print statistics every 50 iteratrions
-            running_loss += loss.item()
-            if i % 50 == 49:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
-                running_loss = 0.0
+            # # print statistics every 50 iteratrions
+            # running_loss += loss.item()
+            # if i % 50 == 49:
+            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
+            #     running_loss = 0.0
 
         # Evaluate the model on the test set
         model.eval()
@@ -109,7 +109,13 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                     test_loss += iou_loss.item()
                     total_iou_score += iou_score
                     
-                correct = (output.argmax(dim=1) == target).sum().item()
+                # Convert logits to probabilities
+                probabilities = torch.sigmoid(output)
+                # Convert probabilities to binary masks
+                binary_output = create_pseudo_labels(probabilities)
+                    
+                correct = (binary_output.argmax(dim=1) == target).sum().item()
+                # correct = (output.argmax(dim=1) == target).sum().item()
                 total = target.size(0) * target.size(1) * target.size(2)
                 accuracy += correct / total
                 
