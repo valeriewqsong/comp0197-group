@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
 from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss_and_score, iou_loss_and_score
+# from tensorflow.tensorboard import SummaryWriter 
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
     """
@@ -21,8 +22,9 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         nn.Module: The trained segmentation model.
     """
     # Initialize the neural network
-    model = link_net(classes=37).to(device)    
-    
+    model = link_net(classes=38).to(device)    
+    # sw = SummaryWriter()
+
     # Define loss function and optimizer
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
@@ -37,14 +39,14 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         train_iter_without_label = iter(train_loader_without_label)
         for i, (images_with_label, labels) in enumerate(train_loader_with_label):
             try:
-                images_without_label = next(train_iter_without_label)
+                images_without_label, _ = next(train_iter_without_label)
             except StopIteration:
                 train_iter_without_label = iter(train_loader_without_label)
-                images_without_label = next(train_iter_without_label)
+                images_without_label, _ = next(train_iter_without_label)
 
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
-            
+            print("The shape of the labels is: ", labels.shape)
             # Set alpha based on epoch number (or i?)
             t1 = 100
             t2 = 600
@@ -61,7 +63,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             # forward + backward + optimize
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
-            
+            print("The shape of the output is: ", pred_with_label.shape, pred_without_label.shape)
             # determine the loss function used
             if use_dice:
                 loss = semisup_dice_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
