@@ -46,7 +46,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
 
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
-            print("The shape of the labels is: ", labels.shape)
+            # print("The shape of the labels is: ", labels.shape)
             
             # Set alpha based on i (or should it be epoch number?)
             t1 = 100
@@ -64,7 +64,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             # forward + backward + optimize
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
-            print("The shape of the output is: ", pred_with_label.shape, pred_without_label.shape)
+            # print("The shape of the output is: ", pred_with_label.shape, pred_without_label.shape)
             
             # determine the loss function used
             if use_dice:

@@ -121,9 +121,9 @@ def get_data_loader(batch_size=32, num_workers=0):
     train_unlabeled_dataset = OxfordPetsDataset('images', img_labels=unlabeled_data, transform=data_transforms, labeled=False)
     test_labeled_dataset = OxfordPetsDataset('images', img_labels=test_labeled_data, transform=data_transforms)
 
-    train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
-    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=256, shuffle=True, num_workers=num_workers)
-    test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+    train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=4, shuffle=True, num_workers=num_workers)
+    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=16, shuffle=True, num_workers=num_workers)
+    test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=4, shuffle=False, num_workers=num_workers)
 
     print(len(train_unlabeled_dataset), "This loader has this many examples")
     print(unlabeled_data)
