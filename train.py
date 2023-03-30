@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import semisup_dice_loss, semisup_iou_loss, dice_loss_and_score, iou_loss_and_score
+from lossfn import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss
 # from tensorflow.tensorboard import SummaryWriter 
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
@@ -64,11 +64,12 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
             print("The shape of the output is: ", pred_with_label.shape, pred_without_label.shape)
+            
             # determine the loss function used
             if use_dice:
-                loss = semisup_dice_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
+                loss = semi_supervised_dice_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             else:
-                loss = semisup_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
+                loss = semi_supervised_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             
             loss.backward()
             optimizer.step()
@@ -96,12 +97,14 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 output = model(data)
                 
                 if use_dice:
-                    dice_loss, dice_score = dice_loss_and_score(output, target)
+                    dice_loss = supervised_dice_loss(output, target)
+                    dice_score = 1 - dice_loss.item()
                     test_loss += dice_loss.item()
                     total_dice_score += dice_score
                     
                 else:
-                    iou_loss, iou_score = iou_loss_and_score(output, target)
+                    iou_loss = supervised_iou_loss(output, target)
+                    iou_score = 1 - iou_loss.item()
                     test_loss += iou_loss.item()
                     total_iou_score += iou_score
                     

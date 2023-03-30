@@ -17,8 +17,6 @@ def preprocess_mask(mask, label):
     mask[(mask == 1.0) | (mask == 3.0)] = label
     return mask
 
-
-
 class OxfordPetsDataset(Dataset):
     """Oxford-IIIT Pet dataset."""
 
@@ -98,7 +96,7 @@ def split_data(annotations_file, split_ratio=11, test=False):
 
 
 
-def get_data_loader(batch_size=32, num_workers=0, labeled_samples=100):
+def get_data_loader(batch_size=32, num_workers=0):
     """Create and return Data Loaders for semi-supervised learning.
 
     Args:
@@ -127,71 +125,61 @@ def get_data_loader(batch_size=32, num_workers=0, labeled_samples=100):
     train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=256, shuffle=True, num_workers=num_workers)
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-    print(len(train_unlabeled_dataset), "This loader has this many examples:")
+    print(len(train_unlabeled_dataset), "This motherfucking loader has this many examples")
     print(unlabeled_data)
 
     return train_labeled_loader, train_unlabeled_loader, test_labeled_loader
 
 
 
-# def imshow(img,label, mask=None, vs=None):
-#     """Show an image and an optional segmentation mask."""
-#     img = img * torch.tensor([0.229, 0.224, 0.225])[:, None, None] + torch.tensor([0.485, 0.456, 0.406])[:, None, None]  # unnormalize
-#     npimg = img.numpy()
-#     print(label)
-#     # plt.imshow(np.transpose(npimg, (1, 2, 0)))
-#     if vs is None : 
-#         # Show the segmentation mask if it's provided
-#         if mask is not None :
-#             plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(label)], cmap='Reds')
-#             plt.show()
-#             plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(1)], cmap='Reds')
+def imshow(img, mask=None, vs=None):
+    """Show an image and an optional segmentation mask."""
+    img = img * torch.tensor([0.229, 0.224, 0.225])[:, None, None] + torch.tensor([0.485, 0.456, 0.406])[:, None, None]  # unnormalize
+    npimg = img.numpy()
+    # plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    if vs is None : 
+        # Show the segmentation mask if it's provided
+        if mask is not None :
+            # plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(label)], cmap='Reds')
+            plt.show()
+            plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(1)], cmap='Reds')
 
-#     else :
-#         fig, ax = plt.subplots()
-#         im = ax.imshow(np.transpose(mask.numpy(), (1, 2, 0)) , cmap='Reds')
-#         for i in range(mask.shape[1]):
-#             for j in range(mask.shape[2]):
-#                 text = ax.text(j, i, mask[0, i, j].item(),
-#                     ha="center", va="center", color="b")
-#     plt.show()
-#     plt.imshow(np.transpose(img.numpy(), (1, 2, 0)), cmap='Reds')
-#     plt.show()
-
-
-
-# # Checking code
-# if __name__ == "__main__":
-
-#     labeled_samples = 100
-
-#     print("Splitting data...")
-#     # Split the data into labeled and unlabeled sets
-#     labeled_data, unlabeled_data = split_data('annotations/trainval.txt', labeled_samples=labeled_samples)
-
-#     print("Creating data loaders...")
-#     # Create the data loaders
-#     train_labeled_loader, train_unlabeled_loader, test_labeled_loader = get_data_loader(labeled_samples=labeled_samples)
-
-#     print("Getting sample from data loaders...")
-#     # Display some images and labels from the data loaders
-#     print(next(iter(train_labeled_loader))[0].shape)
-#     images, labels, mask = next(iter(train_labeled_loader))
-#     print("Labeled training images:")
-#     print("Labels:", labels)
-#     imshow(images[0], labels[0], mask[0])
-
-#     images, *_ = next(iter(train_unlabeled_loader))
-#     print("Unlabeled training images:")
-
-#     images, labels, *_ = next(iter(test_labeled_loader))
-#     print("Labeled test images:")
-#     print("Labels:", list(labels))
+    else :
+        fig, ax = plt.subplots()
+        im = ax.imshow(np.transpose(mask.numpy(), (1, 2, 0)) , cmap='Reds')
+        for i in range(mask.shape[1]):
+            for j in range(mask.shape[2]):
+                text = ax.text(j, i, mask[0, i, j].item(),
+                    ha="center", va="center", color="b")
+    plt.show()
+    plt.imshow(np.transpose(img.numpy(), (1, 2, 0)), cmap='Reds')
+    plt.show()
 
 
 
+# Checking code
+if __name__ == "__main__":
 
+    labeled_samples = 10
 
+    print("Splitting data...")
+    # Split the data into labeled and unlabeled sets
+    labeled_data, unlabeled_data = split_data('annotations/trainval.txt')
 
+    print("Creating data loaders...")
+    # Create the data loaders
+    train_labeled_loader, train_unlabeled_loader, test_labeled_loader = get_data_loader()
 
+    print("Getting sample from data loaders...")
+    # Display some images and labels from the data loaders
+    print(next(iter(train_labeled_loader))[0].shape)
+    images, mask = next(iter(train_labeled_loader))
+    print("Labeled training images:")
+    imshow(images[0], mask[0])
 
+    images, *_ = next(iter(train_unlabeled_loader))
+    print("Unlabeled training images:")
+
+    images, *_ = next(iter(test_labeled_loader))
+    print("Labeled test images:")
+    # print("Labels:", list(labels))
