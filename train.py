@@ -16,7 +16,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         device (str): Device to run the training on, e.g., "cpu" or "cuda".
         num_epochs (int, optional): Number of training epochs. Default is 50.
         lr (float, optional): Learning rate for the optimizer. Default is 1e-4.
-        use_dice (bool, optional): If True, semisup_dice_loss used. If False, semisup_iou_loss used. Default is True.
+        use_dice (bool, optional): If True, dice loss used. If IOU loss used. Default is True.
 
     Returns:
         nn.Module: The trained segmentation model.
@@ -47,7 +47,8 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
             print("The shape of the labels is: ", labels.shape)
-            # Set alpha based on epoch number (or i?)
+            
+            # Set alpha based on i (or should it be epoch number?)
             t1 = 100
             t2 = 600
             if i < t1:
