@@ -74,17 +74,17 @@ def split_data(annotations_file, split_ratio=11, test=False):
     with open(annotations_file, 'r') as f:
         img_labels = [tuple(line.strip().split(' ')[:2]) for line in f if line.strip() and line.strip().split(' ')[0]]
     np.random.shuffle(img_labels)
-        if not test: 
-            labeled_samples = len(img_labels) // split_ratio
-            labeled_data = img_labels[:labeled_samples]
-            unlabeled_data = img_labels[labeled_samples:]
-
-            print("labeled_data:", len(labeled_data))
-            print("unlabeled_data:", len(unlabeled_data))
-
-            return labeled_data, unlabeled_data
-        else: 
-            return img_labels
+    if not test: 
+        labeled_samples = len(img_labels) // split_ratio
+        labeled_data = img_labels[:labeled_samples]
+        unlabeled_data = img_labels[labeled_samples:]
+        
+        print("labeled_data:", len(labeled_data))
+        print("unlabeled_data:", len(unlabeled_data))
+        
+        return labeled_data, unlabeled_data
+    else: 
+        return img_labels
 
 def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
     """Create and return Data Loaders for semi-supervised learning.
