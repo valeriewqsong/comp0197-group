@@ -12,3 +12,5 @@
 images/
 
 annotations/
+
+__pycache__

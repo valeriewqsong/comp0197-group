@@ -1,5 +1,5 @@
 '''
-For use with multiclass semantic segmentation and binary semantic segmentation with 2 channels.
+For use with multiclass semantic segmentation or binary semantic segmentation with 2 channels.
 '''
 import torch
 import torch.nn.functional as F
