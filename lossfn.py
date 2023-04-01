@@ -101,7 +101,7 @@ def semi_supervised_dice_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     unlabeled_pred_pseudo = create_pseudo_labels(unlabeled_pred)
     
     # Compute unlabeled loss
-    unlabeled_loss = F.mse_loss(unlabeled_pred, unlabeled_pred_pseudo)
+    unlabeled_loss = supervised_dice_loss(unlabeled_pred, unlabeled_pred_pseudo)
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss
@@ -130,7 +130,7 @@ def semi_supervised_iou_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     unlabeled_pred_pseudo = create_pseudo_labels(unlabeled_pred)
     
     # Compute unlabeled loss
-    unlabeled_loss = F.mse_loss(unlabeled_pred, unlabeled_pred_pseudo)
+    unlabeled_loss = supervised_iou_loss(unlabeled_pred, unlabeled_pred_pseudo)
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss
