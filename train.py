@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
+from lossfn_1ch import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
 # from tensorflow.tensorboard import SummaryWriter 
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
@@ -22,7 +22,7 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
         nn.Module: The trained segmentation model.
     """
     # Initialize the neural network
-    model = link_net(classes=38).to(device)    
+    model = link_net(classes=1).to(device)    
     # sw = SummaryWriter()
 
     # Define loss function and optimizer
