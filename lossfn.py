@@ -1,5 +1,6 @@
 import torch
 import torch.nn.functional as F
+from  torchmetrics import JaccardIndex as JI
 
 def supervised_dice_loss(y_pred, y_true):
     """
@@ -43,14 +44,16 @@ def supervised_iou_loss(y_pred, y_true):
     y_pred = torch.sigmoid(y_pred)
     
     # Needed to prevent denominator from becoming zero
-    smooth = 1e-5   
+    smooth = 1e-5
 
     # Compute labeled loss by comparing predicted mask with ground truth mask pixel by pixel.
     # Sums the values for each class (num_classes) at each pixel location, over all the rows (height) and columns (width) of the image.
     intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
     union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3))
     iou_loss = 1 - (intersection + smooth) / (union + smooth)
-
+    iou = JI(task="multiclass", num_classes=38)
+    iou_loss_lib = iou(y_pred, y_true)
+    print("The IoU loss is : {}", 1 - iou_loss_lib, iou_loss.mean())
     # Average the losses across the batch
     return iou_loss.mean()
 
@@ -101,7 +104,7 @@ def semi_supervised_dice_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     unlabeled_pred_pseudo = create_pseudo_labels(unlabeled_pred)
     
     # Compute unlabeled loss
-    unlabeled_loss = F.mse_loss(unlabeled_pred, unlabeled_pred_pseudo)
+    unlabeled_loss = supervised_dice_loss(unlabeled_pred, unlabeled_pred_pseudo)
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss
@@ -130,7 +133,7 @@ def semi_supervised_iou_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     unlabeled_pred_pseudo = create_pseudo_labels(unlabeled_pred)
     
     # Compute unlabeled loss
-    unlabeled_loss = F.mse_loss(unlabeled_pred, unlabeled_pred_pseudo)
+    unlabeled_loss = supervised_iou_loss(unlabeled_pred, unlabeled_pred_pseudo)
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss

@@ -4,6 +4,7 @@ from torch.utils.data import Dataset, DataLoader
 import torchvision
 from torchvision import transforms
 from PIL import Image
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.utils import to_categorical
@@ -57,11 +58,12 @@ class OxfordPetsDataset(Dataset):
         label = self.img_labels[idx][1]
         #seg_mask_path = os.path.join(self.img_dir, self.seg_masks[idx][0] + ".png")
         seg_mask_path = os.path.join(self.mask_dir, self.img_labels[idx][0] + ".png")
-        seg_mask = preprocess_mask(Image.open(seg_mask_path), float(label))
-        seg_mask = to_categorical(seg_mask, num_classes=38)
+        seg_mask = preprocess_mask(Image.open(seg_mask_path), float(1))
         if self.transform:
             image = self.transform(image)
             seg_mask = self.mask_transform(seg_mask)
+            print(seg_mask.shape)
+            seg_mask = seg_mask.unsqueeze(0)
         return image, seg_mask
 
 
@@ -96,7 +98,7 @@ def split_data(annotations_file, split_ratio=11, test=False):
 
 
 
-def get_data_loader(batch_size=32, num_workers=0):
+def get_data_loader(basedir = "./", batch_size=32, num_workers=0):
     """Create and return Data Loaders for semi-supervised learning.
 
     Args:
@@ -114,12 +116,12 @@ def get_data_loader(batch_size=32, num_workers=0):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    labeled_data, unlabeled_data = split_data('annotations/trainval.txt', split_ratio=10)
-    test_labeled_data = split_data('annotations/test.txt', split_ratio=10, test=True)
+    labeled_data, unlabeled_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'), split_ratio=10)
+    test_labeled_data = split_data(os.path.join(basedir,'annotations/test.txt'), split_ratio=10, test=True)
     
-    train_labeled_dataset = OxfordPetsDataset('images', img_labels=labeled_data, transform=data_transforms)
-    train_unlabeled_dataset = OxfordPetsDataset('images', img_labels=unlabeled_data, transform=data_transforms, labeled=False)
-    test_labeled_dataset = OxfordPetsDataset('images', img_labels=test_labeled_data, transform=data_transforms)
+    train_labeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=labeled_data, transform=data_transforms)
+    train_unlabeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=unlabeled_data, transform=data_transforms, labeled=False)
+    test_labeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=test_labeled_data, transform=data_transforms)
 
     train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=256, shuffle=True, num_workers=num_workers)
@@ -142,7 +144,7 @@ def imshow(img, mask=None, vs=None):
         if mask is not None :
             # plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(label)], cmap='Reds')
             plt.show()
-            plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(1)], cmap='Reds')
+            plt.imshow(np.transpose(mask.numpy(), (1, 2, 0))[:,:,int(0)], cmap='Reds')
 
     else :
         fig, ax = plt.subplots()
@@ -164,7 +166,7 @@ if __name__ == "__main__":
 
     print("Splitting data...")
     # Split the data into labeled and unlabeled sets
-    labeled_data, unlabeled_data = split_data('annotations/trainval.txt')
+    # labeled_data, unlabeled_data = split_data('annotations/trainval.txt')
 
     print("Creating data loaders...")
     # Create the data loaders

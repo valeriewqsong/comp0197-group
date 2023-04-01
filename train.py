@@ -2,10 +2,14 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
+import os
 from lossfn import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
-# from tensorflow.tensorboard import SummaryWriter 
+from torch.utils.tensorboard import SummaryWriter
+
+base_dir = "./"
 
 def train_segmentation_model(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
+    global base_dir
     """
     Train a semi-supervised segmentation model with labeled and unlabeled data.
 
@@ -21,20 +25,22 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
     Returns:
         nn.Module: The trained segmentation model.
     """
+    sw = SummaryWriter(os.path.join(base_dir, 'logs'))
+    step = 0 # for tensorboard
     # Initialize the neural network
-    model = link_net(classes=38).to(device)    
+    model = link_net(classes=1).to(device)    
     # sw = SummaryWriter()
 
     # Define loss function and optimizer
     optimizer = optim.Adam(model.parameters(), lr=lr)
-
+    experiment = "dice" if use_dice else "iou"
     if use_dice:
         print("Training with dice loss function...")
     else:
         print("Training with iou loss function..")
     for epoch in range(num_epochs):
         running_loss = 0.0
-        
+        examples = 0
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
         for i, (images_with_label, labels) in enumerate(train_loader_with_label):
@@ -71,25 +77,27 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 loss = semi_supervised_dice_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             else:
                 loss = semi_supervised_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
-            
+            examples = examples + images_with_label.size(0)
+            running_loss += loss.item() * images_with_label.size(0)
             loss.backward()
             optimizer.step()
             
             # print stats every iteration
             print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
-            
+            step += 1
             # # print statistics every 50 iteratrions
             # running_loss += loss.item()
             # if i % 50 == 49:
             #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
             #     running_loss = 0.0
-
+        sw.add_scalar("training/{experiment}", running_loss / examples, step)
+        if epoch % 20 == 0:
+            torch.save(model.state_dict(), os.path.join(base_dir, f"models/{experiment}_model_{epoch}.pth"))
         # Evaluate the model on the test set
         model.eval()
 
         test_loss = 0
-        total_iou_score = 0
-        total_dice_score = 0
+        total_score = 0
         accuracy = 0
         
         with torch.no_grad():
@@ -98,22 +106,19 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
                 output = model(data)
                 
                 if use_dice:
-                    dice_loss = supervised_dice_loss(output, target)
-                    dice_score = 1 - dice_loss.item()
-                    test_loss += dice_loss.item()
-                    total_dice_score += dice_score
-                    
+                    loss = supervised_dice_loss(output, target)
                 else:
-                    iou_loss = supervised_iou_loss(output, target)
-                    iou_score = 1 - iou_loss.item()
-                    test_loss += iou_loss.item()
-                    total_iou_score += iou_score
+                    loss = supervised_iou_loss(output, target)
+                score = 1 - loss.item()
+                test_loss += loss.item()
+                total_score += score
                     
-                
+        sw.add_scalar("testing/{experiment}_loss", test_loss, step)
+        sw.add_scalar("testing/{experiment}_score", total_score, step)
         if use_dice:
-            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader)))
+            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_score/len(test_loader)))
         else:
-            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader)))
+            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_score/len(test_loader)))
 
     print("Training completed.")
 
