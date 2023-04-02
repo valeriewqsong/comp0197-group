@@ -5,7 +5,6 @@ import torchvision
 from torchvision import transforms
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
 import random
 
 def preprocess_mask(mask, label):
@@ -13,6 +12,7 @@ def preprocess_mask(mask, label):
     mask[mask == 2.0] = 0.0
     mask[(mask == 1.0) | (mask == 3.0)] = label
     return mask
+
 
 class OxfordPetsDataset(Dataset):
     """Oxford-IIIT Pet dataset."""
@@ -51,27 +51,32 @@ class OxfordPetsDataset(Dataset):
         """
         img_path = os.path.join(self.img_dir, self.img_labels[idx][0] + ".jpg")
         image = Image.open(img_path).convert("RGB")
+        
         label = self.img_labels[idx][1]
-        #seg_mask_path = os.path.join(self.img_dir, self.seg_masks[idx][0] + ".png")
+        
         seg_mask_path = os.path.join(self.mask_dir, self.img_labels[idx][0] + ".png")
         seg_mask = preprocess_mask(Image.open(seg_mask_path), float(1))
+        
         if self.transform:
             image = self.transform(image)
             seg_mask = self.mask_transform(seg_mask)
             seg_mask = seg_mask.unsqueeze(0)
+            
         return image, seg_mask
 
-def split_data(annotations_file, split_ratio=0.2, test=False, seed=42):
-    """Split the data into labeled and unlabeled sets based on random sampling.
+
+def split_data(annotations_file, split_ratios=(0.8, 0.1, 0.1), seed=42):
+    """
+    Split the data into training, validation, and test sets based on the given ratios.
 
     Args:
         annotations_file (str): Path to the annotations file containing image names and labels.
-        split_ratio (float, optional): Ratio of labeled samples to the total number of samples. Default is 0.2 (20% labeled).
-        test (bool, optional): If True, the function returns the entire dataset without splitting. Default is False.
+        split_ratios (tuple): A tuple containing the ratios for training, validation, and test sets, respectively.
+                              The sum of the ratios must be equal to 1. Default is (0.8, 0.1, 0.1).
         seed (int, optional): Random seed for reproducibility. Default is 42.
 
     Returns:
-        tuple: If test is False, returns (labeled_data, unlabeled_data), where each is a list of tuples containing image names and labels/segmentation masks. If test is True, returns a list of tuples containing image names and labels/segmentation masks.
+        tuple: (train_data, val_data, test_data), where each is a list of tuples containing image names and labels.
     """
     with open(annotations_file, 'r') as f:
         img_labels = [tuple(line.strip().split(' ')[:2]) for line in f if line.strip() and line.strip().split(' ')[0]]
@@ -79,25 +84,45 @@ def split_data(annotations_file, split_ratio=0.2, test=False, seed=42):
     np.random.seed(seed)
     np.random.shuffle(img_labels)
 
-    if not test: 
-        labeled_samples = int(len(img_labels) * split_ratio)
-        labeled_data = img_labels[:labeled_samples]
-        unlabeled_data = img_labels[labeled_samples:]
-        
-        print("num labeled_data:", len(labeled_data))
-        print("num unlabeled_data:", len(unlabeled_data))
-        
-        return labeled_data, unlabeled_data
-    else: 
-        return img_labels
+    train_samples = int(len(img_labels) * split_ratios[0])
+    val_samples = int(len(img_labels) * split_ratios[1])
 
-def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
+    train_data = img_labels[:train_samples]
+    val_data = img_labels[train_samples:train_samples + val_samples]
+    test_data = img_labels[train_samples + val_samples:]
+    
+    return train_data, val_data, test_data
+
+
+def split_labeled_unlabeled(data, UtoL_ratio=4.0, seed=42):
+    """
+    Split the given data into labeled and unlabeled sets based on the given ratio.
+
+    Args:
+        data (list): List of tuples containing image names and labels.
+        UtoL_ratio (float, optional): Ratio of unlabeled samples to labeled samples. Default is 4.0 (4 unlabeled sample for every 1 labeled sample).
+        seed (int, optional): Random seed for reproducibility. Default is 42.
+
+    Returns:
+        tuple: (labeled_data, unlabeled_data), where each is a list of tuples containing image names and labels.
+    """
+    np.random.seed(seed)
+    np.random.shuffle(data)
+
+    labeled_samples = int(len(data) / (1 + UtoL_ratio))
+    labeled_data = data[:labeled_samples]
+    unlabeled_data = data[labeled_samples:]
+    
+    return labeled_data, unlabeled_data
+
+
+def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
     """Create and return Data Loaders for semi-supervised learning.
 
     Args:
         basedir (str): Base directory where the images and annotations folders are located.
-        batch_size (int, optional): Number of labeled samples per batch. Default is 32.
-        ratio (float, optional): Ratio of unlabeled samples to labeled samples to use per batch. Default is 8.0.
+        batch_size (int, optional): Number of labeled samples per batch. Default is 4.
+        UtoL_ratio (float, optional): Ratio of unlabeled samples to labeled samples to use per batch. Default is 4.0.
         num_workers (int, optional): Number of workers for data loading. Default is 0.
 
     Returns:
@@ -110,33 +135,30 @@ def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    split_ratio = 1 / (1 + ratio)
-    labeled_data, unlabeled_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'), split_ratio=split_ratio)
-    test_labeled_data = split_data(os.path.join(basedir,'annotations/test.txt'), test=True)
+    train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'), split_ratios=(0.6, 0.2, 0.2))
     
-    train_labeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=labeled_data, transform=data_transforms)
-    train_unlabeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=unlabeled_data, transform=data_transforms, labeled=False)
-    test_labeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=test_labeled_data, transform=data_transforms)
+    print(f"Training data length: {len(train_data)}")
+    print(f"Validation data length: {len(train_data)}")
+    print(f"Test data length: {len(train_data)}")
 
-    print("train labeled dataset:", len(train_labeled_dataset))
-    print("train unlabeled dataset:", len(train_unlabeled_dataset))
-    print("test labeled dataset:", len(test_labeled_dataset))
+    labeled_data, unlabeled_data = split_labeled_unlabeled(train_data, UtoL_ratio=UtoL_ratio)
+
+    train_labeled_dataset = OxfordPetsDataset(os.path.join(basedir, 'images'), img_labels=labeled_data, transform=data_transforms)
+    train_unlabeled_dataset = OxfordPetsDataset(os.path.join(basedir, 'images'), img_labels=unlabeled_data, transform=data_transforms, labeled=False)
+    val_labeled_dataset = OxfordPetsDataset(os.path.join(basedir, 'images'), img_labels=val_data, transform=data_transforms)
+    test_labeled_dataset = OxfordPetsDataset(os.path.join(basedir, 'images'), img_labels=test_data, transform=data_transforms)
+
+    print(f"Training labeled dataset length: {len(train_labeled_dataset)}")
+    print(f"Training unlabeled dataset length: {len(train_unlabeled_dataset)}")
+    print(f"Validation dataset length: {len(val_labeled_dataset)}")
+    print(f"Test dataset length: {len(test_labeled_dataset)}")
     
-    unlabeled_batch_size = int(batch_size * ratio)
+    unlabeled_batch_size = int(batch_size * UtoL_ratio)
     
     train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
-    print("train labeled loader:", len(train_labeled_loader) * batch_size - batch_size + len(train_labeled_loader.dataset) % batch_size)
-    
-    if len(train_unlabeled_dataset) != 0:
-        train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=unlabeled_batch_size, shuffle=True, num_workers=num_workers)
-        print("train unlabeled loader:", len(train_unlabeled_loader) * unlabeled_batch_size - unlabeled_batch_size + len(train_unlabeled_loader.dataset) % unlabeled_batch_size)
-    else:
-        train_unlabeled_loader = None
-        print("train unlabeled loader: does not exist")
-        
+    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=unlabeled_batch_size, shuffle=True, num_workers=num_workers)
+    val_labeled_loader = DataLoader(val_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
-    print("test labeled loader:", len(test_labeled_loader) * batch_size - batch_size + len(test_labeled_loader.dataset) % batch_size)
 
-    
-    return train_labeled_loader, train_unlabeled_loader, test_labeled_loader
+    return train_labeled_loader, train_unlabeled_loader, val_labeled_loader, test_labeled_loader
 

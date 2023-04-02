@@ -7,7 +7,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
 # Upper bound performance: all data is labeled
-train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(base_dir, batch_size=4, ratio=0.0)
+train_labeled_loader, train_unlabeled_loader, val_labeled_loader, test_labeled_loader = get_data_loader(base_dir, batch_size=4, split_ratio=0.0)
 print("All the data is labeled.")
 iou_trained_model = train_labeled_only(
     train_labeled_loader,
@@ -22,7 +22,7 @@ torch.save(iou_trained_model.state_dict(), f'saved_model_iou_all_labeled.pt')
 print('Model trained with iou loss and all labeled data saved.')
 
 # High labeled data ratio. labeled to unlabeled ratio is 1:1
-train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(base_dir, batch_size=4, ratio=1.0)
+train_labeled_loader, train_unlabeled_loader, val_labeled_loader, test_labeled_loader = get_data_loader(base_dir, batch_size=4, split_ratio=1.0)
 print("Equal split, ratio of labeled to unlabeled data is 1:1")
 iou_trained_model = train_labeled_and_unlabeled(
     train_labeled_loader,

@@ -44,9 +44,8 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
 
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
-            # print("The shape of the labels is: ", labels.shape)
             
-            # Set alpha based on i (or should it be epoch number?)
+            # Set alpha based on i
             t1 = 100
             t2 = 600
             if i < t1:
