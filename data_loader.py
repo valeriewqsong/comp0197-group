@@ -135,11 +135,11 @@ def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'), split_ratios=(0.6, 0.2, 0.2))
+    train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'))
     
     print(f"Training data length: {len(train_data)}")
-    print(f"Validation data length: {len(train_data)}")
-    print(f"Test data length: {len(train_data)}")
+    print(f"Validation data length: {len(val_data)}")
+    print(f"Test data length: {len(test_data)}")
 
     labeled_data, unlabeled_data = split_labeled_unlabeled(train_data, UtoL_ratio=UtoL_ratio)
 
@@ -156,7 +156,7 @@ def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
     unlabeled_batch_size = int(batch_size * UtoL_ratio)
     
     train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
-    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=unlabeled_batch_size, shuffle=True, num_workers=num_workers)
+    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=unlabeled_batch_size, shuffle=True, num_workers=num_workers) if len(train_unlabeled_dataset) != 0 else None
     val_labeled_loader = DataLoader(val_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
