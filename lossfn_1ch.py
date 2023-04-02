@@ -24,7 +24,7 @@ def supervised_dice_loss(y_pred, y_true):
     # Compute labeled loss by comparing predicted mask with ground truth mask pixel by pixel.
     # Sums the values for each class (num_classes) at each pixel location, over all the rows (height) and columns (width) of the image.
     intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
-    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3))
+    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) - intersection
     dice_loss = 1 - (2 * intersection + smooth) / (union + smooth)
 
     # Average the losses across the batch
@@ -51,7 +51,7 @@ def supervised_iou_loss(y_pred, y_true):
     # Compute labeled loss by comparing predicted mask with ground truth mask pixel by pixel.
     # Sums the values for each class (num_classes) at each pixel location, over all the rows (height) and columns (width) of the image.
     intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
-    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3))
+    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) - intersection
     iou_loss = 1 - (intersection + smooth) / (union + smooth)
 
     # Average the losses across the batch
