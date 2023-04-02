@@ -42,7 +42,7 @@ class link_net(nn.Module):
         super().__init__()
 
         # Encoder
-        res = resnet.resnet34(weights=ResNet34_Weights.DEFAULT)
+        res = resnet.resnet34(weights='DEFAULT')
         
         self.conv = res.conv1
         self.bn = res.bn1
