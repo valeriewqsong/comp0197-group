@@ -19,7 +19,7 @@ iou_trained_model = train_labeled_only(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_all_labeled.pt')
-print('Model trained with iou loss and all labeled data saved.')
+print('Model trained with iou loss and all labeled data saved.\n')
 
 
 # High labeled data ratio. labeled to unlabeled ratio is 2:1
@@ -36,7 +36,7 @@ iou_trained_model = train_labeled_and_unlabeled(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_2to1.pt')
-print('Model trained with iou loss and 2:1 ratio saved.')
+print('Model trained with iou loss and 2:1 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
 print("Equal split, ratio of labeled to unlabeled data is 2:1, but only labeled data is used here.")
@@ -50,7 +50,7 @@ iou_trained_model = train_labeled_only(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_2to1_labeled_only.pt')
-print('Model trained with iou loss and 2:1 ratio but labeled only saved.')
+print('Model trained with iou loss and 2:1 ratio but labeled only saved.\n')
 
 # High labeled data ratio. labeled to unlabeled ratio is 1:1
 train_labeled_loader, train_unlabeled_loader, val_labeled_loader, test_labeled_loader = get_data_loader(base_dir, batch_size=2, UtoL_ratio=1.0)
@@ -66,7 +66,7 @@ iou_trained_model = train_labeled_and_unlabeled(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to1.pt')
-print('Model trained with iou loss and 1:1 ratio saved.')
+print('Model trained with iou loss and 1:1 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
 print("Equal split, ratio of labeled to unlabeled data is 1:1, but only labeled data is used here.")
@@ -80,7 +80,7 @@ iou_trained_model = train_labeled_only(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to1_labeled_only.pt')
-print('Model trained with iou loss and 1:1 ratio but labeled only saved.')
+print('Model trained with iou loss and 1:1 ratio but labeled only saved.\n')
 
 
 # Moderate labeled data ratio. labeled to unlabeled ratio is 1:3
@@ -97,7 +97,7 @@ iou_trained_model = train_labeled_and_unlabeled(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to3.pt')
-print('Model trained with iou loss and 1:3 ratio saved.')
+print('Model trained with iou loss and 1:3 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
 print("Ratio of labeled to unlabeled data is 1:3, but only labeled data is used here.")
@@ -111,7 +111,7 @@ iou_trained_model = train_labeled_only(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to3_labeled_only.pt')
-print('Model trained with iou loss and 1:3 ratio but labeled only saved.')
+print('Model trained with iou loss and 1:3 ratio but labeled only saved.\n')
 
 
 # Moderate labeled data ratio. labeled to unlabeled ratio is 1:5
@@ -128,7 +128,7 @@ iou_trained_model = train_labeled_and_unlabeled(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to5.pt')
-print('Model trained with iou loss and 1:5 ratio saved.')
+print('Model trained with iou loss and 1:5 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
 print("Ratio of labeled to unlabeled data is 1:5, but only labeled data is used here.")
@@ -142,7 +142,7 @@ iou_trained_model = train_labeled_only(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to5_labeled_only.pt')
-print('Model trained with iou loss and 1:5 ratio but labeled only saved.')
+print('Model trained with iou loss and 1:5 ratio but labeled only saved.\n')
 
 
 # High unlabeled data ratio. labeled to unlabeled ratio is 1:10
@@ -159,7 +159,7 @@ iou_trained_model = train_labeled_and_unlabeled(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to10.pt')
-print('Model trained with iou loss and 1:10 ratio saved.')
+print('Model trained with iou loss and 1:10 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
 print("Ratio of labeled to unlabeled data is 1:10, but only labeled data is used here.")
@@ -173,5 +173,5 @@ iou_trained_model = train_labeled_only(
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to10_labeled_only.pt')
-print('Model trained with iou loss and 1:10 ratio but labeled only saved.')
+print('Model trained with iou loss and 1:10 ratio but labeled only saved.\n')
 
