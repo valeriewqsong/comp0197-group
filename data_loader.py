@@ -110,7 +110,8 @@ def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    labeled_data, unlabeled_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'))
+    split_ratio = 1 / (1 + ratio)
+    labeled_data, unlabeled_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'), split_ratio=split_ratio)
     test_labeled_data = split_data(os.path.join(basedir,'annotations/test.txt'), test=True)
     
     train_labeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=labeled_data, transform=data_transforms)
