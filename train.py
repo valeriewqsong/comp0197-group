@@ -62,7 +62,6 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             # forward + backward + optimize
             pred_with_label = model(images_with_label)
             pred_without_label = model(images_without_label)
-            # print("The shape of the output is: ", pred_with_label.shape, pred_without_label.shape)
             
             # determine the loss function used
             if use_dice:
@@ -73,14 +72,14 @@ def train_segmentation_model(train_loader_with_label, train_loader_without_label
             loss.backward()
             optimizer.step()
             
-            # print stats every iteration
-            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
+            # # print stats every iteration
+            # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
             
-            # # print statistics every 50 iteratrions
-            # running_loss += loss.item()
-            # if i % 50 == 49:
-            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
-            #     running_loss = 0.0
+            # print statistics every 5 iteratrions
+            running_loss += loss.item()
+            if i % 5 == 4:
+                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 5:.6f} alpha = {alpha}")
+                running_loss = 0.0
 
         # Evaluate the model on the test set
         model.eval()
