@@ -1,4 +1,4 @@
-from train import train_labeled_and_unlabeled, train_labeled_onlt
+from train import train_labeled_and_unlabeled, train_labeled_only
 import torch
 from data_loader import get_data_loader
 
