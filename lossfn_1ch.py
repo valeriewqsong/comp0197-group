@@ -3,7 +3,7 @@ For use with Binary Semantic Segmentation with only 1 channel, with values repre
 '''
 import torch
 import torch.nn.functional as F
-
+from  torchmetrics.classification import BinaryJaccardIndex as JI
 def supervised_dice_loss(y_pred, y_true):
     """
     Compute the supervised Dice loss for labeled data.
@@ -43,7 +43,7 @@ def supervised_iou_loss(y_pred, y_true):
         torch.Tensor: Supervised IOU loss.
     """
     # Converts raw model outputs into probabilities with a range of [0, 1] to ensure that the predicted values are in the same range as the ground truth masks
-    y_pred = torch.sigmoid(y_pred)
+    y_pred = (y_pred > 0.5).float()
     
     # Needed to prevent denominator from becoming zero
     smooth = 1e-5   
@@ -53,7 +53,7 @@ def supervised_iou_loss(y_pred, y_true):
     intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
     union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) - intersection
     iou_loss = 1 - (intersection + smooth) / (union + smooth)
-
+    print("The IoU loss from our implementation is : ", iou_loss.mean())
     # Average the losses across the batch
     return iou_loss.mean()
 
@@ -92,8 +92,10 @@ def semi_supervised_dice_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
         torch.Tensor: Semi-supervised Dice loss.
     """
     # Converts raw model outputs into probabilities with a range of [0, 1] to ensure that the predicted values are in the same range as the ground truth masks
+    iou = JI(0.5)
+    iou_loss_lib = iou(y_pred, y_true)
     y_pred = torch.sigmoid(y_pred)
-    
+    print("the iou loss from the library is : ", 1 - iou_loss_lib)
     # Compute labeled loss
     labeled_loss = supervised_dice_loss(y_pred, y_true)
     
@@ -121,8 +123,11 @@ def semi_supervised_iou_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
         torch.Tensor: Semi-supervised IOU loss.
     """
     # Converts raw model outputs into probabilities with a range of [0, 1] to ensure that the predicted values are in the same range as the ground truth masks
+    # 
     y_pred = torch.sigmoid(y_pred)
-    
+    iou = JI(0.5)
+    iou_loss_lib = iou(y_pred, y_true)
+    print("the iou loss from the library is : ", iou_loss_lib)
     # Compute labeled loss
     labeled_loss = supervised_iou_loss(y_pred, y_true)
     

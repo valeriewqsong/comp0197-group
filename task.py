@@ -1,12 +1,12 @@
 from train import train_segmentation_model
 import torch
-from data_loader import get_data_loader
+from data_loader_newsplit import get_data_loader
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 base_dir = "./"
 print(device)
 
-train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(base_dir)
+train_labeled_loader, train_unlabeled_loader,val_loader, test_loader = get_data_loader(base_dir)
 # train model with dice loss
 dice_trained_model = train_segmentation_model(
     train_labeled_loader,

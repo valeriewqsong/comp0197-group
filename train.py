@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
 import os
-from lossfn import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
+from lossfn_1ch import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
 from torch.utils.tensorboard import SummaryWriter
 
 base_dir = "./"
