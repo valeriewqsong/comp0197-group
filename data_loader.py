@@ -119,7 +119,7 @@ def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
     test_labeled_dataset = OxfordPetsDataset(os.path.join(basedir,'images'), img_labels=test_labeled_data, transform=data_transforms)
 
     print("train labeled dataset:", len(train_labeled_dataset))
-    print("train lunabeled dataset:", len(train_unlabeled_dataset))
+    print("train unabeled dataset:", len(train_unlabeled_dataset))
     print("test labeled dataset:", len(test_labeled_dataset))
     
     train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
@@ -127,7 +127,7 @@ def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
     print("train labeled loader:", len(train_labeled_loader)*batch_size)
-    print("train lunabeled loader:", len(train_unlabeled_loader)*int(batch_size*ratio))
+    print("train unabeled loader:", len(train_unlabeled_loader)*int(batch_size*ratio))
     print("test labeled loader:", len(test_labeled_loader)*batch_size)
     
     
