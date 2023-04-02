@@ -9,17 +9,16 @@ print(device)
 # Upper bound performance: all data is labeled
 train_labeled_loader, train_unlabeled_loader, test_loader = get_data_loader(base_dir, batch_size=4, ratio=0.0)
 print("All the data is labeled.")
-iou_trained_model = train_labeled_and_unlabeled(
+iou_trained_model = train_labeled_only(
     train_labeled_loader,
-    train_unlabeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to1.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_iou_all_labeled.pt')
 print('Model trained with iou loss and all labeled data saved.')
 
 # High labeled data ratio. labeled to unlabeled ratio is 1:1
@@ -30,7 +29,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -44,7 +43,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -61,7 +60,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -75,7 +74,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -92,7 +91,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -106,7 +105,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -122,7 +121,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )
@@ -136,7 +135,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     test_loader,
     device,
-    num_epochs=2,        
+    num_epochs=5,        
     lr=1e-3, 
     use_dice = False
 )

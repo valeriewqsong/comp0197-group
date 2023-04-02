@@ -75,10 +75,10 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             # # print stats every iteration
             # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
             
-            # print statistics every 5 iteratrions
+            # print statistics every 50 iteratrions
             running_loss += loss.item()
-            if i % 5 == 4:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 5:.6f} alpha = {alpha}")
+            if i % 50 == 49:
+                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
                 running_loss = 0.0
 
         # Evaluate the model on the test set
