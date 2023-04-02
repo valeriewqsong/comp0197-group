@@ -164,10 +164,10 @@ def train_labeled_only(train_loader_with_label, test_loader, device, num_epochs=
             loss.backward()
             optimizer.step()
 
-            # print statistics every 5 iterations
+            # print statistics every 50 iteratrions
             running_loss += loss.item()
-            if i % 5 == 4:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 5:.6f}")
+            if i % 50 == 49:
+                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 50:.6f} alpha = {alpha}")
                 running_loss = 0.0
 
         # Evaluate the model on the test set
