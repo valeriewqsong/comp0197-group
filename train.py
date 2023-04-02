@@ -4,14 +4,14 @@ import torch.optim as optim
 from linknet import link_net
 from lossfn_1ch import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
 
-def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
+def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_label, val_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
     """
     Train a semi-supervised segmentation model with labeled and unlabeled data.
 
     Args:
         train_loader_with_label (DataLoader): Labeled training data loader.
         train_loader_without_label (DataLoader): Unlabeled training data loader.
-        test_loader (DataLoader): Test/validation data loader.
+        val_loader (DataLoader): Validation data loader.
         device (str): Device to run the training on, e.g., "cpu" or "cuda".
         num_epochs (int, optional): Number of training epochs. Default is 50.
         lr (float, optional): Learning rate for the optimizer. Default is 1e-4.
@@ -89,7 +89,7 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
         accuracy = 0
         
         with torch.no_grad():
-            for data, target in test_loader:
+            for data, target in val_loader:
                 data, target = data.to(device), target.to(device)
                 output = model(data)
                 
@@ -107,21 +107,21 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
                     
                 
         if use_dice:
-            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader)))
+            print('Epoch {}, Validation Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_dice_score/len(val_loader)))
         else:
-            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader)))
+            print('Epoch {}, Validation Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_iou_score/len(val_loader)))
 
     print("Training completed.")
 
     return model
 
-def train_labeled_only(train_loader_with_label, test_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
+def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
     """
     Train a supervised segmentation model with labeled data only.
 
     Args:
         train_loader_with_label (DataLoader): Labeled training data loader.
-        test_loader (DataLoader): Test/validation data loader.
+        val_loader (DataLoader): Validation data loader.
         device (str): Device to run the training on, e.g., "cpu" or "cuda".
         num_epochs (int, optional): Number of training epochs. Default is 50.
         lr (float, optional): Learning rate for the optimizer. Default is 1e-4.
@@ -178,7 +178,7 @@ def train_labeled_only(train_loader_with_label, test_loader, device, num_epochs=
         accuracy = 0
 
         with torch.no_grad():
-            for data, target in test_loader:
+            for data, target in val_loader:
                 data, target = data.to(device), target.to(device)
                 output = model(data)
 
@@ -195,9 +195,9 @@ def train_labeled_only(train_loader_with_label, test_loader, device, num_epochs=
                     total_iou_score += iou_score
 
         if use_dice:
-            print('Epoch {}, Test Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_dice_score/len(test_loader)))
+            print('Epoch {}, Validation Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_dice_score/len(val_loader)))
         else:
-            print('Epoch {}, Test Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(test_loader), total_iou_score/len(test_loader)))
+            print('Epoch {}, Validation Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_iou_score/len(val_loader)))
             
     print("Training completed.")
 
