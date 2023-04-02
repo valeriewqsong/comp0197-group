@@ -17,6 +17,7 @@ dice_trained_model = train_segmentation_model(
     lr=1e-3, 
     use_dice = True
 )
+
 # save trained model
 torch.save(dice_trained_model.state_dict(), f'saved_model_dice.pt')
 print(f'Model trained with dice loss saved.')
@@ -31,6 +32,7 @@ iou_trained_model = train_segmentation_model(
     lr=1e-3, 
     use_dice = False
 )
+
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou.pt')
 print(f'Model trained with iou loss saved.')
