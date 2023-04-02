@@ -9,25 +9,3 @@ train unlabeled loader: does not exist
 test labeled loader: 3669
 All the data is labeled.
 Training with iou loss function..
-Epoch 1, iteration 5: loss = 0.756218
-Epoch 1, iteration 10: loss = 0.707529
-Epoch 1, iteration 15: loss = 0.647248
-Epoch 1, iteration 20: loss = 0.664461
-Epoch 1, iteration 25: loss = 0.642802
-Epoch 1, iteration 30: loss = 0.680672
-Epoch 1, iteration 35: loss = 0.673104
-Epoch 1, iteration 40: loss = 0.627304
-Epoch 1, iteration 45: loss = 0.686696
-Epoch 1, iteration 50: loss = 0.692484
-Epoch 1, iteration 55: loss = 0.676096
-Epoch 1, iteration 60: loss = 0.655500
-Epoch 1, iteration 65: loss = 0.644471
-Epoch 1, iteration 70: loss = 0.630862
-Epoch 1, iteration 75: loss = 0.657114
-Epoch 1, iteration 80: loss = 0.639839
-Epoch 1, iteration 85: loss = 0.661942
-Epoch 1, iteration 90: loss = 0.656885
-Epoch 1, iteration 95: loss = 0.665677
-Epoch 1, iteration 100: loss = 0.655099
-Epoch 1, iteration 105: loss = 0.644963
-Epoch 1, iteration 110: loss = 0.658624
