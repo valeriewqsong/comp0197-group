@@ -9,319 +9,38 @@ train unlabeled loader: does not exist
 test labeled loader: 3669
 All the data is labeled.
 Training with iou loss function..
-Epoch 1, iteration 10: loss = 0.751975
-Epoch 1, iteration 20: loss = 0.685230
-Epoch 1, iteration 30: loss = 0.688605
-Epoch 1, iteration 40: loss = 0.676450
-Epoch 1, iteration 50: loss = 0.644874
-Epoch 1, iteration 60: loss = 0.658572
-Epoch 1, iteration 70: loss = 0.666866
-Epoch 1, iteration 80: loss = 0.673203
-Epoch 1, iteration 90: loss = 0.644692
-Epoch 1, iteration 100: loss = 0.670396
-Epoch 1, iteration 110: loss = 0.681708
-Epoch 1, iteration 120: loss = 0.654067
-Epoch 1, iteration 130: loss = 0.657992
-Epoch 1, iteration 140: loss = 0.657382
-Epoch 1, iteration 150: loss = 0.634713
-Epoch 1, iteration 160: loss = 0.637027
-Epoch 1, iteration 170: loss = 0.641929
-Epoch 1, iteration 180: loss = 0.646546
-Epoch 1, iteration 190: loss = 0.624416
-Epoch 1, iteration 200: loss = 0.632745
-Epoch 1, iteration 210: loss = 0.625570
-Epoch 1, iteration 220: loss = 0.634380
-Epoch 1, iteration 230: loss = 0.619008
-Epoch 1, iteration 240: loss = 0.642192
-Epoch 1, iteration 250: loss = 0.643602
-Epoch 1, iteration 260: loss = 0.620750
-Epoch 1, iteration 270: loss = 0.642208
-Epoch 1, iteration 280: loss = 0.630877
-Epoch 1, iteration 290: loss = 0.625668
-Epoch 1, iteration 300: loss = 0.621725
-Epoch 1, iteration 310: loss = 0.639106
-Epoch 1, iteration 320: loss = 0.631027
-Epoch 1, iteration 330: loss = 0.630705
-Epoch 1, iteration 340: loss = 0.638312
-Epoch 1, iteration 350: loss = 0.636796
-Epoch 1, iteration 360: loss = 0.629996
-Epoch 1, iteration 370: loss = 0.618529
-Epoch 1, iteration 380: loss = 0.609951
-Epoch 1, iteration 390: loss = 0.634067
-Epoch 1, iteration 400: loss = 0.622361
-Epoch 1, iteration 410: loss = 0.611720
-Epoch 1, iteration 420: loss = 0.621686
-Epoch 1, iteration 430: loss = 0.609293
-Epoch 1, iteration 440: loss = 0.600292
-Epoch 1, iteration 450: loss = 0.635134
-Epoch 1, iteration 460: loss = 0.610337
-Epoch 1, iteration 470: loss = 0.613994
-Epoch 1, iteration 480: loss = 0.612962
-Epoch 1, iteration 490: loss = 0.617326
-Epoch 1, iteration 500: loss = 0.633739
-Epoch 1, iteration 510: loss = 0.612391
-Epoch 1, iteration 520: loss = 0.619293
-Epoch 1, iteration 530: loss = 0.612881
-Epoch 1, iteration 540: loss = 0.603294
-Epoch 1, iteration 550: loss = 0.606406
-Epoch 1, iteration 560: loss = 0.600948
-Epoch 1, iteration 570: loss = 0.624912
-Epoch 1, iteration 580: loss = 0.600570
-Epoch 1, iteration 590: loss = 0.621779
-Epoch 1, iteration 600: loss = 0.609044
-Epoch 1, iteration 610: loss = 0.615737
-Epoch 1, iteration 620: loss = 0.606950
-Epoch 1, iteration 630: loss = 0.599696
-Epoch 1, iteration 640: loss = 0.602185
-Epoch 1, iteration 650: loss = 0.605181
-Epoch 1, iteration 660: loss = 0.617313
-Epoch 1, iteration 670: loss = 0.602788
-Epoch 1, iteration 680: loss = 0.600292
-Epoch 1, iteration 690: loss = 0.612715
-Epoch 1, iteration 700: loss = 0.621252
-Epoch 1, iteration 710: loss = 0.622855
-Epoch 1, iteration 720: loss = 0.613675
-Epoch 1, iteration 730: loss = 0.601569
-Epoch 1, iteration 740: loss = 0.621708
-Epoch 1, iteration 750: loss = 0.602144
-Epoch 1, iteration 760: loss = 0.615933
-Epoch 1, iteration 770: loss = 0.612062
-Epoch 1, iteration 780: loss = 0.601383
-Epoch 1, iteration 790: loss = 0.610815
-Epoch 1, iteration 800: loss = 0.593535
-Epoch 1, iteration 810: loss = 0.601613
-Epoch 1, iteration 820: loss = 0.618259
-Epoch 1, iteration 830: loss = 0.601615
-Epoch 1, iteration 840: loss = 0.615565
-Epoch 1, iteration 850: loss = 0.615073
-Epoch 1, iteration 860: loss = 0.604108
-Epoch 1, iteration 870: loss = 0.603522
-Epoch 1, iteration 880: loss = 0.622273
-Epoch 1, iteration 890: loss = 0.603312
-Epoch 1, iteration 900: loss = 0.618978
-Epoch 1, iteration 910: loss = 0.594309
-Epoch 1, iteration 920: loss = 0.602617
-Epoch 1, Test Loss: 0.598326 IoU Score: 0.401674
-Epoch 2, iteration 10: loss = 0.613679
-Epoch 2, iteration 20: loss = 0.632732
-Epoch 2, iteration 30: loss = 0.639746
-Epoch 2, iteration 40: loss = 0.631454
-Epoch 2, iteration 50: loss = 0.652366
-Epoch 2, iteration 60: loss = 0.666373
-Epoch 2, iteration 70: loss = 0.646898
-Epoch 2, iteration 80: loss = 0.653310
-Epoch 2, iteration 90: loss = 0.664563
-Epoch 2, iteration 100: loss = 0.670878
-Epoch 2, iteration 110: loss = 0.625291
-Epoch 2, iteration 120: loss = 0.680860
-Epoch 2, iteration 130: loss = 0.658044
-Epoch 2, iteration 140: loss = 0.643292
-Epoch 2, iteration 150: loss = 0.652419
-Epoch 2, iteration 160: loss = 0.638466
-Epoch 2, iteration 170: loss = 0.653737
-Epoch 2, iteration 180: loss = 0.631397
-Epoch 2, iteration 190: loss = 0.647103
-Epoch 2, iteration 200: loss = 0.643307
-Epoch 2, iteration 210: loss = 0.640892
-Epoch 2, iteration 220: loss = 0.632187
-Epoch 2, iteration 230: loss = 0.658411
-Epoch 2, iteration 240: loss = 0.657829
-Epoch 2, iteration 250: loss = 0.640414
-Epoch 2, iteration 260: loss = 0.649097
-Epoch 2, iteration 270: loss = 0.646136
-Epoch 2, iteration 280: loss = 0.663326
-Epoch 2, iteration 290: loss = 0.649039
-Epoch 2, iteration 300: loss = 0.627250
-Epoch 2, iteration 310: loss = 0.620797
-Epoch 2, iteration 320: loss = 0.635279
-Epoch 2, iteration 330: loss = 0.641755
-Epoch 2, iteration 340: loss = 0.632346
-Epoch 2, iteration 350: loss = 0.632483
-Epoch 2, iteration 360: loss = 0.655112
-Epoch 2, iteration 370: loss = 0.644901
-Epoch 2, iteration 380: loss = 0.650897
-Epoch 2, iteration 390: loss = 0.621477
-Epoch 2, iteration 400: loss = 0.637332
-Epoch 2, iteration 410: loss = 0.637292
-Epoch 2, iteration 420: loss = 0.631992
-Epoch 2, iteration 430: loss = 0.629233
-Epoch 2, iteration 440: loss = 0.647368
-Epoch 2, iteration 450: loss = 0.631921
-Epoch 2, iteration 460: loss = 0.643603
-Epoch 2, iteration 470: loss = 0.625710
-Epoch 2, iteration 480: loss = 0.621226
-Epoch 2, iteration 490: loss = 0.621061
-Epoch 2, iteration 500: loss = 0.639673
-Epoch 2, iteration 510: loss = 0.639687
-Epoch 2, iteration 520: loss = 0.637321
-Epoch 2, iteration 530: loss = 0.633892
-Epoch 2, iteration 540: loss = 0.620284
-Epoch 2, iteration 550: loss = 0.615079
-Epoch 2, iteration 560: loss = 0.637152
-Epoch 2, iteration 570: loss = 0.632780
-Epoch 2, iteration 580: loss = 0.616185
-Epoch 2, iteration 590: loss = 0.624399
-Epoch 2, iteration 600: loss = 0.632320
-Epoch 2, iteration 610: loss = 0.625208
-Epoch 2, iteration 620: loss = 0.618032
-Epoch 2, iteration 630: loss = 0.625217
-Epoch 2, iteration 640: loss = 0.616791
-Epoch 2, iteration 650: loss = 0.616791
-Epoch 2, iteration 660: loss = 0.630086
-Epoch 2, iteration 670: loss = 0.637505
-Epoch 2, iteration 680: loss = 0.611319
-Epoch 2, iteration 690: loss = 0.641014
-Epoch 2, iteration 700: loss = 0.619527
-Epoch 2, iteration 710: loss = 0.633638
-Epoch 2, iteration 720: loss = 0.614046
-Epoch 2, iteration 730: loss = 0.600844
-Epoch 2, iteration 740: loss = 0.617968
-Epoch 2, iteration 750: loss = 0.610145
-Epoch 2, iteration 760: loss = 0.604932
-Epoch 2, iteration 770: loss = 0.605122
-Epoch 2, iteration 780: loss = 0.611547
-Epoch 2, iteration 790: loss = 0.625421
-Epoch 2, iteration 800: loss = 0.635117
-Epoch 2, iteration 810: loss = 0.618751
-Epoch 2, iteration 820: loss = 0.626183
-Epoch 2, iteration 830: loss = 0.621612
-Epoch 2, iteration 840: loss = 0.614769
-Epoch 2, iteration 850: loss = 0.621295
-Epoch 2, iteration 860: loss = 0.640474
-Epoch 2, iteration 870: loss = 0.620604
-Epoch 2, iteration 880: loss = 0.607261
-Epoch 2, iteration 890: loss = 0.593416
-Epoch 2, iteration 900: loss = 0.620743
-Epoch 2, iteration 910: loss = 0.612619
-Epoch 2, iteration 920: loss = 0.603068
-Epoch 2, Test Loss: 0.612382 IoU Score: 0.387618
-Epoch 3, iteration 10: loss = 0.644376
-Epoch 3, iteration 20: loss = 0.653637
-Epoch 3, iteration 30: loss = 0.640258
-Epoch 3, iteration 40: loss = 0.603046
-Epoch 3, iteration 50: loss = 0.619889
-Epoch 3, iteration 60: loss = 0.605520
-Epoch 3, iteration 70: loss = 0.603851
-Epoch 3, iteration 80: loss = 0.613626
-Epoch 3, iteration 90: loss = 0.616524
-Epoch 3, iteration 100: loss = 0.628291
-Epoch 3, iteration 110: loss = 0.605678
-Epoch 3, iteration 120: loss = 0.619373
-Epoch 3, iteration 130: loss = 0.612917
-Epoch 3, iteration 140: loss = 0.617214
-Epoch 3, iteration 150: loss = 0.609762
-Epoch 3, iteration 160: loss = 0.619792
-Epoch 3, iteration 170: loss = 0.615893
-Epoch 3, iteration 180: loss = 0.600546
-Epoch 3, iteration 190: loss = 0.608281
-Epoch 3, iteration 200: loss = 0.604945
-Epoch 3, iteration 210: loss = 0.621193
-Epoch 3, iteration 220: loss = 0.617826
-Epoch 3, iteration 230: loss = 0.609218
-Epoch 3, iteration 240: loss = 0.608551
-Epoch 3, iteration 250: loss = 0.605368
-Epoch 3, iteration 260: loss = 0.626402
-Epoch 3, iteration 270: loss = 0.619114
-Epoch 3, iteration 280: loss = 0.603916
-Epoch 3, iteration 290: loss = 0.619681
-Epoch 3, iteration 300: loss = 0.621383
-Epoch 3, iteration 310: loss = 0.604149
-Epoch 3, iteration 320: loss = 0.618880
-Epoch 3, iteration 330: loss = 0.590871
-Epoch 3, iteration 340: loss = 0.600262
-Epoch 3, iteration 350: loss = 0.620046
-Epoch 3, iteration 360: loss = 0.619730
-Epoch 3, iteration 370: loss = 0.614038
-Epoch 3, iteration 380: loss = 0.612328
-Epoch 3, iteration 390: loss = 0.609683
-Epoch 3, iteration 400: loss = 0.606683
-Epoch 3, iteration 410: loss = 0.608457
-Epoch 3, iteration 420: loss = 0.615894
-Epoch 3, iteration 430: loss = 0.611304
-Epoch 3, iteration 440: loss = 0.612660
-Epoch 3, iteration 450: loss = 0.599627
-Epoch 3, iteration 460: loss = 0.598682
-Epoch 3, iteration 470: loss = 0.590588
-Epoch 3, iteration 480: loss = 0.596043
-Epoch 3, iteration 490: loss = 0.617777
-Epoch 3, iteration 500: loss = 0.611187
-Epoch 3, iteration 510: loss = 0.606138
-Epoch 3, iteration 520: loss = 0.596646
-Epoch 3, iteration 530: loss = 0.611056
-Epoch 3, iteration 540: loss = 0.619714
-Epoch 3, iteration 550: loss = 0.633924
-Epoch 3, iteration 560: loss = 0.617057
-Epoch 3, iteration 570: loss = 0.627723
-Epoch 3, iteration 580: loss = 0.614374
-Epoch 3, iteration 590: loss = 0.623385
-Epoch 3, iteration 600: loss = 0.612442
-Epoch 3, iteration 610: loss = 0.603985
-Epoch 3, iteration 620: loss = 0.603914
-Epoch 3, iteration 630: loss = 0.600845
-Epoch 3, iteration 640: loss = 0.612167
-Epoch 3, iteration 650: loss = 0.591502
-Epoch 3, iteration 660: loss = 0.617243
-Epoch 3, iteration 670: loss = 0.621801
-Epoch 3, iteration 680: loss = 0.603200
-Epoch 3, iteration 690: loss = 0.601889
-Epoch 3, iteration 700: loss = 0.610846
-Epoch 3, iteration 710: loss = 0.615714
-Epoch 3, iteration 720: loss = 0.594958
-Epoch 3, iteration 730: loss = 0.592608
-Epoch 3, iteration 740: loss = 0.591103
-Epoch 3, iteration 750: loss = 0.587061
-Epoch 3, iteration 760: loss = 0.595361
-Epoch 3, iteration 770: loss = 0.605275
-Epoch 3, iteration 780: loss = 0.593683
-Epoch 3, iteration 790: loss = 0.606437
-Epoch 3, iteration 800: loss = 0.608274
-Epoch 3, iteration 810: loss = 0.623384
-Epoch 3, iteration 820: loss = 0.608819
-Epoch 3, iteration 830: loss = 0.618569
-Epoch 3, iteration 840: loss = 0.594998
-Epoch 3, iteration 850: loss = 0.608839
-Epoch 3, iteration 860: loss = 0.600955
-Epoch 3, iteration 870: loss = 0.602376
-Epoch 3, iteration 880: loss = 0.599640
-Epoch 3, iteration 890: loss = 0.601977
-Epoch 3, iteration 900: loss = 0.615201
-Epoch 3, iteration 910: loss = 0.599888
-Epoch 3, iteration 920: loss = 0.617452
-Epoch 3, Test Loss: 0.598285 IoU Score: 0.401715
-Training completed.
-Model trained with iou loss and all labeled data saved.
-num labeled_data: 1840
-num unlabeled_data: 1840
-train labeled dataset: 1840
-train unlabeled dataset: 1840
-test labeled dataset: 3669
-train labeled loader: 1836
-train unlabeled loader: 1836
-test labeled loader: 3669
-Equal split, ratio of labeled to unlabeled data is 1:1
-Training with iou loss function..
-Epoch 1, iteration 10: loss = 0.746769 alpha = 0
-Epoch 1, iteration 20: loss = 0.716633 alpha = 0
-Epoch 1, iteration 30: loss = 0.716309 alpha = 0
-Epoch 1, iteration 40: loss = 0.726953 alpha = 0
-Epoch 1, iteration 50: loss = 0.720558 alpha = 0
-Epoch 1, iteration 60: loss = 0.743313 alpha = 0
-Epoch 1, iteration 70: loss = 0.712765 alpha = 0
-Epoch 1, iteration 80: loss = 0.710173 alpha = 0
-Epoch 1, iteration 90: loss = 0.697356 alpha = 0
-Epoch 1, iteration 100: loss = 0.708995 alpha = 0
-Epoch 1, iteration 110: loss = 0.728528 alpha = 0.018
-Epoch 1, iteration 120: loss = 0.728529 alpha = 0.038
-Epoch 1, iteration 130: loss = 0.758886 alpha = 0.058
-Epoch 1, iteration 140: loss = 0.764977 alpha = 0.078
-Epoch 1, iteration 150: loss = 0.752349 alpha = 0.098
-Epoch 1, iteration 160: loss = 0.778016 alpha = 0.118
-Epoch 1, iteration 170: loss = 0.764593 alpha = 0.138
-Epoch 1, iteration 180: loss = 0.777978 alpha = 0.158
-Epoch 1, iteration 190: loss = 0.806775 alpha = 0.178
-Epoch 1, iteration 200: loss = 0.799323 alpha = 0.198
-Epoch 1, iteration 210: loss = 0.806091 alpha = 0.218
-Epoch 1, iteration 220: loss = 0.836947 alpha = 0.238
-Epoch 1, iteration 230: loss = 0.851724 alpha = 0.258
-Epoch 1, iteration 240: loss = 0.841062 alpha = 0.278
-Epoch 1, iteration 250: loss = 0.851618 alpha = 0.298
+Epoch 1, iteration 10: loss = 0.717400
+Epoch 1, iteration 20: loss = 0.703826
+Epoch 1, iteration 30: loss = 0.663845
+Epoch 1, iteration 40: loss = 0.673206
+Epoch 1, iteration 50: loss = 0.678407
+Epoch 1, iteration 60: loss = 0.663105
+Epoch 1, iteration 70: loss = 0.653142
+Epoch 1, iteration 80: loss = 0.667887
+Epoch 1, iteration 90: loss = 0.655433
+Epoch 1, iteration 100: loss = 0.658866
+Epoch 1, iteration 110: loss = 0.655077
+Epoch 1, iteration 120: loss = 0.657651
+Epoch 1, iteration 130: loss = 0.660353
+Epoch 1, iteration 140: loss = 0.665732
+Epoch 1, iteration 150: loss = 0.637748
+Epoch 1, iteration 160: loss = 0.673975
+Epoch 1, iteration 170: loss = 0.641421
+Epoch 1, iteration 180: loss = 0.635483
+Epoch 1, iteration 190: loss = 0.629834
+Epoch 1, iteration 200: loss = 0.641202
+Epoch 1, iteration 210: loss = 0.640480
+Epoch 1, iteration 220: loss = 0.648197
+Epoch 1, iteration 230: loss = 0.633542
+Epoch 1, iteration 240: loss = 0.636483
+Epoch 1, iteration 250: loss = 0.616882
+Epoch 1, iteration 260: loss = 0.637741
+Epoch 1, iteration 270: loss = 0.639253
+Epoch 1, iteration 280: loss = 0.634496
+Epoch 1, iteration 290: loss = 0.651089
+Epoch 1, iteration 300: loss = 0.662893
+Epoch 1, iteration 310: loss = 0.646046
+Epoch 1, iteration 320: loss = 0.632990
+Epoch 1, iteration 330: loss = 0.611172
+Epoch 1, iteration 340: loss = 0.643518
+Epoch 1, iteration 350: loss = 0.626490
