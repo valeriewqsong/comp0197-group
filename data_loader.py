@@ -122,13 +122,16 @@ def get_data_loader(basedir="./", batch_size=32, ratio=8.0, num_workers=0):
     print("train unabeled dataset:", len(train_unlabeled_dataset))
     print("test labeled dataset:", len(test_labeled_dataset))
     
+    unlabeled_batch_size = int(batch_size * ratio)
+    
     train_labeled_loader = DataLoader(train_labeled_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
-    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=int(batch_size*ratio), shuffle=True, num_workers=num_workers)
+    train_unlabeled_loader = DataLoader(train_unlabeled_dataset, batch_size=unlabeled_batch_size, shuffle=True, num_workers=num_workers)
     test_labeled_loader = DataLoader(test_labeled_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-    print("train labeled loader:", len(train_labeled_loader)*batch_size)
-    print("train unabeled loader:", len(train_unlabeled_loader)*int(batch_size*ratio))
-    print("test labeled loader:", len(test_labeled_loader)*batch_size)
+    print("train labeled loader:", len(train_labeled_loader) * batch_size - batch_size + len(train_labeled_loader.dataset) % batch_size)
+    print("train unlabeled loader:", len(train_unlabeled_loader) * unlabeled_batch_size - unlabeled_batch_size + len(train_unlabeled_loader.dataset) % unlabeled_batch_size)
+    print("test labeled loader:", len(test_labeled_loader) * batch_size - batch_size + len(test_labeled_loader.dataset) % batch_size)
+
     
     
     return train_labeled_loader, train_unlabeled_loader, test_labeled_loader
