@@ -68,13 +68,13 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             if use_dice:
                 loss = semi_supervised_dice_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             else:
-                loss = semi_supervised_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
+                loss, labeled_loss, unlabeled_loss = semi_supervised_iou_loss(pred_with_label, labels, pred_without_label, alpha=alpha)
             
             loss.backward()
             optimizer.step()
             
             # print stats every iteration
-            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}, labeled loss = {labeled_loss.item():.6f}, unlabeled loss = {unlabeled_loss.item():.6f}, alpha = {alpha}")
             
             # # print statistics every 100 iteratrions
             # running_loss += loss.item()
