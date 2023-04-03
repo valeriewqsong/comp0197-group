@@ -135,7 +135,7 @@ def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/trainval.txt'))
+    train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/mylist.txt')) 
     
     print(f"Training data length: {len(train_data)}")
     print(f"Validation data length: {len(val_data)}")
