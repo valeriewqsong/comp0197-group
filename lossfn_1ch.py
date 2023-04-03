@@ -128,3 +128,20 @@ def semi_supervised_iou_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss, labeled_loss, unlabeled_loss
+
+
+def dice_score(y_pred, y_true, smooth=1e-5):
+    y_pred = torch.sigmoid(y_pred)
+    y_pred = (y_pred > 0.5).float()
+    intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
+    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) - intersection
+    dice = (2 * intersection + smooth) / (union + smooth)
+    return dice.mean().item()
+
+def iou_score(y_pred, y_true, smooth=1e-5):
+    y_pred = torch.sigmoid(y_pred)
+    y_pred = (y_pred > 0.5).float()
+    intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
+    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) - intersection
+    iou = (intersection + smooth) / (union + smooth)
+    return iou.mean().item()
