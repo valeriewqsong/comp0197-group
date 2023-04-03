@@ -13,7 +13,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -30,7 +30,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -44,7 +44,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -60,7 +60,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -74,7 +74,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -91,7 +91,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -105,7 +105,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -122,7 +122,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -136,7 +136,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -153,7 +153,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     train_unlabeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )
@@ -167,7 +167,7 @@ iou_trained_model = train_labeled_only(
     train_labeled_loader,
     val_labeled_loader,
     device,
-    num_epochs=10,        
+    num_epochs=100,        
     lr=1e-5, 
     use_dice = False
 )

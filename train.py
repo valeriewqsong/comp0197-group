@@ -36,9 +36,9 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
         # Set alpha based on epoch
         t1 = 10
         t2 = 60
-        if i < t1:
+        if epoch < t1:
             alpha = 0
-        elif i < t2:
+        elif epoch < t2:
             alpha = (i - t1) / (t2 - t1)
         else:
             alpha = 3
