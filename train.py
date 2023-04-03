@@ -36,12 +36,14 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
         # Set alpha based on epoch
         t1 = 10
         t2 = 60
-        if epoch <= t1:
+        alpha_f = 3
+        
+        if epoch < t1:
             alpha = 0
         elif epoch < t2:
-            alpha = (epoch - t1) / (t2 - t1)
+            alpha = (epoch - t1) / (t2 - t1) * alpha_f
         else:
-            alpha = 3
+            alpha = alpha_f
         
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
