@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from linknet import link_net
-from lossfn_1ch import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss, create_pseudo_labels
+from lossfn_1ch import supervised_dice_loss, supervised_iou_loss, semi_supervised_dice_loss, semi_supervised_iou_loss
 
 def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_label, val_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
     """
@@ -85,7 +85,7 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
         # Evaluate the model on the validation set
         model.eval()
 
-        test_loss = 0
+        val_loss = 0
         total_iou_score = 0
         total_dice_score = 0
         
@@ -97,20 +97,20 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
                 if use_dice:
                     dice_loss = supervised_dice_loss(output, target)
                     dice_score = 1 - dice_loss.item()
-                    test_loss += dice_loss.item()
+                    val_loss += dice_loss.item()
                     total_dice_score += dice_score
                     
                 else:
                     iou_loss = supervised_iou_loss(output, target)
                     iou_score = 1 - iou_loss.item()
-                    test_loss += iou_loss.item()
+                    val_loss += iou_loss.item()
                     total_iou_score += iou_score
                     
                 
         if use_dice:
-            print('Epoch {}, Validation Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_dice_score/len(val_loader)))
+            print('After Epoch {}: Validation Loss = {:.6f}, Dice Score = {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_dice_score/len(val_loader)))
         else:
-            print('Epoch {}, Validation Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_iou_score/len(val_loader)))
+            print('After Epoch {}: Validation Loss = {:.6f}, IoU Score = {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_iou_score/len(val_loader)))
 
     print("Training completed.")
 
@@ -176,7 +176,7 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
         # Evaluate the model on the validation set
         model.eval()
 
-        test_loss = 0
+        val_loss = 0
         total_iou_score = 0
         total_dice_score = 0
 
@@ -188,19 +188,19 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
                 if use_dice:
                     dice_loss = supervised_dice_loss(output, target)
                     dice_score = 1 - dice_loss.item()
-                    test_loss += dice_loss.item()
+                    val_loss += dice_loss.item()
                     total_dice_score += dice_score
 
                 else:
                     iou_loss = supervised_iou_loss(output, target)
                     iou_score = 1 - iou_loss.item()
-                    test_loss += iou_loss.item()
+                    val_loss += iou_loss.item()
                     total_iou_score += iou_score
 
         if use_dice:
-            print('Epoch {}, Validation Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_dice_score/len(val_loader)))
+            print('Epoch {}, Validation Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_dice_score/len(val_loader)))
         else:
-            print('Epoch {}, Validation Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, test_loss/len(val_loader), total_iou_score/len(val_loader)))
+            print('Epoch {}, Validation Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_iou_score/len(val_loader)))
             
     print("Training completed.")
 
