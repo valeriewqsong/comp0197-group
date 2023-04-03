@@ -33,6 +33,16 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
     for epoch in range(num_epochs):
         running_loss = 0.0
         
+        # Set alpha based on epoch
+        t1 = 10
+        t2 = 60
+        if i < t1:
+            alpha = 0
+        elif i < t2:
+            alpha = (i - t1) / (t2 - t1)
+        else:
+            alpha = 3
+        
         # Train on both labeled and unlabeled data during each epoch of training
         train_iter_without_label = iter(train_loader_without_label)
         for i, (images_with_label, labels) in enumerate(train_loader_with_label):
@@ -45,15 +55,7 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
             
-            # Set alpha based on i
-            t1 = 100
-            t2 = 600
-            if i < t1:
-                alpha = 0
-            elif i < t2:
-                alpha = (i - t1) / (t2 - t1)
-            else:
-                alpha = 3
+            
 
             # zero the parameter gradients
             optimizer.zero_grad()
