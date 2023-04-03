@@ -131,6 +131,7 @@ def semi_supervised_iou_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     
     # Compute unlabeled loss
     unlabeled_loss = supervised_iou_loss(unlabeled_pred, unlabeled_pred_pseudo)
+    print(f"labeled loss: {labeled_loss:.6f}, unlabeled loss: {unlabeled_loss:.6f}, alpha: {alpha}")
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss

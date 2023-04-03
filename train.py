@@ -73,22 +73,21 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             loss.backward()
             optimizer.step()
             
-            # # print stats every iteration
-            # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
+            # print stats every iteration
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f} alpha = {alpha}")
             
-            # print statistics every 100 iteratrions
-            running_loss += loss.item()
-            if i % 100 == 99:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 100:.6f} alpha = {alpha}")
-                running_loss = 0.0
+            # # print statistics every 100 iteratrions
+            # running_loss += loss.item()
+            # if i % 100 == 99:
+            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 100:.6f} alpha = {alpha}")
+            #     running_loss = 0.0
 
-        # Evaluate the model on the test set
+        # Evaluate the model on the validation set
         model.eval()
 
         test_loss = 0
         total_iou_score = 0
         total_dice_score = 0
-        accuracy = 0
         
         with torch.no_grad():
             for data, target in val_loader:
@@ -165,19 +164,21 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
             loss.backward()
             optimizer.step()
 
-            # print statistics every 100 iteratrions
-            running_loss += loss.item()
-            if i % 100 == 99:
-                print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 100:.6f}")
-                running_loss = 0.0
+            # print stats every iteration
+            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}")
+            
+            # # print statistics every 100 iteratrions
+            # running_loss += loss.item()
+            # if i % 100 == 99:
+            #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 100:.6f}")
+            #     running_loss = 0.0
 
-        # Evaluate the model on the test set
+        # Evaluate the model on the validation set
         model.eval()
 
         test_loss = 0
         total_iou_score = 0
         total_dice_score = 0
-        accuracy = 0
 
         with torch.no_grad():
             for data, target in val_loader:
