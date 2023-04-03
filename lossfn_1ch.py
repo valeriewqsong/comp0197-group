@@ -91,9 +91,6 @@ def semi_supervised_dice_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     Returns:
         torch.Tensor: Semi-supervised Dice loss.
     """
-    # Converts raw model outputs into probabilities with a range of [0, 1] to ensure that the predicted values are in the same range as the ground truth masks
-    y_pred = torch.sigmoid(y_pred)
-    
     # Compute labeled loss
     labeled_loss = supervised_dice_loss(y_pred, y_true)
     
@@ -120,9 +117,6 @@ def semi_supervised_iou_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     Returns:
         torch.Tensor: Semi-supervised IOU loss.
     """
-    # Converts raw model outputs into probabilities with a range of [0, 1] to ensure that the predicted values are in the same range as the ground truth masks
-    y_pred = torch.sigmoid(y_pred)
-    
     # Compute labeled loss
     labeled_loss = supervised_iou_loss(y_pred, y_true)
     
