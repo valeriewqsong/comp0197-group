@@ -36,7 +36,7 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
         # Set alpha based on epoch
         t1 = 10
         t2 = 60
-        if epoch < t1:
+        if epoch <= t1:
             alpha = 0
         elif epoch < t2:
             alpha = (epoch - t1) / (t2 - t1)
@@ -55,8 +55,6 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             images_with_label, labels = images_with_label.to(device), labels.to(device)
             images_without_label = images_without_label.to(device)
             
-            
-
             # zero the parameter gradients
             optimizer.zero_grad()
             
