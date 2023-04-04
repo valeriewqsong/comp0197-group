@@ -96,9 +96,8 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
                 total_iou_score += iou_score(output, target)
                 total_dice_score += dice_score(output, target)
                 
-        print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, dice Score = {(total_dice_score/len(val_loader)):.6f}")
+        print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, Dice Score = {(total_dice_score/len(val_loader)):.6f}")
                 
-
     print("Training completed.")
 
     return model
@@ -172,7 +171,7 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
                 total_iou_score += iou_score(output, target)
                 total_dice_score += dice_score(output, target)
                 
-        print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, dice Score = {(total_dice_score/len(val_loader)):.6f}")
+        print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, Dice Score = {(total_dice_score/len(val_loader)):.6f}")
             
     print("Training completed.")
 
