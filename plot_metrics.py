@@ -54,15 +54,15 @@ def plot_metrics(csv_file):
     png_file = os.path.join('results_img', fig_name + '.png')
     plt.savefig(png_file)
 
-plot_metrics('csv_metrics/metrics_fully_sup.csv')
-plot_metrics('csv_metrics/metrics_1to1_semisup.csv')
-plot_metrics('csv_metrics/metrics_1to1_sup.csv')
-plot_metrics('csv_metrics/metrics_1to3_sup.csv')
-plot_metrics('csv_metrics/metrics_1to3_semisup.csv')
-plot_metrics('csv_metrics/metrics_1to5_semisup.csv')
-plot_metrics('csv_metrics/metrics_1to5_sup.csv')
-plot_metrics('csv_metrics/metrics_1to10_semisup.csv')
-plot_metrics('csv_metrics/metrics_1to10_sup.csv')
+# plot_metrics('csv_metrics/metrics_fully_sup.csv')
+# plot_metrics('csv_metrics/metrics_1to1_semisup.csv')
+# plot_metrics('csv_metrics/metrics_1to1_sup.csv')
+# plot_metrics('csv_metrics/metrics_1to3_sup.csv')
+# plot_metrics('csv_metrics/metrics_1to3_semisup.csv')
+# plot_metrics('csv_metrics/metrics_1to5_semisup.csv')
+# plot_metrics('csv_metrics/metrics_1to5_sup.csv')
+# plot_metrics('csv_metrics/metrics_1to10_semisup.csv')
+# plot_metrics('csv_metrics/metrics_1to10_sup.csv')
 
 
 def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
@@ -128,9 +128,9 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
     plt.savefig(png_file)
 
 plot_three_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to1_sup.csv', 'csv_metrics/metrics_fully_sup.csv')    
-plot_three_metrics('csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to3_sup.csv', 'csv_metrics/metrics_fully_sup.csv')    
-plot_three_metrics('csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to5_sup.csv', 'csv_metrics/metrics_fully_sup.csv')
-plot_three_metrics('csv_metrics/metrics_1to10_semisup.csv', 'csv_metrics/metrics_1to10_sup.csv', 'csv_metrics/metrics_fully_sup.csv')
+# plot_three_metrics('csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to3_sup.csv', 'csv_metrics/metrics_fully_sup.csv')    
+# plot_three_metrics('csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to5_sup.csv', 'csv_metrics/metrics_fully_sup.csv')
+# plot_three_metrics('csv_metrics/metrics_1to10_semisup.csv', 'csv_metrics/metrics_1to10_sup.csv', 'csv_metrics/metrics_fully_sup.csv')
 
 def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     '''Plot comparison between the different ratios of labeled to unlabeled data'''
@@ -248,4 +248,4 @@ def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
     png_file = os.path.join('results_img', 'diff_ratio_comparison_fullysup' + '.png')
     plt.savefig(png_file)
     
-plot_five_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv', 'csv_metrics/metrics_fully_sup.csv')
+# plot_five_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv', 'csv_metrics/metrics_fully_sup.csv')
