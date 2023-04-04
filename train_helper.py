@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 def semi_supervised_bce_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     """
@@ -28,7 +27,7 @@ def semi_supervised_bce_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     unlabeled_pred_pseudo = (torch.sigmoid(unlabeled_pred) > 0.5).float()
     
     # Compute unlabeled loss
-    unlabeled_loss = F.mse_loss(unlabeled_pred, unlabeled_pred_pseudo)
+    unlabeled_loss = criterion(unlabeled_pred, unlabeled_pred_pseudo)
 
     # Combining the losses
     return labeled_loss + alpha * unlabeled_loss, labeled_loss, unlabeled_loss
