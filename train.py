@@ -4,7 +4,6 @@ import torch.optim as optim
 from linknet import link_net
 import os
 from train_helper import semi_supervised_bce_loss, iou_score, dice_score, precision, recall, specificity
-from torch.utils.tensorboard import SummaryWriter
 
 def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_label, val_loader, device, num_epochs=50, lr=1e-4, base_dir="./"):
     """
@@ -21,7 +20,6 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
     Returns:
         nn.Module: The trained segmentation model.
     """
-    sw = SummaryWriter(os.path.join(base_dir, 'logs'))
     # Initialize the neural network
     model = link_net(classes=1).to(device)    
 
@@ -82,7 +80,6 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             running_unlabeled_loss += unlabeled_loss.item()
             if i % 10 == 9:
                 print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.6f},  labeled loss = {running_labeled_loss / 10:.6f}, unlabeled loss = {running_unlabeled_loss / 10:.6f}, alpha = {alpha}")
-                sw.add_scalar("training/bceloss", running_loss / 10, i * epoch + i)
                 running_loss = 0.0
                 running_labeled_loss = 0.0
                 running_unlabeled_loss = 0.0
@@ -110,12 +107,6 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
                 total_precision += precision(output, target)
                 total_recall += recall(output, target)
                 total_specificity += specificity(output, target)
-        sw.add_scalar("validation/bceloss", val_loss/len(val_loader), epoch + 1)       
-        sw.add_scalar("validation/IoU", total_iou_score/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Dice", total_dice_score/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Precision", total_precision/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Recall", total_recall/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Specificity", total_specificity/len(val_loader), epoch + 1) 
         print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, Dice Score = {(total_dice_score/len(val_loader)):.6f}, Precision = {(total_precision/len(val_loader)):.6f}, Recall = {(total_recall/len(val_loader)):.6f}, Specificity = {(total_specificity/len(val_loader)):.6f}")
                 
     print("Training completed.")
@@ -136,7 +127,6 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
     Returns:
         nn.Module: The trained segmentation model.
     """
-    sw = SummaryWriter(os.path.join(base_dir, 'logs'))
     # Initialize the neural network
     model = link_net(classes=1).to(device)
 
@@ -170,7 +160,6 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
             # print statistics every 10 iteratrions
             running_loss += loss.item()
             if i % 10 == 9:
-                sw.add_scalar("training/bceloss", running_loss / 10, i * epoch + i)
                 print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.6f}")
                 running_loss = 0.0
 
@@ -199,12 +188,6 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
                 total_recall += recall(output, target)
                 total_specificity += specificity(output, target)
         
-        sw.add_scalar("validation/bceloss", val_loss/len(val_loader), epoch + 1)       
-        sw.add_scalar("validation/IoU", total_iou_score/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Dice", total_dice_score/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Precision", total_precision/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Recall", total_recall/len(val_loader), epoch + 1) 
-        sw.add_scalar("validation/Specificity", total_specificity/len(val_loader), epoch + 1) 
         print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, Dice Score = {(total_dice_score/len(val_loader)):.6f}, Precision = {(total_precision/len(val_loader)):.6f}, Recall = {(total_recall/len(val_loader)):.6f}, Specificity = {(total_specificity/len(val_loader)):.6f}")
              
     print("Training completed.")
