@@ -53,6 +53,10 @@ def plot_metrics(csv_file):
     png_file = os.path.join('results_img', fig_name + '.png')
     plt.savefig(png_file)
 
+
+plot_metrics('csv_metrics/metrics_1to1_semisup.csv')
+plot_metrics('csv_metrics/metrics_1to1_sup.csv')
+plot_metrics('csv_metrics/metrics_1to3_sup.csv')
 plot_metrics('csv_metrics/metrics_1to3_semisup.csv')
 plot_metrics('csv_metrics/metrics_1to5_semisup.csv')
 plot_metrics('csv_metrics/metrics_1to5_sup.csv')

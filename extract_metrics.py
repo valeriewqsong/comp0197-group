@@ -39,7 +39,7 @@ def txt_to_csv(input_txt, output_csv):
         csv_writer.writerow(['Epoch', 'Validation Loss', 'IoU Score', 'Dice Score', 'Precision', 'Recall', 'Specificity'])
         csv_writer.writerows(data)
 
-txt_to_csv('output_txt/output_fullysup.txt', 'metrics_fullysup.csv')
+txt_to_csv('output_txt/output_fully_sup.txt', 'metrics_fully_sup.csv')
 
 txt_to_csv('output_txt/output_1to1_semisup.txt', 'metrics_1to1_semisup.csv')
 txt_to_csv('output_txt/output_1to1_sup.txt', 'metrics_1to1_sup.csv')
