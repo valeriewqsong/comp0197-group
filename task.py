@@ -22,35 +22,6 @@ torch.save(iou_trained_model.state_dict(), f'saved_model_iou_all_labeled.pt')
 print('Model trained with iou loss and all labeled data saved.\n')
 
 
-# # High labeled data ratio. labeled to unlabeled ratio is 2:1
-# train_labeled_loader, train_unlabeled_loader, val_labeled_loader, test_labeled_loader = get_data_loader(base_dir, batch_size=32, UtoL_ratio=0.5)
-# print("Ratio of labeled to unlabeled data is 2:1")
-# iou_trained_model = train_labeled_and_unlabeled(
-#     train_labeled_loader,
-#     train_unlabeled_loader,
-#     val_labeled_loader,
-#     device,
-#     num_epochs=100,        
-#     lr=1e-5
-# )
-# # save trained model
-# torch.save(iou_trained_model.state_dict(), f'saved_model_iou_2to1.pt')
-# print('Model trained with iou loss and 2:1 ratio saved.\n')
-
-# # Lower bound performance: only labeled data is used
-# print("Ratio of labeled to unlabeled data is 2:1, but only labeled data is used here.")
-# iou_trained_model = train_labeled_only(
-#     train_labeled_loader,
-#     val_labeled_loader,
-#     device,
-#     num_epochs=100,        
-#     lr=1e-5
-# )
-# # save trained model
-# torch.save(iou_trained_model.state_dict(), f'saved_model_iou_2to1_labeled_only.pt')
-# print('Model trained with iou loss and 2:1 ratio but labeled only saved.\n')
-
-
 # High labeled data ratio. labeled to unlabeled ratio is 1:1
 train_labeled_loader, train_unlabeled_loader, val_labeled_loader, test_labeled_loader = get_data_loader(base_dir, batch_size=32, UtoL_ratio=1.0)
 print("Equal split, ratio of labeled to unlabeled data is 1:1")
