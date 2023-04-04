@@ -1,0 +1,417 @@
+cuda
+Training data length: 5879
+Validation data length: 734
+Test data length: 736
+Training labeled dataset length: 534
+Training unlabeled dataset length: 5345
+Validation dataset length: 734
+Test dataset length: 736
+Ratio of labeled to unlabeled data is 1:10
+Training with BCE loss function..
+Epoch 1, iteration 10: loss = 0.692009,  labeled loss = 0.692009, unlabeled loss = 0.678822, alpha = 0
+After Epoch 1: Validation loss = 0.692858, IoU Score = 0.260974, Dice Score = 0.411326, Precision = 0.519765, Recall = 0.367384, Specificity = 0.669330
+Epoch 2, iteration 10: loss = 0.692704,  labeled loss = 0.692704, unlabeled loss = 0.685187, alpha = 0
+After Epoch 2: Validation loss = 0.690214, IoU Score = 0.384813, Dice Score = 0.550022, Precision = 0.565062, Recall = 0.578760, Specificity = 0.578638
+Epoch 3, iteration 10: loss = 0.678880,  labeled loss = 0.678880, unlabeled loss = 0.656267, alpha = 0
+After Epoch 3: Validation loss = 0.626896, IoU Score = 0.516937, Dice Score = 0.661976, Precision = 0.529400, Recall = 0.967604, Specificity = 0.172009
+Epoch 4, iteration 10: loss = 0.608838,  labeled loss = 0.608838, unlabeled loss = 0.503060, alpha = 0
+After Epoch 4: Validation loss = 0.557713, IoU Score = 0.532212, Dice Score = 0.675504, Precision = 0.536026, Recall = 0.987786, Specificity = 0.174447
+Epoch 5, iteration 10: loss = 0.546061,  labeled loss = 0.546061, unlabeled loss = 0.449125, alpha = 0
+After Epoch 5: Validation loss = 0.528590, IoU Score = 0.554944, Dice Score = 0.696174, Precision = 0.560885, Recall = 0.981380, Specificity = 0.263588
+Epoch 6, iteration 10: loss = 0.518434,  labeled loss = 0.518434, unlabeled loss = 0.430100, alpha = 0
+After Epoch 6: Validation loss = 0.516984, IoU Score = 0.591951, Dice Score = 0.728900, Precision = 0.603311, Recall = 0.968776, Specificity = 0.394762
+Epoch 7, iteration 10: loss = 0.504803,  labeled loss = 0.504803, unlabeled loss = 0.427909, alpha = 0
+After Epoch 7: Validation loss = 0.511856, IoU Score = 0.633196, Dice Score = 0.763703, Precision = 0.655930, Recall = 0.948789, Specificity = 0.531812
+Epoch 8, iteration 10: loss = 0.493793,  labeled loss = 0.493793, unlabeled loss = 0.421958, alpha = 0
+After Epoch 8: Validation loss = 0.507639, IoU Score = 0.665419, Dice Score = 0.789681, Precision = 0.696706, Recall = 0.936616, Specificity = 0.610620
+Epoch 9, iteration 10: loss = 0.473016,  labeled loss = 0.473016, unlabeled loss = 0.413803, alpha = 0
+After Epoch 9: Validation loss = 0.504049, IoU Score = 0.688201, Dice Score = 0.807164, Precision = 0.728129, Recall = 0.926846, Specificity = 0.669197
+Epoch 10, iteration 10: loss = 0.467602,  labeled loss = 0.467602, unlabeled loss = 0.412494, alpha = 0
+After Epoch 10: Validation loss = 0.501326, IoU Score = 0.708497, Dice Score = 0.822506, Precision = 0.767512, Recall = 0.903402, Specificity = 0.735030
+Epoch 11, iteration 10: loss = 0.459872,  labeled loss = 0.459872, unlabeled loss = 0.412066, alpha = 0.0
+After Epoch 11: Validation loss = 0.500049, IoU Score = 0.720480, Dice Score = 0.831165, Precision = 0.793862, Recall = 0.888012, Specificity = 0.770690
+Epoch 12, iteration 10: loss = 0.483373,  labeled loss = 0.459160, unlabeled loss = 0.403540, alpha = 0.06
+After Epoch 12: Validation loss = 0.498654, IoU Score = 0.725557, Dice Score = 0.835039, Precision = 0.794761, Recall = 0.895465, Specificity = 0.768973
+Epoch 13, iteration 10: loss = 0.493359,  labeled loss = 0.446247, unlabeled loss = 0.392602, alpha = 0.12
+After Epoch 13: Validation loss = 0.500932, IoU Score = 0.727942, Dice Score = 0.836565, Precision = 0.796873, Recall = 0.895339, Specificity = 0.770406
+Epoch 14, iteration 10: loss = 0.521984,  labeled loss = 0.452963, unlabeled loss = 0.383449, alpha = 0.18
+After Epoch 14: Validation loss = 0.509556, IoU Score = 0.729133, Dice Score = 0.837749, Precision = 0.789034, Recall = 0.908831, Specificity = 0.755389
+Epoch 15, iteration 10: loss = 0.525645,  labeled loss = 0.435992, unlabeled loss = 0.373554, alpha = 0.24
+After Epoch 15: Validation loss = 0.512483, IoU Score = 0.732011, Dice Score = 0.839657, Precision = 0.795226, Recall = 0.905361, Specificity = 0.762892
+Epoch 16, iteration 10: loss = 0.549857,  labeled loss = 0.440146, unlabeled loss = 0.365700, alpha = 0.30000000000000004
+After Epoch 16: Validation loss = 0.538121, IoU Score = 0.729377, Dice Score = 0.837594, Precision = 0.786699, Recall = 0.913010, Specificity = 0.745754
+Epoch 17, iteration 10: loss = 0.565940,  labeled loss = 0.438119, unlabeled loss = 0.355060, alpha = 0.36
+After Epoch 17: Validation loss = 0.528385, IoU Score = 0.737959, Dice Score = 0.844209, Precision = 0.799873, Recall = 0.908462, Specificity = 0.761976
+Epoch 18, iteration 10: loss = 0.575988,  labeled loss = 0.432984, unlabeled loss = 0.340487, alpha = 0.42000000000000004
+After Epoch 18: Validation loss = 0.540931, IoU Score = 0.734340, Dice Score = 0.841315, Precision = 0.795749, Recall = 0.908410, Specificity = 0.756891
+Epoch 19, iteration 10: loss = 0.591865,  labeled loss = 0.431370, unlabeled loss = 0.334364, alpha = 0.48
+After Epoch 19: Validation loss = 0.573808, IoU Score = 0.730084, Dice Score = 0.837930, Precision = 0.783245, Recall = 0.919124, Specificity = 0.733474
+Epoch 20, iteration 10: loss = 0.593734,  labeled loss = 0.417800, unlabeled loss = 0.325802, alpha = 0.54
+After Epoch 20: Validation loss = 0.611405, IoU Score = 0.724275, Dice Score = 0.833659, Precision = 0.769940, Recall = 0.927757, Specificity = 0.710064
+Epoch 21, iteration 10: loss = 0.603472,  labeled loss = 0.419010, unlabeled loss = 0.307437, alpha = 0.6000000000000001
+After Epoch 21: Validation loss = 0.682592, IoU Score = 0.718930, Dice Score = 0.829836, Precision = 0.757213, Recall = 0.937722, Specificity = 0.677508
+Epoch 22, iteration 10: loss = 0.610413,  labeled loss = 0.415235, unlabeled loss = 0.295724, alpha = 0.66
+After Epoch 22: Validation loss = 0.718131, IoU Score = 0.710910, Dice Score = 0.823838, Precision = 0.740955, Recall = 0.949512, Specificity = 0.650910
+Epoch 23, iteration 10: loss = 0.613924,  labeled loss = 0.405042, unlabeled loss = 0.290114, alpha = 0.72
+After Epoch 23: Validation loss = 0.858140, IoU Score = 0.695791, Dice Score = 0.811626, Precision = 0.721692, Recall = 0.954404, Specificity = 0.614208
+Epoch 24, iteration 10: loss = 0.621777,  labeled loss = 0.410314, unlabeled loss = 0.271106, alpha = 0.78
+After Epoch 24: Validation loss = 0.860043, IoU Score = 0.690415, Dice Score = 0.807000, Precision = 0.718366, Recall = 0.951191, Specificity = 0.611669
+Epoch 25, iteration 10: loss = 0.613285,  labeled loss = 0.398035, unlabeled loss = 0.256250, alpha = 0.8400000000000001
+After Epoch 25: Validation loss = 0.814151, IoU Score = 0.706374, Dice Score = 0.819918, Precision = 0.742889, Recall = 0.940799, Specificity = 0.650311
+Epoch 26, iteration 10: loss = 0.617494,  labeled loss = 0.401565, unlabeled loss = 0.239921, alpha = 0.8999999999999999
+After Epoch 26: Validation loss = 0.805928, IoU Score = 0.708087, Dice Score = 0.822054, Precision = 0.740777, Recall = 0.946178, Specificity = 0.642036
+Epoch 27, iteration 10: loss = 0.619543,  labeled loss = 0.394512, unlabeled loss = 0.234406, alpha = 0.96
+After Epoch 27: Validation loss = 0.985155, IoU Score = 0.686713, Dice Score = 0.805069, Precision = 0.711738, Recall = 0.956684, Specificity = 0.587482
+Epoch 28, iteration 10: loss = 0.596418,  labeled loss = 0.380930, unlabeled loss = 0.211263, alpha = 1.02
+After Epoch 28: Validation loss = 1.160287, IoU Score = 0.673063, Dice Score = 0.794687, Precision = 0.691952, Recall = 0.965589, Specificity = 0.552822
+Epoch 29, iteration 10: loss = 0.578626,  labeled loss = 0.373564, unlabeled loss = 0.189872, alpha = 1.08
+After Epoch 29: Validation loss = 1.266522, IoU Score = 0.672321, Dice Score = 0.793800, Precision = 0.691923, Recall = 0.964595, Specificity = 0.546039
+Epoch 30, iteration 10: loss = 0.548580,  labeled loss = 0.350942, unlabeled loss = 0.173366, alpha = 1.1400000000000001
+After Epoch 30: Validation loss = 1.665565, IoU Score = 0.646765, Dice Score = 0.772169, Precision = 0.664059, Recall = 0.967705, Specificity = 0.489335
+Epoch 31, iteration 10: loss = 0.517066,  labeled loss = 0.331513, unlabeled loss = 0.154627, alpha = 1.2000000000000002
+After Epoch 31: Validation loss = 0.900658, IoU Score = 0.703303, Dice Score = 0.818108, Precision = 0.762916, Recall = 0.911800, Specificity = 0.683486
+Epoch 32, iteration 10: loss = 0.483353,  labeled loss = 0.316008, unlabeled loss = 0.132813, alpha = 1.26
+After Epoch 32: Validation loss = 1.217349, IoU Score = 0.696958, Dice Score = 0.812676, Precision = 0.734971, Recall = 0.938593, Specificity = 0.627102
+Epoch 33, iteration 10: loss = 0.338446,  labeled loss = 0.241298, unlabeled loss = 0.073598, alpha = 1.32
+After Epoch 33: Validation loss = 1.095563, IoU Score = 0.703516, Dice Score = 0.817702, Precision = 0.739005, Recall = 0.942822, Specificity = 0.641928
+Epoch 34, iteration 10: loss = 0.305264,  labeled loss = 0.217314, unlabeled loss = 0.063732, alpha = 1.3800000000000001
+After Epoch 34: Validation loss = 1.255443, IoU Score = 0.692935, Dice Score = 0.809179, Precision = 0.724619, Recall = 0.947940, Specificity = 0.617927
+Epoch 35, iteration 10: loss = 0.271412,  labeled loss = 0.198998, unlabeled loss = 0.050287, alpha = 1.44
+After Epoch 35: Validation loss = 1.569750, IoU Score = 0.679264, Dice Score = 0.798665, Precision = 0.698497, Recall = 0.965461, Specificity = 0.563025
+Epoch 36, iteration 10: loss = 0.259884,  labeled loss = 0.190416, unlabeled loss = 0.046312, alpha = 1.5
+After Epoch 36: Validation loss = 1.690821, IoU Score = 0.679319, Dice Score = 0.798070, Precision = 0.700938, Recall = 0.962222, Specificity = 0.568128
+Epoch 37, iteration 10: loss = 0.242675,  labeled loss = 0.179064, unlabeled loss = 0.040776, alpha = 1.56
+After Epoch 37: Validation loss = 1.776366, IoU Score = 0.678939, Dice Score = 0.798164, Precision = 0.699930, Recall = 0.962936, Specificity = 0.562000
+Epoch 38, iteration 10: loss = 0.233683,  labeled loss = 0.171259, unlabeled loss = 0.038533, alpha = 1.62
+After Epoch 38: Validation loss = 1.613637, IoU Score = 0.687379, Dice Score = 0.804643, Precision = 0.712248, Recall = 0.957842, Specificity = 0.587369
+Epoch 39, iteration 10: loss = 0.228842,  labeled loss = 0.169118, unlabeled loss = 0.035550, alpha = 1.6800000000000002
+After Epoch 39: Validation loss = 1.709936, IoU Score = 0.685133, Dice Score = 0.802742, Precision = 0.710821, Recall = 0.956284, Specificity = 0.585435
+Epoch 40, iteration 10: loss = 0.220365,  labeled loss = 0.161469, unlabeled loss = 0.033848, alpha = 1.7399999999999998
+After Epoch 40: Validation loss = 1.881049, IoU Score = 0.678593, Dice Score = 0.797397, Precision = 0.700256, Recall = 0.962407, Specificity = 0.565846
+Epoch 41, iteration 10: loss = 0.219267,  labeled loss = 0.162001, unlabeled loss = 0.031814, alpha = 1.7999999999999998
+After Epoch 41: Validation loss = 2.050094, IoU Score = 0.671562, Dice Score = 0.792108, Precision = 0.688457, Recall = 0.969541, Specificity = 0.539748
+Epoch 42, iteration 10: loss = 0.209116,  labeled loss = 0.153058, unlabeled loss = 0.030139, alpha = 1.8599999999999999
+After Epoch 42: Validation loss = 1.663776, IoU Score = 0.694853, Dice Score = 0.810479, Precision = 0.725587, Recall = 0.949751, Specificity = 0.608446
+Epoch 43, iteration 10: loss = 0.218508,  labeled loss = 0.160566, unlabeled loss = 0.030178, alpha = 1.92
+After Epoch 43: Validation loss = 2.076965, IoU Score = 0.678455, Dice Score = 0.797363, Precision = 0.700228, Recall = 0.962207, Specificity = 0.557105
+Epoch 44, iteration 10: loss = 0.205242,  labeled loss = 0.151839, unlabeled loss = 0.026971, alpha = 1.98
+After Epoch 44: Validation loss = 1.843488, IoU Score = 0.691968, Dice Score = 0.808375, Precision = 0.719896, Recall = 0.954129, Specificity = 0.593209
+Epoch 45, iteration 10: loss = 0.208432,  labeled loss = 0.154750, unlabeled loss = 0.026314, alpha = 2.04
+After Epoch 45: Validation loss = 2.013747, IoU Score = 0.685186, Dice Score = 0.802837, Precision = 0.708671, Recall = 0.960367, Specificity = 0.576173
+Epoch 46, iteration 10: loss = 0.200909,  labeled loss = 0.149255, unlabeled loss = 0.024597, alpha = 2.0999999999999996
+After Epoch 46: Validation loss = 2.358410, IoU Score = 0.671232, Dice Score = 0.791921, Precision = 0.687837, Recall = 0.970346, Specificity = 0.536444
+Epoch 47, iteration 10: loss = 0.195467,  labeled loss = 0.145020, unlabeled loss = 0.023355, alpha = 2.16
+After Epoch 47: Validation loss = 1.904031, IoU Score = 0.695215, Dice Score = 0.810908, Precision = 0.723947, Recall = 0.953033, Specificity = 0.603587
+Epoch 48, iteration 10: loss = 0.195919,  labeled loss = 0.144642, unlabeled loss = 0.023098, alpha = 2.2199999999999998
+After Epoch 48: Validation loss = 2.195126, IoU Score = 0.685617, Dice Score = 0.803517, Precision = 0.707546, Recall = 0.962450, Specificity = 0.573368
+Epoch 49, iteration 10: loss = 0.194770,  labeled loss = 0.144495, unlabeled loss = 0.022051, alpha = 2.2800000000000002
+After Epoch 49: Validation loss = 2.127728, IoU Score = 0.685233, Dice Score = 0.803155, Precision = 0.706111, Recall = 0.964410, Specificity = 0.570319
+Epoch 50, iteration 10: loss = 0.196548,  labeled loss = 0.144965, unlabeled loss = 0.022044, alpha = 2.34
+After Epoch 50: Validation loss = 1.966511, IoU Score = 0.694269, Dice Score = 0.810286, Precision = 0.721387, Recall = 0.955483, Specificity = 0.598798
+Epoch 51, iteration 10: loss = 0.196009,  labeled loss = 0.144907, unlabeled loss = 0.021292, alpha = 2.4000000000000004
+After Epoch 51: Validation loss = 2.322710, IoU Score = 0.683474, Dice Score = 0.801999, Precision = 0.703350, Recall = 0.965610, Specificity = 0.563669
+Epoch 52, iteration 10: loss = 0.184912,  labeled loss = 0.136984, unlabeled loss = 0.019483, alpha = 2.46
+After Epoch 52: Validation loss = 2.672804, IoU Score = 0.675573, Dice Score = 0.795609, Precision = 0.693375, Recall = 0.968613, Specificity = 0.543520
+Epoch 53, iteration 10: loss = 0.175125,  labeled loss = 0.130203, unlabeled loss = 0.017826, alpha = 2.52
+After Epoch 53: Validation loss = 2.657043, IoU Score = 0.677248, Dice Score = 0.797267, Precision = 0.694999, Recall = 0.968878, Specificity = 0.542808
+Epoch 54, iteration 10: loss = 0.176777,  labeled loss = 0.131856, unlabeled loss = 0.017412, alpha = 2.58
+After Epoch 54: Validation loss = 2.981139, IoU Score = 0.671646, Dice Score = 0.792534, Precision = 0.689212, Recall = 0.969154, Specificity = 0.531312
+Epoch 55, iteration 10: loss = 0.164736,  labeled loss = 0.122433, unlabeled loss = 0.016024, alpha = 2.64
+After Epoch 55: Validation loss = 2.954271, IoU Score = 0.673802, Dice Score = 0.794397, Precision = 0.691309, Recall = 0.969158, Specificity = 0.536731
+Epoch 56, iteration 10: loss = 0.167329,  labeled loss = 0.125736, unlabeled loss = 0.015405, alpha = 2.7
+After Epoch 56: Validation loss = 2.870307, IoU Score = 0.676197, Dice Score = 0.796324, Precision = 0.694744, Recall = 0.967828, Specificity = 0.545015
+Epoch 57, iteration 10: loss = 0.164667,  labeled loss = 0.123331, unlabeled loss = 0.014977, alpha = 2.7600000000000002
+After Epoch 57: Validation loss = 2.630957, IoU Score = 0.686612, Dice Score = 0.804440, Precision = 0.709783, Recall = 0.960757, Specificity = 0.570020
+Epoch 58, iteration 10: loss = 0.169744,  labeled loss = 0.127625, unlabeled loss = 0.014936, alpha = 2.82
+After Epoch 58: Validation loss = 3.234344, IoU Score = 0.668790, Dice Score = 0.790601, Precision = 0.684257, Recall = 0.972428, Specificity = 0.517329
+Epoch 59, iteration 10: loss = 0.163376,  labeled loss = 0.122202, unlabeled loss = 0.014297, alpha = 2.88
+After Epoch 59: Validation loss = 2.826166, IoU Score = 0.687310, Dice Score = 0.805120, Precision = 0.710062, Recall = 0.961790, Specificity = 0.570147
+Epoch 60, iteration 10: loss = 0.167953,  labeled loss = 0.126994, unlabeled loss = 0.013932, alpha = 2.94
+After Epoch 60: Validation loss = 3.053380, IoU Score = 0.678147, Dice Score = 0.797943, Precision = 0.697555, Recall = 0.966414, Specificity = 0.545320
+Epoch 61, iteration 10: loss = 0.165342,  labeled loss = 0.125414, unlabeled loss = 0.013309, alpha = 3
+After Epoch 61: Validation loss = 3.251234, IoU Score = 0.673740, Dice Score = 0.794562, Precision = 0.689593, Recall = 0.971719, Specificity = 0.530489
+Epoch 62, iteration 10: loss = 0.156079,  labeled loss = 0.117375, unlabeled loss = 0.012901, alpha = 3
+After Epoch 62: Validation loss = 3.512065, IoU Score = 0.670400, Dice Score = 0.791578, Precision = 0.687383, Recall = 0.970093, Specificity = 0.525599
+Epoch 63, iteration 10: loss = 0.147206,  labeled loss = 0.111299, unlabeled loss = 0.011969, alpha = 3
+After Epoch 63: Validation loss = 3.350674, IoU Score = 0.674822, Dice Score = 0.795160, Precision = 0.693239, Recall = 0.967889, Specificity = 0.539986
+Epoch 64, iteration 10: loss = 0.149276,  labeled loss = 0.115162, unlabeled loss = 0.011372, alpha = 3
+After Epoch 64: Validation loss = 3.900372, IoU Score = 0.667394, Dice Score = 0.789430, Precision = 0.682848, Recall = 0.972553, Specificity = 0.515717
+Epoch 65, iteration 10: loss = 0.147611,  labeled loss = 0.113465, unlabeled loss = 0.011382, alpha = 3
+After Epoch 65: Validation loss = 3.734048, IoU Score = 0.670875, Dice Score = 0.792178, Precision = 0.687416, Recall = 0.970893, Specificity = 0.526614
+Epoch 66, iteration 10: loss = 0.150215,  labeled loss = 0.115062, unlabeled loss = 0.011718, alpha = 3
+After Epoch 66: Validation loss = 3.512751, IoU Score = 0.675396, Dice Score = 0.795502, Precision = 0.695860, Recall = 0.965060, Specificity = 0.542331
+Epoch 67, iteration 10: loss = 0.146048,  labeled loss = 0.113507, unlabeled loss = 0.010847, alpha = 3
+After Epoch 67: Validation loss = 3.004331, IoU Score = 0.687784, Dice Score = 0.805522, Precision = 0.709436, Recall = 0.963395, Specificity = 0.571550
+Epoch 68, iteration 10: loss = 0.152730,  labeled loss = 0.118116, unlabeled loss = 0.011538, alpha = 3
+After Epoch 68: Validation loss = 3.727563, IoU Score = 0.671926, Dice Score = 0.792986, Precision = 0.687601, Recall = 0.972342, Specificity = 0.527306
+Epoch 69, iteration 10: loss = 0.151606,  labeled loss = 0.119465, unlabeled loss = 0.010714, alpha = 3
+After Epoch 69: Validation loss = 3.762146, IoU Score = 0.674148, Dice Score = 0.794692, Precision = 0.692248, Recall = 0.968427, Specificity = 0.535141
+Epoch 70, iteration 10: loss = 0.144696,  labeled loss = 0.113410, unlabeled loss = 0.010428, alpha = 3
+After Epoch 70: Validation loss = 3.600157, IoU Score = 0.680316, Dice Score = 0.799513, Precision = 0.701108, Recall = 0.964727, Specificity = 0.553509
+Epoch 71, iteration 10: loss = 0.131326,  labeled loss = 0.102009, unlabeled loss = 0.009772, alpha = 3
+After Epoch 71: Validation loss = 4.198144, IoU Score = 0.670627, Dice Score = 0.791970, Precision = 0.687907, Recall = 0.969428, Specificity = 0.524063
+Epoch 72, iteration 10: loss = 0.134251,  labeled loss = 0.106275, unlabeled loss = 0.009325, alpha = 3
+After Epoch 72: Validation loss = 3.898807, IoU Score = 0.675952, Dice Score = 0.796280, Precision = 0.694355, Recall = 0.967821, Specificity = 0.539717
+Epoch 73, iteration 10: loss = 0.130680,  labeled loss = 0.103453, unlabeled loss = 0.009076, alpha = 3
+After Epoch 73: Validation loss = 3.773200, IoU Score = 0.679952, Dice Score = 0.799308, Precision = 0.701143, Recall = 0.963728, Specificity = 0.554015
+Epoch 74, iteration 10: loss = 0.137894,  labeled loss = 0.109022, unlabeled loss = 0.009624, alpha = 3
+After Epoch 74: Validation loss = 4.646521, IoU Score = 0.664140, Dice Score = 0.786756, Precision = 0.679168, Recall = 0.973202, Specificity = 0.508800
+Epoch 75, iteration 10: loss = 0.127738,  labeled loss = 0.101934, unlabeled loss = 0.008601, alpha = 3
+After Epoch 75: Validation loss = 4.682148, IoU Score = 0.666053, Dice Score = 0.788275, Precision = 0.682707, Recall = 0.970449, Specificity = 0.513606
+Epoch 76, iteration 10: loss = 0.124458,  labeled loss = 0.099102, unlabeled loss = 0.008452, alpha = 3
+After Epoch 76: Validation loss = 4.497989, IoU Score = 0.667975, Dice Score = 0.789718, Precision = 0.684419, Recall = 0.971018, Specificity = 0.521461
+Epoch 77, iteration 10: loss = 0.125735,  labeled loss = 0.100824, unlabeled loss = 0.008304, alpha = 3
+After Epoch 77: Validation loss = 4.957148, IoU Score = 0.665434, Dice Score = 0.788153, Precision = 0.680018, Recall = 0.973658, Specificity = 0.505732
+Epoch 78, iteration 10: loss = 0.130775,  labeled loss = 0.105119, unlabeled loss = 0.008552, alpha = 3
+After Epoch 78: Validation loss = 4.214123, IoU Score = 0.676286, Dice Score = 0.796414, Precision = 0.694943, Recall = 0.967603, Specificity = 0.539984
+Epoch 79, iteration 10: loss = 0.124846,  labeled loss = 0.100203, unlabeled loss = 0.008214, alpha = 3
+After Epoch 79: Validation loss = 5.100408, IoU Score = 0.662929, Dice Score = 0.785781, Precision = 0.678000, Recall = 0.972710, Specificity = 0.502703
+Epoch 80, iteration 10: loss = 0.121097,  labeled loss = 0.096831, unlabeled loss = 0.008089, alpha = 3
+After Epoch 80: Validation loss = 4.375113, IoU Score = 0.678202, Dice Score = 0.797897, Precision = 0.698799, Recall = 0.964445, Specificity = 0.547687
+Epoch 81, iteration 10: loss = 0.119886,  labeled loss = 0.097034, unlabeled loss = 0.007617, alpha = 3
+After Epoch 81: Validation loss = 4.708408, IoU Score = 0.675587, Dice Score = 0.795979, Precision = 0.694346, Recall = 0.967580, Specificity = 0.537241
+Epoch 82, iteration 10: loss = 0.112489,  labeled loss = 0.090014, unlabeled loss = 0.007492, alpha = 3
+After Epoch 82: Validation loss = 5.058696, IoU Score = 0.667278, Dice Score = 0.789309, Precision = 0.683073, Recall = 0.971772, Specificity = 0.516542
+Epoch 83, iteration 10: loss = 0.114487,  labeled loss = 0.093203, unlabeled loss = 0.007094, alpha = 3
+After Epoch 83: Validation loss = 4.802877, IoU Score = 0.674997, Dice Score = 0.795598, Precision = 0.693115, Recall = 0.968388, Specificity = 0.534920
+Epoch 84, iteration 10: loss = 0.114084,  labeled loss = 0.092868, unlabeled loss = 0.007072, alpha = 3
+After Epoch 84: Validation loss = 4.654763, IoU Score = 0.679416, Dice Score = 0.798943, Precision = 0.699817, Recall = 0.965199, Specificity = 0.546664
+Epoch 85, iteration 10: loss = 0.112140,  labeled loss = 0.091089, unlabeled loss = 0.007017, alpha = 3
+After Epoch 85: Validation loss = 5.863945, IoU Score = 0.659498, Dice Score = 0.783222, Precision = 0.672749, Recall = 0.975668, Specificity = 0.492970
+Epoch 86, iteration 10: loss = 0.112122,  labeled loss = 0.091935, unlabeled loss = 0.006729, alpha = 3
+After Epoch 86: Validation loss = 5.486217, IoU Score = 0.664770, Dice Score = 0.787420, Precision = 0.679622, Recall = 0.973097, Specificity = 0.507178
+Epoch 87, iteration 10: loss = 0.107167,  labeled loss = 0.087497, unlabeled loss = 0.006557, alpha = 3
+After Epoch 87: Validation loss = 5.012783, IoU Score = 0.678070, Dice Score = 0.798049, Precision = 0.697733, Recall = 0.966191, Specificity = 0.540114
+Epoch 88, iteration 10: loss = 0.113306,  labeled loss = 0.093193, unlabeled loss = 0.006704, alpha = 3
+After Epoch 88: Validation loss = 5.502121, IoU Score = 0.669285, Dice Score = 0.791099, Precision = 0.684868, Recall = 0.972325, Specificity = 0.518641
+Epoch 89, iteration 10: loss = 0.110035,  labeled loss = 0.090581, unlabeled loss = 0.006485, alpha = 3
+After Epoch 89: Validation loss = 4.913916, IoU Score = 0.678832, Dice Score = 0.798410, Precision = 0.699166, Recall = 0.965003, Specificity = 0.545845
+Epoch 90, iteration 10: loss = 0.107161,  labeled loss = 0.088801, unlabeled loss = 0.006120, alpha = 3
+After Epoch 90: Validation loss = 5.033751, IoU Score = 0.678298, Dice Score = 0.798248, Precision = 0.697064, Recall = 0.967411, Specificity = 0.540072
+Epoch 91, iteration 10: loss = 0.106085,  labeled loss = 0.087563, unlabeled loss = 0.006174, alpha = 3
+After Epoch 91: Validation loss = 5.191812, IoU Score = 0.676457, Dice Score = 0.796757, Precision = 0.695463, Recall = 0.966766, Specificity = 0.536532
+Epoch 92, iteration 10: loss = 0.103388,  labeled loss = 0.085423, unlabeled loss = 0.005988, alpha = 3
+After Epoch 92: Validation loss = 6.074732, IoU Score = 0.665048, Dice Score = 0.787529, Precision = 0.680296, Recall = 0.972445, Specificity = 0.507213
+Epoch 93, iteration 10: loss = 0.100123,  labeled loss = 0.083260, unlabeled loss = 0.005621, alpha = 3
+After Epoch 93: Validation loss = 5.652260, IoU Score = 0.674001, Dice Score = 0.794669, Precision = 0.692094, Recall = 0.968343, Specificity = 0.531747
+Epoch 94, iteration 10: loss = 0.099563,  labeled loss = 0.082793, unlabeled loss = 0.005590, alpha = 3
+After Epoch 94: Validation loss = 5.821266, IoU Score = 0.670280, Dice Score = 0.791624, Precision = 0.687668, Recall = 0.969334, Specificity = 0.525026
+Epoch 95, iteration 10: loss = 0.097903,  labeled loss = 0.081625, unlabeled loss = 0.005426, alpha = 3
+After Epoch 95: Validation loss = 5.643241, IoU Score = 0.675925, Dice Score = 0.796086, Precision = 0.695943, Recall = 0.965513, Specificity = 0.539012
+Epoch 96, iteration 10: loss = 0.096758,  labeled loss = 0.080461, unlabeled loss = 0.005432, alpha = 3
+After Epoch 96: Validation loss = 5.913882, IoU Score = 0.672976, Dice Score = 0.794045, Precision = 0.689416, Recall = 0.970990, Specificity = 0.526690
+Epoch 97, iteration 10: loss = 0.098071,  labeled loss = 0.082348, unlabeled loss = 0.005241, alpha = 3
+After Epoch 97: Validation loss = 6.262232, IoU Score = 0.668946, Dice Score = 0.790806, Precision = 0.684961, Recall = 0.971224, Specificity = 0.516408
+Epoch 98, iteration 10: loss = 0.092959,  labeled loss = 0.077570, unlabeled loss = 0.005130, alpha = 3
+After Epoch 98: Validation loss = 6.357127, IoU Score = 0.670288, Dice Score = 0.791950, Precision = 0.687080, Recall = 0.970218, Specificity = 0.520187
+Epoch 99, iteration 10: loss = 0.091870,  labeled loss = 0.076986, unlabeled loss = 0.004961, alpha = 3
+After Epoch 99: Validation loss = 6.312046, IoU Score = 0.673264, Dice Score = 0.794157, Precision = 0.691119, Recall = 0.968532, Specificity = 0.529458
+Epoch 100, iteration 10: loss = 0.095849,  labeled loss = 0.081164, unlabeled loss = 0.004895, alpha = 3
+After Epoch 100: Validation loss = 5.614114, IoU Score = 0.682711, Dice Score = 0.801674, Precision = 0.705057, Recall = 0.962025, Specificity = 0.555233
+Training completed.
+Model trained with iou loss and 1:10 ratio saved.
+
+Ratio of labeled to unlabeled data is 1:10, but only labeled data is used here.
+Training with BCE loss function..
+Epoch 1, iteration 10: loss = 0.696320
+After Epoch 1: Validation loss = 0.694178, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 2, iteration 10: loss = 0.695066
+After Epoch 2: Validation loss = 0.694109, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 3, iteration 10: loss = 0.694178
+After Epoch 3: Validation loss = 0.694022, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 4, iteration 10: loss = 0.694290
+After Epoch 4: Validation loss = 0.693943, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 5, iteration 10: loss = 0.694924
+After Epoch 5: Validation loss = 0.693854, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 6, iteration 10: loss = 0.693743
+After Epoch 6: Validation loss = 0.693758, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 7, iteration 10: loss = 0.693975
+After Epoch 7: Validation loss = 0.693634, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 8, iteration 10: loss = 0.693888
+After Epoch 8: Validation loss = 0.693496, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 9, iteration 10: loss = 0.694140
+After Epoch 9: Validation loss = 0.693337, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 10, iteration 10: loss = 0.693359
+After Epoch 10: Validation loss = 0.693133, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 11, iteration 10: loss = 0.693030
+After Epoch 11: Validation loss = 0.692849, IoU Score = 0.496453, Dice Score = 0.639764, Precision = 0.496453, Recall = 1.000000, Specificity = 0.000000
+Epoch 12, iteration 10: loss = 0.692809
+After Epoch 12: Validation loss = 0.692437, IoU Score = 0.496503, Dice Score = 0.639814, Precision = 0.496509, Recall = 0.999985, Specificity = 0.000264
+Epoch 13, iteration 10: loss = 0.692886
+After Epoch 13: Validation loss = 0.691763, IoU Score = 0.497040, Dice Score = 0.640365, Precision = 0.497159, Recall = 0.999680, Specificity = 0.003566
+Epoch 14, iteration 10: loss = 0.691992
+After Epoch 14: Validation loss = 0.690657, IoU Score = 0.498187, Dice Score = 0.641590, Precision = 0.498846, Recall = 0.998176, Specificity = 0.012797
+Epoch 15, iteration 10: loss = 0.690607
+After Epoch 15: Validation loss = 0.688895, IoU Score = 0.503673, Dice Score = 0.647140, Precision = 0.505919, Recall = 0.993788, Specificity = 0.048148
+Epoch 16, iteration 10: loss = 0.688418
+After Epoch 16: Validation loss = 0.685987, IoU Score = 0.523361, Dice Score = 0.666968, Precision = 0.534500, Recall = 0.970618, Specificity = 0.180159
+Epoch 17, iteration 10: loss = 0.685093
+After Epoch 17: Validation loss = 0.681064, IoU Score = 0.562429, Dice Score = 0.704311, Precision = 0.597330, Recall = 0.920496, Specificity = 0.403727
+Epoch 18, iteration 10: loss = 0.680063
+After Epoch 18: Validation loss = 0.672831, IoU Score = 0.609132, Dice Score = 0.744547, Precision = 0.671081, Recall = 0.887271, Specificity = 0.571813
+Epoch 19, iteration 10: loss = 0.669215
+After Epoch 19: Validation loss = 0.653621, IoU Score = 0.550490, Dice Score = 0.695524, Precision = 0.799315, Recall = 0.654595, Specificity = 0.843219
+Epoch 20, iteration 10: loss = 0.645631
+After Epoch 20: Validation loss = 0.613902, IoU Score = 0.519833, Dice Score = 0.667620, Precision = 0.857487, Recall = 0.583251, Specificity = 0.911944
+Epoch 21, iteration 10: loss = 0.597162
+After Epoch 21: Validation loss = 0.552379, IoU Score = 0.631013, Dice Score = 0.765034, Precision = 0.767119, Recall = 0.802861, Specificity = 0.773591
+Epoch 22, iteration 10: loss = 0.509764
+After Epoch 22: Validation loss = 0.490637, IoU Score = 0.648775, Dice Score = 0.776041, Precision = 0.729002, Recall = 0.876541, Specificity = 0.678384
+Epoch 23, iteration 10: loss = 0.465600
+After Epoch 23: Validation loss = 0.458109, IoU Score = 0.651679, Dice Score = 0.781162, Precision = 0.775889, Recall = 0.824007, Specificity = 0.795035
+Epoch 24, iteration 10: loss = 0.446669
+After Epoch 24: Validation loss = 0.446421, IoU Score = 0.641112, Dice Score = 0.772002, Precision = 0.815577, Recall = 0.767188, Specificity = 0.841936
+Epoch 25, iteration 10: loss = 0.427824
+After Epoch 25: Validation loss = 0.434464, IoU Score = 0.654481, Dice Score = 0.783520, Precision = 0.808508, Recall = 0.792613, Specificity = 0.826441
+Epoch 26, iteration 10: loss = 0.409599
+After Epoch 26: Validation loss = 0.428230, IoU Score = 0.656986, Dice Score = 0.785011, Precision = 0.812530, Recall = 0.791676, Specificity = 0.827228
+Epoch 27, iteration 10: loss = 0.394802
+After Epoch 27: Validation loss = 0.423238, IoU Score = 0.671607, Dice Score = 0.795550, Precision = 0.778906, Recall = 0.845864, Specificity = 0.769271
+Epoch 28, iteration 10: loss = 0.401137
+After Epoch 28: Validation loss = 0.422802, IoU Score = 0.675611, Dice Score = 0.798019, Precision = 0.772921, Recall = 0.858619, Specificity = 0.751039
+Epoch 29, iteration 10: loss = 0.390926
+After Epoch 29: Validation loss = 0.414437, IoU Score = 0.667355, Dice Score = 0.793427, Precision = 0.815452, Recall = 0.800901, Specificity = 0.827325
+Epoch 30, iteration 10: loss = 0.375571
+After Epoch 30: Validation loss = 0.415234, IoU Score = 0.677129, Dice Score = 0.799950, Precision = 0.784195, Recall = 0.846612, Specificity = 0.769511
+Epoch 31, iteration 10: loss = 0.376538
+After Epoch 31: Validation loss = 0.408037, IoU Score = 0.674838, Dice Score = 0.797727, Precision = 0.801708, Recall = 0.823710, Specificity = 0.788747
+Epoch 32, iteration 10: loss = 0.370912
+After Epoch 32: Validation loss = 0.401298, IoU Score = 0.676857, Dice Score = 0.799552, Precision = 0.816185, Recall = 0.811835, Specificity = 0.810648
+Epoch 33, iteration 10: loss = 0.359762
+After Epoch 33: Validation loss = 0.406370, IoU Score = 0.665680, Dice Score = 0.791323, Precision = 0.837217, Recall = 0.777031, Specificity = 0.844251
+Epoch 34, iteration 10: loss = 0.355758
+After Epoch 34: Validation loss = 0.400175, IoU Score = 0.675858, Dice Score = 0.799517, Precision = 0.821962, Recall = 0.804314, Specificity = 0.821865
+Epoch 35, iteration 10: loss = 0.348118
+After Epoch 35: Validation loss = 0.400264, IoU Score = 0.673764, Dice Score = 0.797571, Precision = 0.829574, Recall = 0.793857, Specificity = 0.834502
+Epoch 36, iteration 10: loss = 0.349093
+After Epoch 36: Validation loss = 0.399230, IoU Score = 0.674134, Dice Score = 0.797876, Precision = 0.835144, Recall = 0.789137, Specificity = 0.838793
+Epoch 37, iteration 10: loss = 0.335810
+After Epoch 37: Validation loss = 0.396779, IoU Score = 0.673190, Dice Score = 0.797319, Precision = 0.836854, Recall = 0.786138, Specificity = 0.842312
+Epoch 38, iteration 10: loss = 0.339145
+After Epoch 38: Validation loss = 0.393583, IoU Score = 0.681711, Dice Score = 0.803738, Precision = 0.829502, Recall = 0.804421, Specificity = 0.832895
+Epoch 39, iteration 10: loss = 0.331056
+After Epoch 39: Validation loss = 0.392551, IoU Score = 0.688876, Dice Score = 0.807533, Precision = 0.815349, Recall = 0.828403, Specificity = 0.790430
+Epoch 40, iteration 10: loss = 0.317769
+After Epoch 40: Validation loss = 0.393235, IoU Score = 0.687993, Dice Score = 0.807951, Precision = 0.808859, Recall = 0.833196, Specificity = 0.799860
+Epoch 41, iteration 10: loss = 0.301643
+After Epoch 41: Validation loss = 0.399983, IoU Score = 0.688727, Dice Score = 0.807245, Precision = 0.795615, Recall = 0.850429, Specificity = 0.756048
+Epoch 42, iteration 10: loss = 0.317254
+After Epoch 42: Validation loss = 0.390585, IoU Score = 0.692677, Dice Score = 0.810358, Precision = 0.809096, Recall = 0.839713, Specificity = 0.783848
+Epoch 43, iteration 10: loss = 0.299894
+After Epoch 43: Validation loss = 0.396438, IoU Score = 0.684287, Dice Score = 0.805074, Precision = 0.827407, Recall = 0.809703, Specificity = 0.823771
+Epoch 44, iteration 10: loss = 0.291609
+After Epoch 44: Validation loss = 0.403054, IoU Score = 0.696608, Dice Score = 0.813444, Precision = 0.791387, Recall = 0.864582, Specificity = 0.765213
+Epoch 45, iteration 10: loss = 0.280168
+After Epoch 45: Validation loss = 0.394866, IoU Score = 0.685950, Dice Score = 0.805977, Precision = 0.827999, Recall = 0.813068, Specificity = 0.815547
+Epoch 46, iteration 10: loss = 0.281532
+After Epoch 46: Validation loss = 0.406866, IoU Score = 0.687848, Dice Score = 0.807426, Precision = 0.815913, Recall = 0.826698, Specificity = 0.805597
+Epoch 47, iteration 10: loss = 0.270376
+After Epoch 47: Validation loss = 0.403515, IoU Score = 0.684921, Dice Score = 0.805269, Precision = 0.828769, Recall = 0.810319, Specificity = 0.823658
+Epoch 48, iteration 10: loss = 0.261365
+After Epoch 48: Validation loss = 0.408945, IoU Score = 0.686807, Dice Score = 0.805630, Precision = 0.822541, Recall = 0.818296, Specificity = 0.805140
+Epoch 49, iteration 10: loss = 0.260056
+After Epoch 49: Validation loss = 0.421705, IoU Score = 0.672234, Dice Score = 0.794400, Precision = 0.847176, Recall = 0.777239, Specificity = 0.840751
+Epoch 50, iteration 10: loss = 0.249917
+After Epoch 50: Validation loss = 0.412339, IoU Score = 0.689619, Dice Score = 0.808308, Precision = 0.815954, Recall = 0.828940, Specificity = 0.806493
+Epoch 51, iteration 10: loss = 0.245184
+After Epoch 51: Validation loss = 0.424589, IoU Score = 0.693739, Dice Score = 0.810909, Precision = 0.789453, Recall = 0.863972, Specificity = 0.755312
+Epoch 52, iteration 10: loss = 0.243229
+After Epoch 52: Validation loss = 0.423679, IoU Score = 0.697459, Dice Score = 0.813587, Precision = 0.794573, Recall = 0.863015, Specificity = 0.759845
+Epoch 53, iteration 10: loss = 0.243476
+After Epoch 53: Validation loss = 0.434609, IoU Score = 0.677485, Dice Score = 0.798066, Precision = 0.838567, Recall = 0.791775, Specificity = 0.822465
+Epoch 54, iteration 10: loss = 0.237100
+After Epoch 54: Validation loss = 0.429664, IoU Score = 0.684608, Dice Score = 0.803691, Precision = 0.817509, Recall = 0.820367, Specificity = 0.795626
+Epoch 55, iteration 10: loss = 0.228825
+After Epoch 55: Validation loss = 0.427719, IoU Score = 0.681473, Dice Score = 0.802020, Precision = 0.823174, Recall = 0.811950, Specificity = 0.807747
+Epoch 56, iteration 10: loss = 0.222291
+After Epoch 56: Validation loss = 0.449570, IoU Score = 0.683685, Dice Score = 0.802880, Precision = 0.826875, Recall = 0.810756, Specificity = 0.808511
+Epoch 57, iteration 10: loss = 0.209941
+After Epoch 57: Validation loss = 0.468866, IoU Score = 0.676942, Dice Score = 0.798505, Precision = 0.832109, Recall = 0.796887, Specificity = 0.827326
+Epoch 58, iteration 10: loss = 0.205842
+After Epoch 58: Validation loss = 0.469500, IoU Score = 0.689537, Dice Score = 0.807748, Precision = 0.803864, Recall = 0.842696, Specificity = 0.772289
+Epoch 59, iteration 10: loss = 0.198710
+After Epoch 59: Validation loss = 0.478883, IoU Score = 0.682345, Dice Score = 0.803529, Precision = 0.815937, Recall = 0.822469, Specificity = 0.798578
+Epoch 60, iteration 10: loss = 0.199202
+After Epoch 60: Validation loss = 0.479652, IoU Score = 0.677752, Dice Score = 0.799218, Precision = 0.830329, Recall = 0.799964, Specificity = 0.821737
+Epoch 61, iteration 10: loss = 0.190558
+After Epoch 61: Validation loss = 0.475726, IoU Score = 0.681675, Dice Score = 0.802148, Precision = 0.816115, Recall = 0.818511, Specificity = 0.796000
+Epoch 62, iteration 10: loss = 0.196683
+After Epoch 62: Validation loss = 0.492558, IoU Score = 0.689327, Dice Score = 0.807445, Precision = 0.799325, Recall = 0.847624, Specificity = 0.765806
+Epoch 63, iteration 10: loss = 0.188831
+After Epoch 63: Validation loss = 0.491087, IoU Score = 0.680924, Dice Score = 0.802020, Precision = 0.815399, Recall = 0.818846, Specificity = 0.802961
+Epoch 64, iteration 10: loss = 0.187754
+After Epoch 64: Validation loss = 0.533101, IoU Score = 0.669886, Dice Score = 0.793170, Precision = 0.837173, Recall = 0.784121, Specificity = 0.826706
+Epoch 65, iteration 10: loss = 0.179137
+After Epoch 65: Validation loss = 0.516858, IoU Score = 0.678785, Dice Score = 0.800079, Precision = 0.818749, Recall = 0.813193, Specificity = 0.802165
+Epoch 66, iteration 10: loss = 0.169186
+After Epoch 66: Validation loss = 0.531518, IoU Score = 0.671493, Dice Score = 0.794970, Precision = 0.824613, Recall = 0.796983, Specificity = 0.817170
+Epoch 67, iteration 10: loss = 0.171360
+After Epoch 67: Validation loss = 0.524035, IoU Score = 0.672763, Dice Score = 0.795627, Precision = 0.817049, Recall = 0.806133, Specificity = 0.806987
+Epoch 68, iteration 10: loss = 0.170885
+After Epoch 68: Validation loss = 0.535873, IoU Score = 0.673299, Dice Score = 0.795933, Precision = 0.829539, Recall = 0.796706, Specificity = 0.813969
+Epoch 69, iteration 10: loss = 0.168375
+After Epoch 69: Validation loss = 0.575699, IoU Score = 0.660868, Dice Score = 0.786959, Precision = 0.838003, Recall = 0.773254, Specificity = 0.832868
+Epoch 70, iteration 10: loss = 0.166799
+After Epoch 70: Validation loss = 0.544102, IoU Score = 0.676645, Dice Score = 0.798914, Precision = 0.824587, Recall = 0.804703, Specificity = 0.818557
+Epoch 71, iteration 10: loss = 0.162071
+After Epoch 71: Validation loss = 0.551901, IoU Score = 0.678803, Dice Score = 0.800660, Precision = 0.812900, Recall = 0.818981, Specificity = 0.801559
+Epoch 72, iteration 10: loss = 0.159776
+After Epoch 72: Validation loss = 0.557422, IoU Score = 0.674493, Dice Score = 0.797293, Precision = 0.832795, Recall = 0.794550, Specificity = 0.821208
+Epoch 73, iteration 10: loss = 0.154591
+After Epoch 73: Validation loss = 0.557518, IoU Score = 0.679526, Dice Score = 0.800571, Precision = 0.810876, Recall = 0.822107, Specificity = 0.788479
+Epoch 74, iteration 10: loss = 0.150491
+After Epoch 74: Validation loss = 0.568558, IoU Score = 0.681304, Dice Score = 0.801993, Precision = 0.810250, Recall = 0.825126, Specificity = 0.789008
+Epoch 75, iteration 10: loss = 0.152178
+After Epoch 75: Validation loss = 0.603963, IoU Score = 0.673422, Dice Score = 0.795859, Precision = 0.828976, Recall = 0.796651, Specificity = 0.815124
+Epoch 76, iteration 10: loss = 0.145555
+After Epoch 76: Validation loss = 0.585723, IoU Score = 0.678606, Dice Score = 0.800622, Precision = 0.816290, Recall = 0.814995, Specificity = 0.807335
+Epoch 77, iteration 10: loss = 0.143988
+After Epoch 77: Validation loss = 0.596262, IoU Score = 0.682833, Dice Score = 0.803292, Precision = 0.801791, Recall = 0.835051, Specificity = 0.775678
+Epoch 78, iteration 10: loss = 0.150845
+After Epoch 78: Validation loss = 0.600457, IoU Score = 0.671450, Dice Score = 0.794800, Precision = 0.823544, Recall = 0.798504, Specificity = 0.816319
+Epoch 79, iteration 10: loss = 0.143414
+After Epoch 79: Validation loss = 0.603113, IoU Score = 0.677836, Dice Score = 0.799612, Precision = 0.820083, Recall = 0.809808, Specificity = 0.809330
+Epoch 80, iteration 10: loss = 0.137752
+After Epoch 80: Validation loss = 0.636095, IoU Score = 0.668901, Dice Score = 0.793227, Precision = 0.830790, Recall = 0.788699, Specificity = 0.828140
+Epoch 81, iteration 10: loss = 0.139195
+After Epoch 81: Validation loss = 0.633186, IoU Score = 0.671588, Dice Score = 0.794849, Precision = 0.823318, Recall = 0.798080, Specificity = 0.816635
+Epoch 82, iteration 10: loss = 0.139601
+After Epoch 82: Validation loss = 0.640760, IoU Score = 0.680997, Dice Score = 0.801953, Precision = 0.816162, Recall = 0.818535, Specificity = 0.799048
+Epoch 83, iteration 10: loss = 0.129448
+After Epoch 83: Validation loss = 0.651549, IoU Score = 0.672558, Dice Score = 0.795931, Precision = 0.829579, Recall = 0.794284, Specificity = 0.824809
+Epoch 84, iteration 10: loss = 0.131745
+After Epoch 84: Validation loss = 0.630948, IoU Score = 0.679861, Dice Score = 0.801234, Precision = 0.816547, Recall = 0.816408, Specificity = 0.800387
+Epoch 85, iteration 10: loss = 0.129790
+After Epoch 85: Validation loss = 0.643232, IoU Score = 0.680413, Dice Score = 0.801673, Precision = 0.808613, Recall = 0.824593, Specificity = 0.791558
+Epoch 86, iteration 10: loss = 0.129087
+After Epoch 86: Validation loss = 0.628184, IoU Score = 0.670765, Dice Score = 0.795078, Precision = 0.825927, Recall = 0.795962, Specificity = 0.820907
+Epoch 87, iteration 10: loss = 0.151771
+After Epoch 87: Validation loss = 0.591125, IoU Score = 0.676926, Dice Score = 0.798931, Precision = 0.826740, Recall = 0.802645, Specificity = 0.817425
+Epoch 88, iteration 10: loss = 0.142212
+After Epoch 88: Validation loss = 0.599688, IoU Score = 0.681886, Dice Score = 0.803109, Precision = 0.815068, Recall = 0.819643, Specificity = 0.802305
+Epoch 89, iteration 10: loss = 0.132272
+After Epoch 89: Validation loss = 0.618499, IoU Score = 0.683786, Dice Score = 0.803913, Precision = 0.805978, Recall = 0.831719, Specificity = 0.781451
+Epoch 90, iteration 10: loss = 0.128083
+After Epoch 90: Validation loss = 0.658046, IoU Score = 0.678857, Dice Score = 0.800034, Precision = 0.812064, Recall = 0.819795, Specificity = 0.789303
+Epoch 91, iteration 10: loss = 0.122530
+After Epoch 91: Validation loss = 0.649785, IoU Score = 0.685426, Dice Score = 0.805130, Precision = 0.802333, Recall = 0.837535, Specificity = 0.780434
+Epoch 92, iteration 10: loss = 0.126125
+After Epoch 92: Validation loss = 0.668784, IoU Score = 0.678383, Dice Score = 0.800368, Precision = 0.816839, Recall = 0.813343, Specificity = 0.806700
+Epoch 93, iteration 10: loss = 0.115819
+After Epoch 93: Validation loss = 0.699789, IoU Score = 0.669908, Dice Score = 0.793423, Precision = 0.828890, Recall = 0.791626, Specificity = 0.817273
+Epoch 94, iteration 10: loss = 0.117753
+After Epoch 94: Validation loss = 0.658628, IoU Score = 0.676497, Dice Score = 0.798262, Precision = 0.811452, Recall = 0.816582, Specificity = 0.791101
+Epoch 95, iteration 10: loss = 0.116908
+After Epoch 95: Validation loss = 0.685312, IoU Score = 0.678016, Dice Score = 0.800184, Precision = 0.813910, Recall = 0.816327, Specificity = 0.800916
+Epoch 96, iteration 10: loss = 0.110404
+After Epoch 96: Validation loss = 0.737448, IoU Score = 0.674859, Dice Score = 0.797479, Precision = 0.825455, Recall = 0.801009, Specificity = 0.815552
+Epoch 97, iteration 10: loss = 0.111897
+After Epoch 97: Validation loss = 0.717210, IoU Score = 0.675971, Dice Score = 0.798104, Precision = 0.819824, Recall = 0.807578, Specificity = 0.806495
+Epoch 98, iteration 10: loss = 0.110321
+After Epoch 98: Validation loss = 0.730595, IoU Score = 0.672262, Dice Score = 0.795682, Precision = 0.821289, Recall = 0.801020, Specificity = 0.812645
+Epoch 99, iteration 10: loss = 0.112288
+After Epoch 99: Validation loss = 0.725197, IoU Score = 0.672451, Dice Score = 0.795714, Precision = 0.824873, Recall = 0.798000, Specificity = 0.817800
+Epoch 100, iteration 10: loss = 0.113798
+After Epoch 100: Validation loss = 0.698980, IoU Score = 0.665360, Dice Score = 0.790047, Precision = 0.824918, Recall = 0.788719, Specificity = 0.812963
+Training completed.
+Model trained with iou loss and 1:10 ratio but labeled only saved.
