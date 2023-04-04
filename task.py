@@ -1,6 +1,6 @@
-from train import train_labeled_and_unlabeled, train_labeled_only
 import torch
 from data_loader import get_data_loader
+from train_new import train_labeled_and_unlabeled, train_labeled_only
 
 base_dir = "./"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -14,8 +14,7 @@ print(device)
 #     val_labeled_loader,
 #     device,
 #     num_epochs=100,        
-#     lr=1e-5, 
-#     use_dice = False
+#     lr=1e-5
 # )
 # # save trained model
 # torch.save(iou_trained_model.state_dict(), f'saved_model_iou_all_labeled.pt')
@@ -31,8 +30,7 @@ print(device)
 #     val_labeled_loader,
 #     device,
 #     num_epochs=100,        
-#     lr=1e-5, 
-#     use_dice = False
+#     lr=1e-5
 # )
 # # save trained model
 # torch.save(iou_trained_model.state_dict(), f'saved_model_iou_2to1.pt')
@@ -45,8 +43,7 @@ print(device)
 #     val_labeled_loader,
 #     device,
 #     num_epochs=100,        
-#     lr=1e-5, 
-#     use_dice = False
+#     lr=1e-5
 # )
 # # save trained model
 # torch.save(iou_trained_model.state_dict(), f'saved_model_iou_2to1_labeled_only.pt')
@@ -63,7 +60,6 @@ iou_trained_model = train_labeled_and_unlabeled(
     device,
     num_epochs=100,        
     lr=1e-5, 
-    use_dice = False
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to1.pt')
@@ -76,8 +72,7 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to1_labeled_only.pt')
@@ -93,8 +88,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to3.pt')
@@ -107,8 +101,7 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to3_labeled_only.pt')
@@ -124,8 +117,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to5.pt')
@@ -138,8 +130,7 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to5_labeled_only.pt')
@@ -155,8 +146,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to10.pt')
@@ -169,8 +159,7 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
-    use_dice = False
+    lr=1e-5
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_1to10_labeled_only.pt')

@@ -84,34 +84,26 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
         total_iou_score = 0
         total_dice_score = 0
         
+        criterion = nn.BCEWithLogitsLoss()
+        
         with torch.no_grad():
             for data, target in val_loader:
                 data, target = data.to(device), target.to(device)
                 output = model(data)
                 
-                if use_dice:
-                    dice_loss = supervised_dice_loss(output, target)
-                    dice_score = 1 - dice_loss.item()
-                    val_loss += dice_loss.item()
-                    total_dice_score += dice_score
-                    
-                else:
-                    iou_loss = supervised_iou_loss(output, target)
-                    iou_score = 1 - iou_loss.item()
-                    val_loss += iou_loss.item()
-                    total_iou_score += iou_score
-                    
+                loss = criterion(output, target)
+                val_loss += loss.item()
+                total_iou_score += iou_score(output, target)
+                total_dice_score += dice_score(output, target)
                 
-        if use_dice:
-            print('After Epoch {}: Validation Loss = {:.6f}, Dice Score = {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_dice_score/len(val_loader)))
-        else:
-            print('After Epoch {}: Validation Loss = {:.6f}, IoU Score = {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_iou_score/len(val_loader)))
+        print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, dice Score = {(total_dice_score/len(val_loader)):.6f}")
+                
 
     print("Training completed.")
 
     return model
 
-def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=50, lr=1e-4, use_dice=True):
+def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=50, lr=1e-4):
     """
     Train a supervised segmentation model with labeled data only.
 
@@ -121,7 +113,6 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
         device (str): Device to run the training on, e.g., "cpu" or "cuda".
         num_epochs (int, optional): Number of training epochs. Default is 50.
         lr (float, optional): Learning rate for the optimizer. Default is 1e-4.
-        use_dice (bool, optional): If True, dice loss used. If IOU loss used. Default is True.
 
     Returns:
         nn.Module: The trained segmentation model.
@@ -130,12 +121,10 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
     model = link_net(classes=1).to(device)
 
     # Define loss function and optimizer
+    criterion = nn.BCEWithLogitsLoss()
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
-    if use_dice:
-        print("Training with dice loss function...")
-    else:
-        print("Training with iou loss function..")
+    print("Training with BCE loss function..")
 
     for epoch in range(num_epochs):
         running_loss = 0.0
@@ -150,11 +139,7 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
             # forward + backward + optimize
             pred_with_label = model(images_with_label)
 
-            # determine the loss function used
-            if use_dice:
-                loss = supervised_dice_loss(pred_with_label, labels)
-            else:
-                loss = supervised_iou_loss(pred_with_label, labels)
+            loss = criterion(pred_with_label, labels)
 
             loss.backward()
             optimizer.step()
@@ -174,24 +159,20 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
         val_loss = 0
         total_iou_score = 0
         total_dice_score = 0
-
+        
+        criterion = nn.BCEWithLogitsLoss()
+        
         with torch.no_grad():
             for data, target in val_loader:
                 data, target = data.to(device), target.to(device)
                 output = model(data)
-
-                if use_dice:
-                    val_loss += supervised_dice_loss(output, target).item()
-                    total_dice_score += dice_score(output, target)
-
-                else:
-                    val_loss += supervised_iou_loss(output, target).item()
-                    total_iou_score += iou_score(output, target)
-
-        if use_dice:
-            print('Epoch {}, Validation Loss: {:.6f} Dice Score: {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_dice_score/len(val_loader)))
-        else:
-            print('Epoch {}, Validation Loss: {:.6f} IoU Score: {:.6f}'.format(epoch+1, val_loss/len(val_loader), total_iou_score/len(val_loader)))
+                
+                loss = criterion(output, target)
+                val_loss += loss.item()
+                total_iou_score += iou_score(output, target)
+                total_dice_score += dice_score(output, target)
+                
+        print(f"After Epoch {epoch+1}: Validation loss = {(val_loss/len(val_loader)):.6f}, IoU Score = {(total_iou_score/len(val_loader)):.6f}, dice Score = {(total_dice_score/len(val_loader)):.6f}")
             
     print("Training completed.")
 
