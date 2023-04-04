@@ -7,6 +7,8 @@ from PIL import Image
 import numpy as np
 import random
 
+base_dir = "../../comp-master/"
+
 def preprocess_mask(mask, label):
     mask = np.float32(mask)
     mask[mask == 2.0] = 0.0
@@ -29,7 +31,7 @@ class OxfordPetsDataset(Dataset):
         """
         self.img_labels = img_labels
         self.img_dir = img_dir
-        self.mask_dir = os.path.join("annotations", "trimaps")
+        self.mask_dir = os.path.join("../../comp-master/annotations", "trimaps")
         self.transform = transform
         self.mask_transform = transforms.Compose([transforms.ToTensor(),     
                             transforms.Resize((256, 256)),

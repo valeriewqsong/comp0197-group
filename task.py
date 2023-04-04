@@ -2,7 +2,7 @@ import torch
 from dataloader import get_data_loader
 from train import train_labeled_and_unlabeled, train_labeled_only
 
-base_dir = "./"
+base_dir = "../../comp-master/"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
@@ -14,7 +14,8 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    base_dir=base_dir
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_iou_all_labeled.pt')
