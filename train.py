@@ -138,7 +138,7 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
     print("Training with BCE loss function..")
 
     for epoch in range(num_epochs):
-        # running_loss = 0.0
+        running_loss = 0.0
 
         # Train on labeled data only
         for i, (images_with_label, labels) in enumerate(train_loader_with_label):
