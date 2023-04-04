@@ -94,11 +94,15 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
         # if i == 1:
         #     ax.set_ylim([0, max(data1[i])])
         # elif i == 2:
-        #     ax.set_ylim([0.45, 0.81])
+        #     ax.set_ylim([0.75, 0.81])
         # elif i == 3:
-        #     ax.set_ylim([0.65, 0.9])
+        #     ax.set_ylim([0.84, 0.89])
         # elif i == 4:
-        #     ax.set_ylim([0.75, 0.95])
+        #     ax.set_ylim([0.84, 0.91])
+        # elif i == 5:
+        #     ax.set_ylim([0.82, 0.91])
+        # elif i == 6:
+        #     ax.set_ylim([0.8, 0.9])
         ax.plot(data1[0], data1[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(semisup_csv)}')
         ax.plot(data2[0], data2[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(sup_csv)}')
         ax.plot(data3[0], data3[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(fully_sup_csv)}')
@@ -187,7 +191,7 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     png_file = os.path.join('results_img', 'diff_ratio_comparison' + '.png')
     plt.savefig(png_file)
     
-plot_four_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv')
+# plot_four_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv')
 
 def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
     '''Plot comparison between the different ratios of labeled to unlabeled data'''
