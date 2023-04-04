@@ -52,30 +52,6 @@ def semi_supervised_bce_loss(y_pred, y_true, unlabeled_pred, alpha=0.5):
     return labeled_loss + alpha * unlabeled_loss, labeled_loss, unlabeled_loss
 
 
-def dice_score(y_pred, y_true, smooth=1e-5):
-    """
-    Compute the Dice score for given predictions and ground truth masks.
-
-    Args:
-        y_pred (torch.Tensor): Predictions, of shape (batch_size, 1, height, width).
-        y_true (torch.Tensor): Ground truth masks, of shape (batch_size, 1, height, width).
-        smooth (float): Smoothing factor to prevent division by zero. Default is 1e-5.
-
-    Returns:
-        float: Mean Dice score across the batch.
-    """
-    # Convert model outputs to binary masks
-    y_pred = logits_to_binary(y_pred)
-    
-    # Compute the intersection and union between the ground truth and the predictions
-    intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
-    union = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) - intersection
-
-    # Calculate the Dice score and average it across the batch
-    dice = (2 * intersection + smooth) / (union + smooth)
-    return dice.mean().item()
-
-
 def iou_score(y_pred, y_true, smooth=1e-5):
     """
     Compute the Intersection over Union (IoU) score for given predictions and ground truth masks.
@@ -98,6 +74,30 @@ def iou_score(y_pred, y_true, smooth=1e-5):
     # Calculate the IoU score and average it across the batch
     iou = (intersection + smooth) / (union + smooth)
     return iou.mean().item()
+
+
+def dice_score(y_pred, y_true, smooth=1e-5):
+    """
+    Compute the Dice score for given predictions and ground truth masks.
+
+    Args:
+        y_pred (torch.Tensor): Predictions, of shape (batch_size, 1, height, width).
+        y_true (torch.Tensor): Ground truth masks, of shape (batch_size, 1, height, width).
+        smooth (float): Smoothing factor to prevent division by zero. Default is 1e-5.
+
+    Returns:
+        float: Mean Dice score across the batch.
+    """
+    # Convert model outputs to binary masks
+    y_pred = logits_to_binary(y_pred)
+    
+    # Compute the intersection and union between the ground truth and the predictions
+    intersection = torch.sum(y_true * y_pred, dim=(1, 2, 3))
+    total = torch.sum(y_true, dim=(1, 2, 3)) + torch.sum(y_pred, dim=(1, 2, 3)) 
+
+    # Calculate the Dice score and average it across the batch
+    dice = (2 * intersection + smooth) / (total + smooth)
+    return dice.mean().item()
 
 
 def precision(y_pred, y_true):
