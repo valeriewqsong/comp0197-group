@@ -1,5 +1,6 @@
 import re
 import csv
+import os
 
 def txt_to_csv(input_txt, output_csv):
     # Read .txt file
@@ -28,14 +29,19 @@ def txt_to_csv(input_txt, output_csv):
 
             data.append([epoch, val_loss, iou_score, dice_score, precision, recall, specificity])
 
-    # Write .csv file
-    with open(output_csv, 'w', newline='') as csvfile:
+    # Create the 'csv_metrics' folder if it doesn't exist
+    os.makedirs('csv_metrics', exist_ok=True)
+
+    # Write .csv file in the 'csv_metrics' folder
+    output_csv_path = os.path.join('csv_metrics', output_csv)
+    with open(output_csv_path, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(['Epoch', 'Validation Loss', 'IoU Score', 'Dice Score', 'Precision', 'Recall', 'Specificity'])
         csv_writer.writerows(data)
 
 # This part assumes that you have already unzipped the zip files.
-txt_to_csv('output_txt/output_1to5_unlabeled.txt', 'csv_metrics/metrics_1to5_unlabeled.csv')
-txt_to_csv('output_txt/output_1to5_labeled.txt', 'csv_metrics/metrics_1to5_labeled.csv')
-txt_to_csv('output_txt/output_1to10_unlabeled.txt', 'csv_metrics/metrics_1to10_unlabeled.csv')
-txt_to_csv('output_txt/output_1to10_labeled.txt', 'csv_metrics/metrics_1to10_labeled.csv')
+txt_to_csv('output_txt/output_1to5_unlabeled.txt', 'metrics_1to5_unlabeled.csv')
+txt_to_csv('output_txt/output_1to5_labeled.txt', 'metrics_1to5_labeled.csv')
+txt_to_csv('output_txt/output_1to10_unlabeled.txt', 'metrics_1to10_unlabeled.csv')
+txt_to_csv('output_txt/output_1to10_labeled.txt', 'metrics_1to10_labeled.csv')
+txt_to_csv('output_txt/output_1to3_unlabeled.txt', 'metrics_1to3_unlabeled.csv')
