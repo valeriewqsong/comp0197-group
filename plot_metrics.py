@@ -32,10 +32,11 @@ def plot_metrics(csv_file):
     fig.suptitle(fig_name, fontsize=16)
     axes = axes.ravel()  # Flatten axes for easier iteration
     
+    marker_size = 3
     # Create a plot for each column
     for i in range(1, len(headers)):
         ax = axes[i-1]
-        ax.plot(data[0], data[i], marker='o', linestyle='-')
+        ax.plot(data[0], data[i], marker='o', markersize = marker_size, linestyle='-')
         if max(data[i]) < 1:
             ax.set_ylim([0, 1])
         else:
@@ -86,16 +87,21 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
         file_name = file_name.replace(".csv", "")
         return file_name
     
+    marker_size = 3
     # Create a plot for each column
     for i in range(1, len(headers1)):
         ax = axes[i-1]
-        if max(data1[i]) < 1:
-            ax.set_ylim([0, 1])
-        else:
+        if i == 1:
             ax.set_ylim([0, max(data1[i])])
-        ax.plot(data1[0], data1[i], marker='o', linestyle='-', label=f'{extract_label(semisup_csv)}')
-        ax.plot(data2[0], data2[i], marker='o', linestyle='-', label=f'{extract_label(sup_csv)}')
-        ax.plot(data3[0], data3[i], marker='o', linestyle='-', label=f'{extract_label(fully_sup_csv)}')
+        elif i == 2:
+            ax.set_ylim([0.5, 0.85])
+        elif i == 3:
+            ax.set_ylim([0.6, 0.9])
+        # elif i == 4:
+        #     ax.set_ylim([0.75, 1])
+        ax.plot(data1[0], data1[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(semisup_csv)}')
+        ax.plot(data2[0], data2[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(sup_csv)}')
+        ax.plot(data3[0], data3[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(fully_sup_csv)}')
         ax.set_xlabel(headers1[0])
         ax.set_ylabel(headers1[i])
         ax.set_title(f'{headers1[i]} vs {headers1[0]}')
@@ -150,6 +156,7 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
         file_name = file_name.replace(".csv", "")
         return file_name
     
+    marker_size = 3
     # Create a plot for each column
     for i in range(1, len(headers1)):
         ax = axes[i-1]
@@ -157,10 +164,10 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
             ax.set_ylim([0, 1])
         else:
             ax.set_ylim([0, max(data4[i])])
-        ax.plot(data1[0], data1[i], marker='o', linestyle='-', label=f'{extract_label(csv_1to1)}')
-        ax.plot(data2[0], data2[i], marker='o', linestyle='-', label=f'{extract_label(csv_1to3)}')
-        ax.plot(data3[0], data3[i], marker='o', linestyle='-', label=f'{extract_label(csv_1to5)}')
-        ax.plot(data4[0], data4[i], marker='o', linestyle='-', label=f'{extract_label(csv_1to10)}')
+        ax.plot(data1[0], data1[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to1)}')
+        ax.plot(data2[0], data2[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to3)}')
+        ax.plot(data3[0], data3[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to5)}')
+        ax.plot(data4[0], data4[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to10)}')
         ax.set_xlabel(headers1[0])
         ax.set_ylabel(headers1[i])
         ax.set_title(f'{headers1[i]} vs {headers1[0]}')
@@ -181,3 +188,63 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     plt.savefig(png_file)
     
 plot_four_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv')
+
+# def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
+#     '''Plot comparison between the different ratios of labeled to unlabeled data'''
+#     # Read data from both CSV files
+#     headers1, data1 = read_csv_data(csv_1to1)
+#     headers2, data2 = read_csv_data(csv_1to3)
+#     headers3, data3 = read_csv_data(csv_1to5)
+#     headers4, data4 = read_csv_data(csv_1to10)
+#     headers5, data5 = read_csv_data(csv_fullsup)
+
+#     # Transpose data for easier plotting
+#     data1 = list(zip(*data1))
+#     data2 = list(zip(*data2))
+#     data3 = list(zip(*data3))
+#     data4 = list(zip(*data4))
+#     data5 = list(zip(*data5))
+    
+#     # Create a 2*3 grid of subplots
+#     fig, axes = plt.subplots(2, 3, figsize=(16, 12))
+#     axes = axes.ravel()
+    
+#     # Function to extract label from CSV file name
+#     def extract_label(file_name):
+#         file_name = file_name.replace("csv_metrics/metrics_", "")
+#         file_name = file_name.replace(".csv", "")
+#         return file_name
+    
+#     marker_size = 3
+#     # Create a plot for each column
+#     for i in range(1, len(headers1)):
+#         ax = axes[i-1]
+#         if max(data4[i]) < 1:
+#             ax.set_ylim([0, 1])
+#         else:
+#             ax.set_ylim([0, max(data4[i])])
+#         ax.plot(data1[0], data1[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to1)}')
+#         ax.plot(data2[0], data2[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to3)}')
+#         ax.plot(data3[0], data3[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to5)}')
+#         ax.plot(data4[0], data4[i], marker='o', markersize = marker_size, linestyle='-', label=f'{extract_label(csv_1to10)}')
+        
+#         ax.set_xlabel(headers1[0])
+#         ax.set_ylabel(headers1[i])
+#         ax.set_title(f'{headers1[i]} vs {headers1[0]}')
+#         ax.grid(True)
+#         ax.legend()
+
+#     # Add an overall figure title
+#     fig.suptitle("Performance comparison between different ratios of labeled to unlabeled data", fontsize=16)
+    
+#     # Adjust layout for better appearance and provide space for the suptitle
+#     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
+    
+#     # Create the 'results_img' folder if it doesn't exist
+#     os.makedirs('results_img', exist_ok=True)
+    
+#     # Save the figure as a .png file with the same name as the first .csv file, in the 'results_img' folder
+#     png_file = os.path.join('results_img', 'diff_ratio_comparison' + '.png')
+#     plt.savefig(png_file)
+    
+# plot_four_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv')
