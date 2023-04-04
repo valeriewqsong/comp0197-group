@@ -131,7 +131,7 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
 
         # Train on labeled data only
         for i, (images_with_label, labels) in enumerate(train_loader_with_label):
-            images_with_label, labels = images_with_label.to(device), labels.to(device)
+            images_with_label, labels = images_with_label.to(device, dtype=torch.float32), labels.to(device, dtype=torch.float32)
 
             # zero the parameter gradients
             optimizer.zero_grad()
@@ -164,7 +164,7 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
         
         with torch.no_grad():
             for data, target in val_loader:
-                data, target = data.to(device), target.to(device)
+                data, target = data.to(device, dtype=torch.float32), target.to(device, dtype=torch.float32)
                 output = model(data)
                 
                 loss = criterion(output, target)
