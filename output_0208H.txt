@@ -1,0 +1,52 @@
+cpu
+Training data length: 5879
+Validation data length: 734
+Test data length: 736
+Training labeled dataset length: 2939
+Training unlabeled dataset length: 2940
+Validation dataset length: 734
+Test dataset length: 736
+Equal split, ratio of labeled to unlabeled data is 1:1
+Training with BCE loss function..
+After Epoch 1: Validation loss = 0.668901, IoU Score = 0.497477, Dice Score = 0.994954
+After Epoch 2: Validation loss = 0.499206, IoU Score = 0.631403, Dice Score = 1.262806
+After Epoch 3: Validation loss = 0.477261, IoU Score = 0.744017, Dice Score = 1.488034
+After Epoch 4: Validation loss = 0.463271, IoU Score = 0.756523, Dice Score = 1.513045
+After Epoch 5: Validation loss = 0.439847, IoU Score = 0.766758, Dice Score = 1.533516
+After Epoch 6: Validation loss = 0.408344, IoU Score = 0.767357, Dice Score = 1.534714
+After Epoch 7: Validation loss = 0.373524, IoU Score = 0.765596, Dice Score = 1.531193
+After Epoch 8: Validation loss = 0.339126, IoU Score = 0.778206, Dice Score = 1.556413
+After Epoch 9: Validation loss = 0.318607, IoU Score = 0.782166, Dice Score = 1.564331
+After Epoch 10: Validation loss = 0.305332, IoU Score = 0.788195, Dice Score = 1.576391
+After Epoch 11: Validation loss = 0.286595, IoU Score = 0.786635, Dice Score = 1.573270
+After Epoch 12: Validation loss = 0.290634, IoU Score = 0.784550, Dice Score = 1.569099
+After Epoch 13: Validation loss = 0.295998, IoU Score = 0.786678, Dice Score = 1.573356
+After Epoch 14: Validation loss = 0.308890, IoU Score = 0.786504, Dice Score = 1.573008
+After Epoch 15: Validation loss = 0.323683, IoU Score = 0.788942, Dice Score = 1.577884
+After Epoch 16: Validation loss = 0.340070, IoU Score = 0.786167, Dice Score = 1.572335
+After Epoch 17: Validation loss = 0.345859, IoU Score = 0.787204, Dice Score = 1.574407
+After Epoch 18: Validation loss = 0.370740, IoU Score = 0.788089, Dice Score = 1.576177
+After Epoch 19: Validation loss = 0.389925, IoU Score = 0.787342, Dice Score = 1.574684
+After Epoch 20: Validation loss = 0.397061, IoU Score = 0.786403, Dice Score = 1.572807
+After Epoch 21: Validation loss = 0.408712, IoU Score = 0.786908, Dice Score = 1.573816
+After Epoch 22: Validation loss = 0.434725, IoU Score = 0.788551, Dice Score = 1.577102
+After Epoch 23: Validation loss = 0.435314, IoU Score = 0.785781, Dice Score = 1.571562
+After Epoch 24: Validation loss = 0.455819, IoU Score = 0.785768, Dice Score = 1.571536
+After Epoch 25: Validation loss = 0.475419, IoU Score = 0.788200, Dice Score = 1.576401
+After Epoch 26: Validation loss = 0.486198, IoU Score = 0.787861, Dice Score = 1.575722
+After Epoch 27: Validation loss = 0.503861, IoU Score = 0.788408, Dice Score = 1.576816
+After Epoch 28: Validation loss = 0.511439, IoU Score = 0.788126, Dice Score = 1.576252
+After Epoch 29: Validation loss = 0.525723, IoU Score = 0.787044, Dice Score = 1.574087
+After Epoch 30: Validation loss = 0.545309, IoU Score = 0.786125, Dice Score = 1.572250
+After Epoch 31: Validation loss = 0.555715, IoU Score = 0.784234, Dice Score = 1.568467
+After Epoch 32: Validation loss = 0.563482, IoU Score = 0.786166, Dice Score = 1.572333
+After Epoch 33: Validation loss = 0.576919, IoU Score = 0.784003, Dice Score = 1.568006
+After Epoch 34: Validation loss = 0.594848, IoU Score = 0.786606, Dice Score = 1.573212
+After Epoch 35: Validation loss = 0.609190, IoU Score = 0.787172, Dice Score = 1.574344
+After Epoch 36: Validation loss = 0.609814, IoU Score = 0.787284, Dice Score = 1.574569
+After Epoch 37: Validation loss = 0.618624, IoU Score = 0.784523, Dice Score = 1.569047
+After Epoch 38: Validation loss = 0.627491, IoU Score = 0.787579, Dice Score = 1.575158
+After Epoch 39: Validation loss = 0.651079, IoU Score = 0.786439, Dice Score = 1.572878
+After Epoch 40: Validation loss = 0.658662, IoU Score = 0.784083, Dice Score = 1.568166
+After Epoch 41: Validation loss = 0.691127, IoU Score = 0.787739, Dice Score = 1.575478
+After Epoch 42: Validation loss = 0.698586, IoU Score = 0.784798, Dice Score = 1.569595

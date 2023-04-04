@@ -1,0 +1,69 @@
+cpu
+Training data length: 5879
+Validation data length: 734
+Test data length: 736
+Training labeled dataset length: 5879
+Training unlabeled dataset length: 0
+Validation dataset length: 734
+Test dataset length: 736
+All the data is labeled.
+Training with BCE loss function..
+Epoch 1, iteration 1: loss = 0.696102
+Epoch 1, iteration 2: loss = 0.695285
+Epoch 1, iteration 3: loss = 0.693712
+Epoch 1, iteration 4: loss = 0.692376
+Epoch 1, iteration 5: loss = 0.695884
+Epoch 1, iteration 6: loss = 0.692098
+Epoch 1, iteration 7: loss = 0.696046
+Epoch 1, iteration 8: loss = 0.694409
+Epoch 1, iteration 9: loss = 0.693232
+Epoch 1, iteration 10: loss = 0.693621
+Epoch 1, iteration 11: loss = 0.695514
+Epoch 1, iteration 12: loss = 0.692693
+Epoch 1, iteration 13: loss = 0.693308
+Epoch 1, iteration 14: loss = 0.693436
+Epoch 1, iteration 15: loss = 0.695581
+Epoch 1, iteration 16: loss = 0.693751
+Epoch 1, iteration 17: loss = 0.695229
+Epoch 1, iteration 18: loss = 0.694132
+Epoch 1, iteration 19: loss = 0.693788
+Epoch 1, iteration 20: loss = 0.695951
+Epoch 1, iteration 21: loss = 0.690105
+Epoch 1, iteration 22: loss = 0.690953
+Epoch 1, iteration 23: loss = 0.695890
+Epoch 1, iteration 24: loss = 0.696177
+Epoch 1, iteration 25: loss = 0.692773
+Epoch 1, iteration 26: loss = 0.690937
+Epoch 1, iteration 27: loss = 0.694307
+Epoch 1, iteration 28: loss = 0.693681
+Epoch 1, iteration 29: loss = 0.697630
+Epoch 1, iteration 30: loss = 0.692942
+Epoch 1, iteration 31: loss = 0.691523
+Epoch 1, iteration 32: loss = 0.688894
+Epoch 1, iteration 33: loss = 0.693191
+Epoch 1, iteration 34: loss = 0.691178
+Epoch 1, iteration 35: loss = 0.694324
+Epoch 1, iteration 36: loss = 0.691341
+Epoch 1, iteration 37: loss = 0.695504
+Epoch 1, iteration 38: loss = 0.695039
+Epoch 1, iteration 39: loss = 0.691966
+Epoch 1, iteration 40: loss = 0.689565
+Epoch 1, iteration 41: loss = 0.693244
+Epoch 1, iteration 42: loss = 0.692659
+Epoch 1, iteration 43: loss = 0.690305
+Epoch 1, iteration 44: loss = 0.693017
+Epoch 1, iteration 45: loss = 0.694950
+Epoch 1, iteration 46: loss = 0.689930
+Epoch 1, iteration 47: loss = 0.693386
+Epoch 1, iteration 48: loss = 0.694465
+Epoch 1, iteration 49: loss = 0.694184
+Epoch 1, iteration 50: loss = 0.696292
+Epoch 1, iteration 51: loss = 0.694731
+Epoch 1, iteration 52: loss = 0.695919
+Epoch 1, iteration 53: loss = 0.693040
+Epoch 1, iteration 54: loss = 0.690565
+Epoch 1, iteration 55: loss = 0.696103
+Epoch 1, iteration 56: loss = 0.697743
+Epoch 1, iteration 57: loss = 0.692278
+Epoch 1, iteration 58: loss = 0.694751
+Epoch 1, iteration 59: loss = 0.689794

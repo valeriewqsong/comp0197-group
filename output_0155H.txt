@@ -1,0 +1,75 @@
+cpu
+Training data length: 5879
+Validation data length: 734
+Test data length: 736
+Training labeled dataset length: 2939
+Training unlabeled dataset length: 2940
+Validation dataset length: 734
+Test dataset length: 736
+Equal split, ratio of labeled to unlabeled data is 1:1
+Training with BCE loss function..
+Epoch 1, iteration 1: loss = 0.693673, labeled loss = 0.693673, unlabeled loss = 0.657464, alpha = 0
+Epoch 1, iteration 2: loss = 0.694902, labeled loss = 0.694902, unlabeled loss = 0.657556, alpha = 0
+Epoch 1, iteration 3: loss = 0.691483, labeled loss = 0.691483, unlabeled loss = 0.657712, alpha = 0
+Epoch 1, iteration 4: loss = 0.693718, labeled loss = 0.693718, unlabeled loss = 0.657746, alpha = 0
+Epoch 1, iteration 5: loss = 0.690815, labeled loss = 0.690815, unlabeled loss = 0.657611, alpha = 0
+Epoch 1, iteration 6: loss = 0.696916, labeled loss = 0.696916, unlabeled loss = 0.657638, alpha = 0
+Epoch 1, iteration 7: loss = 0.692353, labeled loss = 0.692353, unlabeled loss = 0.657652, alpha = 0
+Epoch 1, iteration 8: loss = 0.696983, labeled loss = 0.696983, unlabeled loss = 0.657688, alpha = 0
+Epoch 1, iteration 9: loss = 0.696877, labeled loss = 0.696877, unlabeled loss = 0.657724, alpha = 0
+Epoch 1, iteration 10: loss = 0.689090, labeled loss = 0.689090, unlabeled loss = 0.657805, alpha = 0
+Epoch 1, iteration 11: loss = 0.693632, labeled loss = 0.693632, unlabeled loss = 0.657776, alpha = 0
+Epoch 1, iteration 12: loss = 0.697389, labeled loss = 0.697389, unlabeled loss = 0.657864, alpha = 0
+Epoch 1, iteration 13: loss = 0.689068, labeled loss = 0.689068, unlabeled loss = 0.657916, alpha = 0
+Epoch 1, iteration 14: loss = 0.690540, labeled loss = 0.690540, unlabeled loss = 0.657810, alpha = 0
+Epoch 1, iteration 15: loss = 0.694591, labeled loss = 0.694591, unlabeled loss = 0.657770, alpha = 0
+Epoch 1, iteration 16: loss = 0.693701, labeled loss = 0.693701, unlabeled loss = 0.657746, alpha = 0
+Epoch 1, iteration 17: loss = 0.696314, labeled loss = 0.696314, unlabeled loss = 0.657742, alpha = 0
+Epoch 1, iteration 18: loss = 0.691891, labeled loss = 0.691891, unlabeled loss = 0.657772, alpha = 0
+Epoch 1, iteration 19: loss = 0.693477, labeled loss = 0.693477, unlabeled loss = 0.657714, alpha = 0
+Epoch 1, iteration 20: loss = 0.692170, labeled loss = 0.692170, unlabeled loss = 0.657726, alpha = 0
+Epoch 1, iteration 21: loss = 0.692586, labeled loss = 0.692586, unlabeled loss = 0.657689, alpha = 0
+Epoch 1, iteration 22: loss = 0.687345, labeled loss = 0.687345, unlabeled loss = 0.657622, alpha = 0
+Epoch 1, iteration 23: loss = 0.693932, labeled loss = 0.693932, unlabeled loss = 0.657629, alpha = 0
+Epoch 1, iteration 24: loss = 0.694033, labeled loss = 0.694033, unlabeled loss = 0.657450, alpha = 0
+Epoch 1, iteration 25: loss = 0.691478, labeled loss = 0.691478, unlabeled loss = 0.657411, alpha = 0
+Epoch 1, iteration 26: loss = 0.695302, labeled loss = 0.695302, unlabeled loss = 0.657314, alpha = 0
+Epoch 1, iteration 27: loss = 0.694291, labeled loss = 0.694291, unlabeled loss = 0.657267, alpha = 0
+Epoch 1, iteration 28: loss = 0.694132, labeled loss = 0.694132, unlabeled loss = 0.657207, alpha = 0
+Epoch 1, iteration 29: loss = 0.690736, labeled loss = 0.690736, unlabeled loss = 0.657244, alpha = 0
+Epoch 1, iteration 30: loss = 0.688570, labeled loss = 0.688570, unlabeled loss = 0.657086, alpha = 0
+Epoch 1, iteration 31: loss = 0.691360, labeled loss = 0.691360, unlabeled loss = 0.657058, alpha = 0
+Epoch 1, iteration 32: loss = 0.694275, labeled loss = 0.694275, unlabeled loss = 0.656973, alpha = 0
+Epoch 1, iteration 33: loss = 0.693204, labeled loss = 0.693204, unlabeled loss = 0.656949, alpha = 0
+Epoch 1, iteration 34: loss = 0.690467, labeled loss = 0.690467, unlabeled loss = 0.656813, alpha = 0
+Epoch 1, iteration 35: loss = 0.692180, labeled loss = 0.692180, unlabeled loss = 0.656557, alpha = 0
+Epoch 1, iteration 36: loss = 0.693745, labeled loss = 0.693745, unlabeled loss = 0.656521, alpha = 0
+Epoch 1, iteration 37: loss = 0.695689, labeled loss = 0.695689, unlabeled loss = 0.656418, alpha = 0
+Epoch 1, iteration 38: loss = 0.692978, labeled loss = 0.692978, unlabeled loss = 0.656372, alpha = 0
+Epoch 1, iteration 39: loss = 0.691805, labeled loss = 0.691805, unlabeled loss = 0.656307, alpha = 0
+Epoch 1, iteration 40: loss = 0.693411, labeled loss = 0.693411, unlabeled loss = 0.656227, alpha = 0
+Epoch 1, iteration 41: loss = 0.689982, labeled loss = 0.689982, unlabeled loss = 0.656160, alpha = 0
+Epoch 1, iteration 42: loss = 0.691701, labeled loss = 0.691701, unlabeled loss = 0.656144, alpha = 0
+Epoch 1, iteration 43: loss = 0.691189, labeled loss = 0.691189, unlabeled loss = 0.655983, alpha = 0
+Epoch 1, iteration 44: loss = 0.691236, labeled loss = 0.691236, unlabeled loss = 0.655843, alpha = 0
+Epoch 1, iteration 45: loss = 0.692056, labeled loss = 0.692056, unlabeled loss = 0.655774, alpha = 0
+Epoch 1, iteration 46: loss = 0.697189, labeled loss = 0.697189, unlabeled loss = 0.655592, alpha = 0
+Epoch 1, iteration 47: loss = 0.688031, labeled loss = 0.688031, unlabeled loss = 0.655519, alpha = 0
+Epoch 1, iteration 48: loss = 0.688120, labeled loss = 0.688120, unlabeled loss = 0.655416, alpha = 0
+Epoch 1, iteration 49: loss = 0.689863, labeled loss = 0.689863, unlabeled loss = 0.655387, alpha = 0
+Epoch 1, iteration 50: loss = 0.690346, labeled loss = 0.690346, unlabeled loss = 0.655241, alpha = 0
+Epoch 1, iteration 51: loss = 0.690025, labeled loss = 0.690025, unlabeled loss = 0.654986, alpha = 0
+Epoch 1, iteration 52: loss = 0.687679, labeled loss = 0.687679, unlabeled loss = 0.654840, alpha = 0
+Epoch 1, iteration 53: loss = 0.693295, labeled loss = 0.693295, unlabeled loss = 0.654525, alpha = 0
+Epoch 1, iteration 54: loss = 0.691075, labeled loss = 0.691075, unlabeled loss = 0.654496, alpha = 0
+Epoch 1, iteration 55: loss = 0.685442, labeled loss = 0.685442, unlabeled loss = 0.654205, alpha = 0
+Epoch 1, iteration 56: loss = 0.692283, labeled loss = 0.692283, unlabeled loss = 0.654077, alpha = 0
+Epoch 1, iteration 57: loss = 0.695260, labeled loss = 0.695260, unlabeled loss = 0.653861, alpha = 0
+Epoch 1, iteration 58: loss = 0.684206, labeled loss = 0.684206, unlabeled loss = 0.653646, alpha = 0
+Epoch 1, iteration 59: loss = 0.691525, labeled loss = 0.691525, unlabeled loss = 0.653551, alpha = 0
+Epoch 1, iteration 60: loss = 0.689406, labeled loss = 0.689406, unlabeled loss = 0.653434, alpha = 0
+Epoch 1, iteration 61: loss = 0.692252, labeled loss = 0.692252, unlabeled loss = 0.653222, alpha = 0
+Epoch 1, iteration 62: loss = 0.692035, labeled loss = 0.692035, unlabeled loss = 0.653144, alpha = 0
+Epoch 1, iteration 63: loss = 0.693851, labeled loss = 0.693851, unlabeled loss = 0.652873, alpha = 0
+Epoch 1, iteration 64: loss = 0.692774, labeled loss = 0.692774, unlabeled loss = 0.652687, alpha = 0
+Epoch 1, iteration 65: loss = 0.687009, labeled loss = 0.687009, unlabeled loss = 0.652532, alpha = 0
