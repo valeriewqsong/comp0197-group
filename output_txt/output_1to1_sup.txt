@@ -1,0 +1,1006 @@
+
+
+Equal split, ratio of labeled to unlabeled data is 1:1, but only labeled data is used here.
+Training with BCE loss function..
+Epoch 1, iteration 10: loss = 0.692926
+Epoch 1, iteration 20: loss = 0.692289
+Epoch 1, iteration 30: loss = 0.693881
+Epoch 1, iteration 40: loss = 0.693143
+Epoch 1, iteration 50: loss = 0.691409
+Epoch 1, iteration 60: loss = 0.690491
+Epoch 1, iteration 70: loss = 0.688749
+Epoch 1, iteration 80: loss = 0.688369
+Epoch 1, iteration 90: loss = 0.687261
+After Epoch 1: Validation loss = 0.683160, IoU Score = 0.326002, Dice Score = 0.484704, Precision = 0.829760, Recall = 0.353030, Specificity = 0.942222
+Epoch 2, iteration 10: loss = 0.649686
+Epoch 2, iteration 20: loss = 0.560802
+Epoch 2, iteration 30: loss = 0.526822
+Epoch 2, iteration 40: loss = 0.519135
+Epoch 2, iteration 50: loss = 0.515522
+Epoch 2, iteration 60: loss = 0.512800
+Epoch 2, iteration 70: loss = 0.498899
+Epoch 2, iteration 80: loss = 0.482015
+Epoch 2, iteration 90: loss = 0.499816
+After Epoch 2: Validation loss = 0.488069, IoU Score = 0.721326, Dice Score = 0.832488, Precision = 0.773121, Recall = 0.918383, Specificity = 0.743496
+Epoch 3, iteration 10: loss = 0.488886
+Epoch 3, iteration 20: loss = 0.483336
+Epoch 3, iteration 30: loss = 0.481786
+Epoch 3, iteration 40: loss = 0.480979
+Epoch 3, iteration 50: loss = 0.467340
+Epoch 3, iteration 60: loss = 0.464213
+Epoch 3, iteration 70: loss = 0.477623
+Epoch 3, iteration 80: loss = 0.485059
+Epoch 3, iteration 90: loss = 0.485892
+After Epoch 3: Validation loss = 0.472955, IoU Score = 0.749609, Dice Score = 0.852657, Precision = 0.822510, Recall = 0.896983, Specificity = 0.806346
+Epoch 4, iteration 10: loss = 0.460367
+Epoch 4, iteration 20: loss = 0.457616
+Epoch 4, iteration 30: loss = 0.463525
+Epoch 4, iteration 40: loss = 0.466501
+Epoch 4, iteration 50: loss = 0.461384
+Epoch 4, iteration 60: loss = 0.460745
+Epoch 4, iteration 70: loss = 0.468390
+Epoch 4, iteration 80: loss = 0.456712
+Epoch 4, iteration 90: loss = 0.459755
+After Epoch 4: Validation loss = 0.461486, IoU Score = 0.759935, Dice Score = 0.859733, Precision = 0.851868, Recall = 0.877845, Specificity = 0.843351
+Epoch 5, iteration 10: loss = 0.445308
+Epoch 5, iteration 20: loss = 0.454483
+Epoch 5, iteration 30: loss = 0.445701
+Epoch 5, iteration 40: loss = 0.438942
+Epoch 5, iteration 50: loss = 0.441762
+Epoch 5, iteration 60: loss = 0.430617
+Epoch 5, iteration 70: loss = 0.453151
+Epoch 5, iteration 80: loss = 0.459524
+Epoch 5, iteration 90: loss = 0.441431
+After Epoch 5: Validation loss = 0.450636, IoU Score = 0.766660, Dice Score = 0.864272, Precision = 0.863584, Recall = 0.874208, Specificity = 0.849547
+Epoch 6, iteration 10: loss = 0.439432
+Epoch 6, iteration 20: loss = 0.437945
+Epoch 6, iteration 30: loss = 0.437521
+Epoch 6, iteration 40: loss = 0.420576
+Epoch 6, iteration 50: loss = 0.432897
+Epoch 6, iteration 60: loss = 0.423964
+Epoch 6, iteration 70: loss = 0.425864
+Epoch 6, iteration 80: loss = 0.415352
+Epoch 6, iteration 90: loss = 0.421854
+After Epoch 6: Validation loss = 0.436265, IoU Score = 0.772059, Dice Score = 0.867930, Precision = 0.869191, Recall = 0.875115, Specificity = 0.860360
+Epoch 7, iteration 10: loss = 0.422097
+Epoch 7, iteration 20: loss = 0.410901
+Epoch 7, iteration 30: loss = 0.410345
+Epoch 7, iteration 40: loss = 0.406860
+Epoch 7, iteration 50: loss = 0.407968
+Epoch 7, iteration 60: loss = 0.409957
+Epoch 7, iteration 70: loss = 0.405799
+Epoch 7, iteration 80: loss = 0.400613
+Epoch 7, iteration 90: loss = 0.395803
+After Epoch 7: Validation loss = 0.422157, IoU Score = 0.777666, Dice Score = 0.871687, Precision = 0.867574, Recall = 0.883985, Specificity = 0.854555
+Epoch 8, iteration 10: loss = 0.383798
+Epoch 8, iteration 20: loss = 0.399336
+Epoch 8, iteration 30: loss = 0.384432
+Epoch 8, iteration 40: loss = 0.367841
+Epoch 8, iteration 50: loss = 0.382894
+Epoch 8, iteration 60: loss = 0.381053
+Epoch 8, iteration 70: loss = 0.366342
+Epoch 8, iteration 80: loss = 0.364324
+Epoch 8, iteration 90: loss = 0.362318
+After Epoch 8: Validation loss = 0.391282, IoU Score = 0.773490, Dice Score = 0.868487, Precision = 0.890350, Recall = 0.856765, Specificity = 0.876450
+Epoch 9, iteration 10: loss = 0.346244
+Epoch 9, iteration 20: loss = 0.341466
+Epoch 9, iteration 30: loss = 0.328830
+Epoch 9, iteration 40: loss = 0.324863
+Epoch 9, iteration 50: loss = 0.306931
+Epoch 9, iteration 60: loss = 0.317163
+Epoch 9, iteration 70: loss = 0.301815
+Epoch 9, iteration 80: loss = 0.288091
+Epoch 9, iteration 90: loss = 0.272770
+After Epoch 9: Validation loss = 0.304909, IoU Score = 0.774212, Dice Score = 0.868667, Precision = 0.896992, Recall = 0.850544, Specificity = 0.888911
+Epoch 10, iteration 10: loss = 0.246016
+Epoch 10, iteration 20: loss = 0.239985
+Epoch 10, iteration 30: loss = 0.227288
+Epoch 10, iteration 40: loss = 0.226243
+Epoch 10, iteration 50: loss = 0.210754
+Epoch 10, iteration 60: loss = 0.215483
+Epoch 10, iteration 70: loss = 0.215709
+Epoch 10, iteration 80: loss = 0.213792
+Epoch 10, iteration 90: loss = 0.221194
+After Epoch 10: Validation loss = 0.266454, IoU Score = 0.785193, Dice Score = 0.876512, Precision = 0.876412, Recall = 0.884660, Specificity = 0.865780
+Epoch 11, iteration 10: loss = 0.195624
+Epoch 11, iteration 20: loss = 0.198113
+Epoch 11, iteration 30: loss = 0.189455
+Epoch 11, iteration 40: loss = 0.197680
+Epoch 11, iteration 50: loss = 0.199401
+Epoch 11, iteration 60: loss = 0.199934
+Epoch 11, iteration 70: loss = 0.190965
+Epoch 11, iteration 80: loss = 0.198222
+Epoch 11, iteration 90: loss = 0.192076
+After Epoch 11: Validation loss = 0.268660, IoU Score = 0.781468, Dice Score = 0.873753, Precision = 0.892565, Recall = 0.863663, Specificity = 0.879708
+Epoch 12, iteration 10: loss = 0.183319
+Epoch 12, iteration 20: loss = 0.181183
+Epoch 12, iteration 30: loss = 0.184116
+Epoch 12, iteration 40: loss = 0.179431
+Epoch 12, iteration 50: loss = 0.173679
+Epoch 12, iteration 60: loss = 0.172233
+Epoch 12, iteration 70: loss = 0.178938
+Epoch 12, iteration 80: loss = 0.171349
+Epoch 12, iteration 90: loss = 0.173605
+After Epoch 12: Validation loss = 0.271609, IoU Score = 0.788695, Dice Score = 0.878564, Precision = 0.876239, Recall = 0.889093, Specificity = 0.856741
+Epoch 13, iteration 10: loss = 0.163595
+Epoch 13, iteration 20: loss = 0.159056
+Epoch 13, iteration 30: loss = 0.172090
+Epoch 13, iteration 40: loss = 0.161329
+Epoch 13, iteration 50: loss = 0.160471
+Epoch 13, iteration 60: loss = 0.169034
+Epoch 13, iteration 70: loss = 0.163338
+Epoch 13, iteration 80: loss = 0.166551
+Epoch 13, iteration 90: loss = 0.163586
+After Epoch 13: Validation loss = 0.278955, IoU Score = 0.788838, Dice Score = 0.878407, Precision = 0.870708, Recall = 0.894802, Specificity = 0.850240
+Epoch 14, iteration 10: loss = 0.158369
+Epoch 14, iteration 20: loss = 0.151587
+Epoch 14, iteration 30: loss = 0.153053
+Epoch 14, iteration 40: loss = 0.161594
+Epoch 14, iteration 50: loss = 0.155599
+Epoch 14, iteration 60: loss = 0.154245
+Epoch 14, iteration 70: loss = 0.154109
+Epoch 14, iteration 80: loss = 0.152307
+Epoch 14, iteration 90: loss = 0.150194
+After Epoch 14: Validation loss = 0.285369, IoU Score = 0.787107, Dice Score = 0.877262, Precision = 0.876723, Recall = 0.886449, Specificity = 0.858049
+Epoch 15, iteration 10: loss = 0.144580
+Epoch 15, iteration 20: loss = 0.143614
+Epoch 15, iteration 30: loss = 0.144650
+Epoch 15, iteration 40: loss = 0.145330
+Epoch 15, iteration 50: loss = 0.142726
+Epoch 15, iteration 60: loss = 0.144641
+Epoch 15, iteration 70: loss = 0.144153
+Epoch 15, iteration 80: loss = 0.143885
+Epoch 15, iteration 90: loss = 0.142850
+After Epoch 15: Validation loss = 0.290131, IoU Score = 0.784518, Dice Score = 0.875397, Precision = 0.881867, Recall = 0.877759, Specificity = 0.867614
+Epoch 16, iteration 10: loss = 0.136581
+Epoch 16, iteration 20: loss = 0.134494
+Epoch 16, iteration 30: loss = 0.132020
+Epoch 16, iteration 40: loss = 0.135984
+Epoch 16, iteration 50: loss = 0.129863
+Epoch 16, iteration 60: loss = 0.137000
+Epoch 16, iteration 70: loss = 0.135602
+Epoch 16, iteration 80: loss = 0.140765
+Epoch 16, iteration 90: loss = 0.136461
+After Epoch 16: Validation loss = 0.304592, IoU Score = 0.784169, Dice Score = 0.875192, Precision = 0.883900, Recall = 0.875477, Specificity = 0.868783
+Epoch 17, iteration 10: loss = 0.123537
+Epoch 17, iteration 20: loss = 0.124442
+Epoch 17, iteration 30: loss = 0.132162
+Epoch 17, iteration 40: loss = 0.129905
+Epoch 17, iteration 50: loss = 0.128739
+Epoch 17, iteration 60: loss = 0.128901
+Epoch 17, iteration 70: loss = 0.128218
+Epoch 17, iteration 80: loss = 0.129651
+Epoch 17, iteration 90: loss = 0.125388
+After Epoch 17: Validation loss = 0.314269, IoU Score = 0.785459, Dice Score = 0.876073, Precision = 0.874729, Recall = 0.886265, Specificity = 0.859054
+Epoch 18, iteration 10: loss = 0.120265
+Epoch 18, iteration 20: loss = 0.111716
+Epoch 18, iteration 30: loss = 0.118686
+Epoch 18, iteration 40: loss = 0.121798
+Epoch 18, iteration 50: loss = 0.122214
+Epoch 18, iteration 60: loss = 0.121700
+Epoch 18, iteration 70: loss = 0.119053
+Epoch 18, iteration 80: loss = 0.128095
+Epoch 18, iteration 90: loss = 0.121083
+After Epoch 18: Validation loss = 0.317561, IoU Score = 0.786492, Dice Score = 0.876770, Precision = 0.872405, Recall = 0.889925, Specificity = 0.855814
+Epoch 19, iteration 10: loss = 0.115253
+Epoch 19, iteration 20: loss = 0.114227
+Epoch 19, iteration 30: loss = 0.113951
+Epoch 19, iteration 40: loss = 0.110335
+Epoch 19, iteration 50: loss = 0.115869
+Epoch 19, iteration 60: loss = 0.115821
+Epoch 19, iteration 70: loss = 0.117391
+Epoch 19, iteration 80: loss = 0.119462
+Epoch 19, iteration 90: loss = 0.118132
+After Epoch 19: Validation loss = 0.333282, IoU Score = 0.786607, Dice Score = 0.876873, Precision = 0.871311, Recall = 0.890820, Specificity = 0.855012
+Epoch 20, iteration 10: loss = 0.116279
+Epoch 20, iteration 20: loss = 0.109717
+Epoch 20, iteration 30: loss = 0.109852
+Epoch 20, iteration 40: loss = 0.111291
+Epoch 20, iteration 50: loss = 0.109333
+Epoch 20, iteration 60: loss = 0.109627
+Epoch 20, iteration 70: loss = 0.118011
+Epoch 20, iteration 80: loss = 0.110210
+Epoch 20, iteration 90: loss = 0.109507
+After Epoch 20: Validation loss = 0.344725, IoU Score = 0.783731, Dice Score = 0.874832, Precision = 0.880316, Recall = 0.878169, Specificity = 0.865887
+Epoch 21, iteration 10: loss = 0.106949
+Epoch 21, iteration 20: loss = 0.104535
+Epoch 21, iteration 30: loss = 0.106929
+Epoch 21, iteration 40: loss = 0.106624
+Epoch 21, iteration 50: loss = 0.105460
+Epoch 21, iteration 60: loss = 0.107816
+Epoch 21, iteration 70: loss = 0.110721
+Epoch 21, iteration 80: loss = 0.107015
+Epoch 21, iteration 90: loss = 0.104754
+After Epoch 21: Validation loss = 0.345730, IoU Score = 0.785358, Dice Score = 0.875746, Precision = 0.875320, Recall = 0.885044, Specificity = 0.858281
+Epoch 22, iteration 10: loss = 0.105343
+Epoch 22, iteration 20: loss = 0.102038
+Epoch 22, iteration 30: loss = 0.093993
+Epoch 22, iteration 40: loss = 0.099049
+Epoch 22, iteration 50: loss = 0.101603
+Epoch 22, iteration 60: loss = 0.102897
+Epoch 22, iteration 70: loss = 0.104530
+Epoch 22, iteration 80: loss = 0.104222
+Epoch 22, iteration 90: loss = 0.098063
+After Epoch 22: Validation loss = 0.363927, IoU Score = 0.783832, Dice Score = 0.874848, Precision = 0.878972, Recall = 0.879339, Specificity = 0.865826
+Epoch 23, iteration 10: loss = 0.097326
+Epoch 23, iteration 20: loss = 0.095301
+Epoch 23, iteration 30: loss = 0.097048
+Epoch 23, iteration 40: loss = 0.097393
+Epoch 23, iteration 50: loss = 0.101447
+Epoch 23, iteration 60: loss = 0.098398
+Epoch 23, iteration 70: loss = 0.095140
+Epoch 23, iteration 80: loss = 0.099785
+Epoch 23, iteration 90: loss = 0.097115
+After Epoch 23: Validation loss = 0.367725, IoU Score = 0.786488, Dice Score = 0.876655, Precision = 0.865443, Recall = 0.896758, Specificity = 0.848472
+Epoch 24, iteration 10: loss = 0.093908
+Epoch 24, iteration 20: loss = 0.094991
+Epoch 24, iteration 30: loss = 0.094898
+Epoch 24, iteration 40: loss = 0.093434
+Epoch 24, iteration 50: loss = 0.094322
+Epoch 24, iteration 60: loss = 0.097602
+Epoch 24, iteration 70: loss = 0.093441
+Epoch 24, iteration 80: loss = 0.093393
+Epoch 24, iteration 90: loss = 0.097738
+After Epoch 24: Validation loss = 0.379637, IoU Score = 0.780671, Dice Score = 0.872665, Precision = 0.883062, Recall = 0.871572, Specificity = 0.869910
+Epoch 25, iteration 10: loss = 0.093493
+Epoch 25, iteration 20: loss = 0.090868
+Epoch 25, iteration 30: loss = 0.086930
+Epoch 25, iteration 40: loss = 0.089548
+Epoch 25, iteration 50: loss = 0.091287
+Epoch 25, iteration 60: loss = 0.094604
+Epoch 25, iteration 70: loss = 0.087774
+Epoch 25, iteration 80: loss = 0.092358
+Epoch 25, iteration 90: loss = 0.091702
+After Epoch 25: Validation loss = 0.385491, IoU Score = 0.782445, Dice Score = 0.873823, Precision = 0.876755, Recall = 0.879750, Specificity = 0.863318
+Epoch 26, iteration 10: loss = 0.086839
+Epoch 26, iteration 20: loss = 0.085580
+Epoch 26, iteration 30: loss = 0.087180
+Epoch 26, iteration 40: loss = 0.087351
+Epoch 26, iteration 50: loss = 0.087763
+Epoch 26, iteration 60: loss = 0.086375
+Epoch 26, iteration 70: loss = 0.085670
+Epoch 26, iteration 80: loss = 0.088930
+Epoch 26, iteration 90: loss = 0.088892
+After Epoch 26: Validation loss = 0.398656, IoU Score = 0.781296, Dice Score = 0.872994, Precision = 0.878706, Recall = 0.876370, Specificity = 0.866481
+Epoch 27, iteration 10: loss = 0.086979
+Epoch 27, iteration 20: loss = 0.086630
+Epoch 27, iteration 30: loss = 0.081307
+Epoch 27, iteration 40: loss = 0.087867
+Epoch 27, iteration 50: loss = 0.085005
+Epoch 27, iteration 60: loss = 0.083690
+Epoch 27, iteration 70: loss = 0.084338
+Epoch 27, iteration 80: loss = 0.083525
+Epoch 27, iteration 90: loss = 0.084382
+After Epoch 27: Validation loss = 0.407796, IoU Score = 0.783196, Dice Score = 0.874460, Precision = 0.874300, Recall = 0.883322, Specificity = 0.861177
+Epoch 28, iteration 10: loss = 0.082977
+Epoch 28, iteration 20: loss = 0.079513
+Epoch 28, iteration 30: loss = 0.087339
+Epoch 28, iteration 40: loss = 0.083568
+Epoch 28, iteration 50: loss = 0.083582
+Epoch 28, iteration 60: loss = 0.086074
+Epoch 28, iteration 70: loss = 0.083750
+Epoch 28, iteration 80: loss = 0.082808
+Epoch 28, iteration 90: loss = 0.081747
+After Epoch 28: Validation loss = 0.408981, IoU Score = 0.781001, Dice Score = 0.872916, Precision = 0.879195, Recall = 0.875523, Specificity = 0.867404
+Epoch 29, iteration 10: loss = 0.080532
+Epoch 29, iteration 20: loss = 0.081360
+Epoch 29, iteration 30: loss = 0.079946
+Epoch 29, iteration 40: loss = 0.081899
+Epoch 29, iteration 50: loss = 0.080991
+Epoch 29, iteration 60: loss = 0.077075
+Epoch 29, iteration 70: loss = 0.080264
+Epoch 29, iteration 80: loss = 0.083408
+Epoch 29, iteration 90: loss = 0.084107
+After Epoch 29: Validation loss = 0.418987, IoU Score = 0.782459, Dice Score = 0.873845, Precision = 0.871952, Recall = 0.884594, Specificity = 0.855133
+Epoch 30, iteration 10: loss = 0.077645
+Epoch 30, iteration 20: loss = 0.077747
+Epoch 30, iteration 30: loss = 0.078190
+Epoch 30, iteration 40: loss = 0.077509
+Epoch 30, iteration 50: loss = 0.076665
+Epoch 30, iteration 60: loss = 0.077884
+Epoch 30, iteration 70: loss = 0.080425
+Epoch 30, iteration 80: loss = 0.078656
+Epoch 30, iteration 90: loss = 0.078440
+After Epoch 30: Validation loss = 0.429212, IoU Score = 0.781499, Dice Score = 0.873362, Precision = 0.878566, Recall = 0.876621, Specificity = 0.867324
+Epoch 31, iteration 10: loss = 0.075572
+Epoch 31, iteration 20: loss = 0.073547
+Epoch 31, iteration 30: loss = 0.076900
+Epoch 31, iteration 40: loss = 0.075318
+Epoch 31, iteration 50: loss = 0.071797
+Epoch 31, iteration 60: loss = 0.078532
+Epoch 31, iteration 70: loss = 0.077970
+Epoch 31, iteration 80: loss = 0.079745
+Epoch 31, iteration 90: loss = 0.076229
+After Epoch 31: Validation loss = 0.434334, IoU Score = 0.779715, Dice Score = 0.871970, Precision = 0.882391, Recall = 0.870609, Specificity = 0.871509
+Epoch 32, iteration 10: loss = 0.073218
+Epoch 32, iteration 20: loss = 0.074650
+Epoch 32, iteration 30: loss = 0.078263
+Epoch 32, iteration 40: loss = 0.075455
+Epoch 32, iteration 50: loss = 0.071088
+Epoch 32, iteration 60: loss = 0.075226
+Epoch 32, iteration 70: loss = 0.073937
+Epoch 32, iteration 80: loss = 0.072509
+Epoch 32, iteration 90: loss = 0.076687
+After Epoch 32: Validation loss = 0.449334, IoU Score = 0.774972, Dice Score = 0.868639, Precision = 0.887979, Recall = 0.859426, Specificity = 0.879298
+Epoch 33, iteration 10: loss = 0.074990
+Epoch 33, iteration 20: loss = 0.073053
+Epoch 33, iteration 30: loss = 0.073110
+Epoch 33, iteration 40: loss = 0.077839
+Epoch 33, iteration 50: loss = 0.070106
+Epoch 33, iteration 60: loss = 0.073182
+Epoch 33, iteration 70: loss = 0.075055
+Epoch 33, iteration 80: loss = 0.075147
+Epoch 33, iteration 90: loss = 0.071803
+After Epoch 33: Validation loss = 0.448120, IoU Score = 0.778095, Dice Score = 0.870861, Precision = 0.884035, Recall = 0.866952, Specificity = 0.871115
+Epoch 34, iteration 10: loss = 0.071469
+Epoch 34, iteration 20: loss = 0.075017
+Epoch 34, iteration 30: loss = 0.071867
+Epoch 34, iteration 40: loss = 0.073029
+Epoch 34, iteration 50: loss = 0.072691
+Epoch 34, iteration 60: loss = 0.068251
+Epoch 34, iteration 70: loss = 0.073229
+Epoch 34, iteration 80: loss = 0.070020
+Epoch 34, iteration 90: loss = 0.071960
+After Epoch 34: Validation loss = 0.452656, IoU Score = 0.782203, Dice Score = 0.873770, Precision = 0.874857, Recall = 0.881155, Specificity = 0.862049
+Epoch 35, iteration 10: loss = 0.071244
+Epoch 35, iteration 20: loss = 0.069469
+Epoch 35, iteration 30: loss = 0.067142
+Epoch 35, iteration 40: loss = 0.068759
+Epoch 35, iteration 50: loss = 0.064777
+Epoch 35, iteration 60: loss = 0.068154
+Epoch 35, iteration 70: loss = 0.068989
+Epoch 35, iteration 80: loss = 0.068626
+Epoch 35, iteration 90: loss = 0.068316
+After Epoch 35: Validation loss = 0.467940, IoU Score = 0.781245, Dice Score = 0.873164, Precision = 0.881197, Recall = 0.873622, Specificity = 0.871686
+Epoch 36, iteration 10: loss = 0.066286
+Epoch 36, iteration 20: loss = 0.066409
+Epoch 36, iteration 30: loss = 0.065558
+Epoch 36, iteration 40: loss = 0.064673
+Epoch 36, iteration 50: loss = 0.064800
+Epoch 36, iteration 60: loss = 0.065045
+Epoch 36, iteration 70: loss = 0.063596
+Epoch 36, iteration 80: loss = 0.067830
+Epoch 36, iteration 90: loss = 0.066023
+After Epoch 36: Validation loss = 0.479384, IoU Score = 0.783280, Dice Score = 0.874481, Precision = 0.869508, Recall = 0.887881, Specificity = 0.852830
+Epoch 37, iteration 10: loss = 0.066241
+Epoch 37, iteration 20: loss = 0.065899
+Epoch 37, iteration 30: loss = 0.066690
+Epoch 37, iteration 40: loss = 0.065446
+Epoch 37, iteration 50: loss = 0.064294
+Epoch 37, iteration 60: loss = 0.064552
+Epoch 37, iteration 70: loss = 0.064325
+Epoch 37, iteration 80: loss = 0.063733
+Epoch 37, iteration 90: loss = 0.061947
+After Epoch 37: Validation loss = 0.483223, IoU Score = 0.783833, Dice Score = 0.874938, Precision = 0.873007, Recall = 0.884999, Specificity = 0.860326
+Epoch 38, iteration 10: loss = 0.062248
+Epoch 38, iteration 20: loss = 0.062966
+Epoch 38, iteration 30: loss = 0.063559
+Epoch 38, iteration 40: loss = 0.063943
+Epoch 38, iteration 50: loss = 0.063465
+Epoch 38, iteration 60: loss = 0.064051
+Epoch 38, iteration 70: loss = 0.064497
+Epoch 38, iteration 80: loss = 0.063288
+Epoch 38, iteration 90: loss = 0.063488
+After Epoch 38: Validation loss = 0.497104, IoU Score = 0.780295, Dice Score = 0.872537, Precision = 0.879245, Recall = 0.874324, Specificity = 0.865799
+Epoch 39, iteration 10: loss = 0.061442
+Epoch 39, iteration 20: loss = 0.059774
+Epoch 39, iteration 30: loss = 0.061876
+Epoch 39, iteration 40: loss = 0.061916
+Epoch 39, iteration 50: loss = 0.060433
+Epoch 39, iteration 60: loss = 0.060258
+Epoch 39, iteration 70: loss = 0.064775
+Epoch 39, iteration 80: loss = 0.062371
+Epoch 39, iteration 90: loss = 0.062810
+After Epoch 39: Validation loss = 0.498949, IoU Score = 0.782818, Dice Score = 0.874079, Precision = 0.872924, Recall = 0.883667, Specificity = 0.856518
+Epoch 40, iteration 10: loss = 0.059832
+Epoch 40, iteration 20: loss = 0.059537
+Epoch 40, iteration 30: loss = 0.062346
+Epoch 40, iteration 40: loss = 0.062952
+Epoch 40, iteration 50: loss = 0.064863
+Epoch 40, iteration 60: loss = 0.061578
+Epoch 40, iteration 70: loss = 0.062069
+Epoch 40, iteration 80: loss = 0.061153
+Epoch 40, iteration 90: loss = 0.060462
+After Epoch 40: Validation loss = 0.505220, IoU Score = 0.781219, Dice Score = 0.873148, Precision = 0.879995, Recall = 0.874732, Specificity = 0.868050
+Epoch 41, iteration 10: loss = 0.060478
+Epoch 41, iteration 20: loss = 0.058820
+Epoch 41, iteration 30: loss = 0.060049
+Epoch 41, iteration 40: loss = 0.060157
+Epoch 41, iteration 50: loss = 0.060920
+Epoch 41, iteration 60: loss = 0.062850
+Epoch 41, iteration 70: loss = 0.063857
+Epoch 41, iteration 80: loss = 0.063187
+Epoch 41, iteration 90: loss = 0.063057
+After Epoch 41: Validation loss = 0.496702, IoU Score = 0.780521, Dice Score = 0.872622, Precision = 0.877708, Recall = 0.875867, Specificity = 0.865575
+Epoch 42, iteration 10: loss = 0.061594
+Epoch 42, iteration 20: loss = 0.059145
+Epoch 42, iteration 30: loss = 0.060426
+Epoch 42, iteration 40: loss = 0.060347
+Epoch 42, iteration 50: loss = 0.058196
+Epoch 42, iteration 60: loss = 0.059865
+Epoch 42, iteration 70: loss = 0.060561
+Epoch 42, iteration 80: loss = 0.062486
+Epoch 42, iteration 90: loss = 0.059114
+After Epoch 42: Validation loss = 0.507630, IoU Score = 0.779856, Dice Score = 0.872260, Precision = 0.881189, Recall = 0.871530, Specificity = 0.871170
+Epoch 43, iteration 10: loss = 0.056530
+Epoch 43, iteration 20: loss = 0.057500
+Epoch 43, iteration 30: loss = 0.057501
+Epoch 43, iteration 40: loss = 0.057941
+Epoch 43, iteration 50: loss = 0.056034
+Epoch 43, iteration 60: loss = 0.057176
+Epoch 43, iteration 70: loss = 0.060867
+Epoch 43, iteration 80: loss = 0.060335
+Epoch 43, iteration 90: loss = 0.058852
+After Epoch 43: Validation loss = 0.518204, IoU Score = 0.784000, Dice Score = 0.875074, Precision = 0.870318, Recall = 0.887881, Specificity = 0.855846
+Epoch 44, iteration 10: loss = 0.055651
+Epoch 44, iteration 20: loss = 0.056975
+Epoch 44, iteration 30: loss = 0.056155
+Epoch 44, iteration 40: loss = 0.055692
+Epoch 44, iteration 50: loss = 0.055696
+Epoch 44, iteration 60: loss = 0.055961
+Epoch 44, iteration 70: loss = 0.054845
+Epoch 44, iteration 80: loss = 0.056515
+Epoch 44, iteration 90: loss = 0.056106
+After Epoch 44: Validation loss = 0.537233, IoU Score = 0.780639, Dice Score = 0.872712, Precision = 0.878061, Recall = 0.875592, Specificity = 0.866696
+Epoch 45, iteration 10: loss = 0.054898
+Epoch 45, iteration 20: loss = 0.054109
+Epoch 45, iteration 30: loss = 0.056912
+Epoch 45, iteration 40: loss = 0.055450
+Epoch 45, iteration 50: loss = 0.053116
+Epoch 45, iteration 60: loss = 0.055325
+Epoch 45, iteration 70: loss = 0.053718
+Epoch 45, iteration 80: loss = 0.053765
+Epoch 45, iteration 90: loss = 0.054290
+After Epoch 45: Validation loss = 0.550650, IoU Score = 0.780131, Dice Score = 0.872420, Precision = 0.878737, Recall = 0.874514, Specificity = 0.867931
+Epoch 46, iteration 10: loss = 0.053617
+Epoch 46, iteration 20: loss = 0.052131
+Epoch 46, iteration 30: loss = 0.053073
+Epoch 46, iteration 40: loss = 0.052466
+Epoch 46, iteration 50: loss = 0.053852
+Epoch 46, iteration 60: loss = 0.052699
+Epoch 46, iteration 70: loss = 0.055304
+Epoch 46, iteration 80: loss = 0.055786
+Epoch 46, iteration 90: loss = 0.055365
+After Epoch 46: Validation loss = 0.554245, IoU Score = 0.781292, Dice Score = 0.873260, Precision = 0.877798, Recall = 0.876877, Specificity = 0.867319
+Epoch 47, iteration 10: loss = 0.054538
+Epoch 47, iteration 20: loss = 0.052448
+Epoch 47, iteration 30: loss = 0.053561
+Epoch 47, iteration 40: loss = 0.055323
+Epoch 47, iteration 50: loss = 0.051626
+Epoch 47, iteration 60: loss = 0.053263
+Epoch 47, iteration 70: loss = 0.054443
+Epoch 47, iteration 80: loss = 0.053122
+Epoch 47, iteration 90: loss = 0.054358
+After Epoch 47: Validation loss = 0.547000, IoU Score = 0.781585, Dice Score = 0.873456, Precision = 0.877156, Recall = 0.877709, Specificity = 0.866651
+Epoch 48, iteration 10: loss = 0.053279
+Epoch 48, iteration 20: loss = 0.052296
+Epoch 48, iteration 30: loss = 0.052417
+Epoch 48, iteration 40: loss = 0.054143
+Epoch 48, iteration 50: loss = 0.052967
+Epoch 48, iteration 60: loss = 0.052748
+Epoch 48, iteration 70: loss = 0.052249
+Epoch 48, iteration 80: loss = 0.051299
+Epoch 48, iteration 90: loss = 0.052413
+After Epoch 48: Validation loss = 0.559426, IoU Score = 0.777631, Dice Score = 0.870558, Precision = 0.880538, Recall = 0.869199, Specificity = 0.869660
+Epoch 49, iteration 10: loss = 0.050931
+Epoch 49, iteration 20: loss = 0.051228
+Epoch 49, iteration 30: loss = 0.050106
+Epoch 49, iteration 40: loss = 0.053619
+Epoch 49, iteration 50: loss = 0.051226
+Epoch 49, iteration 60: loss = 0.050146
+Epoch 49, iteration 70: loss = 0.050439
+Epoch 49, iteration 80: loss = 0.052701
+Epoch 49, iteration 90: loss = 0.051520
+After Epoch 49: Validation loss = 0.565922, IoU Score = 0.780621, Dice Score = 0.872711, Precision = 0.876473, Recall = 0.877219, Specificity = 0.864014
+Epoch 50, iteration 10: loss = 0.049679
+Epoch 50, iteration 20: loss = 0.052061
+Epoch 50, iteration 30: loss = 0.051453
+Epoch 50, iteration 40: loss = 0.051420
+Epoch 50, iteration 50: loss = 0.049510
+Epoch 50, iteration 60: loss = 0.051222
+Epoch 50, iteration 70: loss = 0.048938
+Epoch 50, iteration 80: loss = 0.051505
+Epoch 50, iteration 90: loss = 0.051281
+After Epoch 50: Validation loss = 0.581232, IoU Score = 0.780518, Dice Score = 0.872615, Precision = 0.878950, Recall = 0.874483, Specificity = 0.868299
+Epoch 51, iteration 10: loss = 0.050001
+Epoch 51, iteration 20: loss = 0.050956
+Epoch 51, iteration 30: loss = 0.048424
+Epoch 51, iteration 40: loss = 0.047555
+Epoch 51, iteration 50: loss = 0.050102
+Epoch 51, iteration 60: loss = 0.052370
+Epoch 51, iteration 70: loss = 0.050560
+Epoch 51, iteration 80: loss = 0.050316
+Epoch 51, iteration 90: loss = 0.047937
+After Epoch 51: Validation loss = 0.583376, IoU Score = 0.778339, Dice Score = 0.871153, Precision = 0.881054, Recall = 0.869859, Specificity = 0.870311
+Epoch 52, iteration 10: loss = 0.049016
+Epoch 52, iteration 20: loss = 0.049267
+Epoch 52, iteration 30: loss = 0.047294
+Epoch 52, iteration 40: loss = 0.050256
+Epoch 52, iteration 50: loss = 0.050849
+Epoch 52, iteration 60: loss = 0.047235
+Epoch 52, iteration 70: loss = 0.047645
+Epoch 52, iteration 80: loss = 0.048692
+Epoch 52, iteration 90: loss = 0.051716
+After Epoch 52: Validation loss = 0.591869, IoU Score = 0.777785, Dice Score = 0.870774, Precision = 0.884984, Recall = 0.865269, Specificity = 0.876332
+Epoch 53, iteration 10: loss = 0.050307
+Epoch 53, iteration 20: loss = 0.049003
+Epoch 53, iteration 30: loss = 0.048905
+Epoch 53, iteration 40: loss = 0.049590
+Epoch 53, iteration 50: loss = 0.049616
+Epoch 53, iteration 60: loss = 0.049173
+Epoch 53, iteration 70: loss = 0.049190
+Epoch 53, iteration 80: loss = 0.050854
+Epoch 53, iteration 90: loss = 0.048020
+After Epoch 53: Validation loss = 0.586755, IoU Score = 0.783019, Dice Score = 0.874281, Precision = 0.871967, Recall = 0.884805, Specificity = 0.856756
+Epoch 54, iteration 10: loss = 0.048032
+Epoch 54, iteration 20: loss = 0.047890
+Epoch 54, iteration 30: loss = 0.050194
+Epoch 54, iteration 40: loss = 0.050398
+Epoch 54, iteration 50: loss = 0.047719
+Epoch 54, iteration 60: loss = 0.047961
+Epoch 54, iteration 70: loss = 0.048312
+Epoch 54, iteration 80: loss = 0.049751
+Epoch 54, iteration 90: loss = 0.046462
+After Epoch 54: Validation loss = 0.593198, IoU Score = 0.778802, Dice Score = 0.871475, Precision = 0.881426, Recall = 0.869914, Specificity = 0.870726
+Epoch 55, iteration 10: loss = 0.047481
+Epoch 55, iteration 20: loss = 0.048237
+Epoch 55, iteration 30: loss = 0.047146
+Epoch 55, iteration 40: loss = 0.046431
+Epoch 55, iteration 50: loss = 0.047643
+Epoch 55, iteration 60: loss = 0.045949
+Epoch 55, iteration 70: loss = 0.046135
+Epoch 55, iteration 80: loss = 0.049271
+Epoch 55, iteration 90: loss = 0.048881
+After Epoch 55: Validation loss = 0.598024, IoU Score = 0.780759, Dice Score = 0.872720, Precision = 0.874782, Recall = 0.878992, Specificity = 0.862130
+Epoch 56, iteration 10: loss = 0.046318
+Epoch 56, iteration 20: loss = 0.047616
+Epoch 56, iteration 30: loss = 0.045274
+Epoch 56, iteration 40: loss = 0.046350
+Epoch 56, iteration 50: loss = 0.046423
+Epoch 56, iteration 60: loss = 0.047836
+Epoch 56, iteration 70: loss = 0.046238
+Epoch 56, iteration 80: loss = 0.047338
+Epoch 56, iteration 90: loss = 0.045757
+After Epoch 56: Validation loss = 0.608127, IoU Score = 0.783124, Dice Score = 0.874328, Precision = 0.873786, Recall = 0.883032, Specificity = 0.859383
+Epoch 57, iteration 10: loss = 0.047023
+Epoch 57, iteration 20: loss = 0.044746
+Epoch 57, iteration 30: loss = 0.047063
+Epoch 57, iteration 40: loss = 0.046798
+Epoch 57, iteration 50: loss = 0.045545
+Epoch 57, iteration 60: loss = 0.045537
+Epoch 57, iteration 70: loss = 0.045923
+Epoch 57, iteration 80: loss = 0.045462
+Epoch 57, iteration 90: loss = 0.046444
+After Epoch 57: Validation loss = 0.612224, IoU Score = 0.782485, Dice Score = 0.873949, Precision = 0.874725, Recall = 0.881100, Specificity = 0.862513
+Epoch 58, iteration 10: loss = 0.046420
+Epoch 58, iteration 20: loss = 0.046224
+Epoch 58, iteration 30: loss = 0.045987
+Epoch 58, iteration 40: loss = 0.046424
+Epoch 58, iteration 50: loss = 0.046759
+Epoch 58, iteration 60: loss = 0.044905
+Epoch 58, iteration 70: loss = 0.044292
+Epoch 58, iteration 80: loss = 0.044741
+Epoch 58, iteration 90: loss = 0.043861
+After Epoch 58: Validation loss = 0.614935, IoU Score = 0.781284, Dice Score = 0.873147, Precision = 0.874386, Recall = 0.879918, Specificity = 0.862622
+Epoch 59, iteration 10: loss = 0.042803
+Epoch 59, iteration 20: loss = 0.044341
+Epoch 59, iteration 30: loss = 0.045516
+Epoch 59, iteration 40: loss = 0.044238
+Epoch 59, iteration 50: loss = 0.045643
+Epoch 59, iteration 60: loss = 0.045089
+Epoch 59, iteration 70: loss = 0.044388
+Epoch 59, iteration 80: loss = 0.044463
+Epoch 59, iteration 90: loss = 0.044553
+After Epoch 59: Validation loss = 0.621753, IoU Score = 0.782318, Dice Score = 0.873986, Precision = 0.874841, Recall = 0.881055, Specificity = 0.863867
+Epoch 60, iteration 10: loss = 0.044312
+Epoch 60, iteration 20: loss = 0.046706
+Epoch 60, iteration 30: loss = 0.042674
+Epoch 60, iteration 40: loss = 0.043487
+Epoch 60, iteration 50: loss = 0.043450
+Epoch 60, iteration 60: loss = 0.044339
+Epoch 60, iteration 70: loss = 0.043968
+Epoch 60, iteration 80: loss = 0.042692
+Epoch 60, iteration 90: loss = 0.044367
+After Epoch 60: Validation loss = 0.635060, IoU Score = 0.776723, Dice Score = 0.870114, Precision = 0.882913, Recall = 0.866035, Specificity = 0.872795
+Epoch 61, iteration 10: loss = 0.042031
+Epoch 61, iteration 20: loss = 0.044971
+Epoch 61, iteration 30: loss = 0.043619
+Epoch 61, iteration 40: loss = 0.046027
+Epoch 61, iteration 50: loss = 0.044593
+Epoch 61, iteration 60: loss = 0.042653
+Epoch 61, iteration 70: loss = 0.043567
+Epoch 61, iteration 80: loss = 0.041715
+Epoch 61, iteration 90: loss = 0.041283
+After Epoch 61: Validation loss = 0.635216, IoU Score = 0.780976, Dice Score = 0.872856, Precision = 0.875508, Recall = 0.878277, Specificity = 0.864140
+Epoch 62, iteration 10: loss = 0.044865
+Epoch 62, iteration 20: loss = 0.044569
+Epoch 62, iteration 30: loss = 0.043813
+Epoch 62, iteration 40: loss = 0.043435
+Epoch 62, iteration 50: loss = 0.042285
+Epoch 62, iteration 60: loss = 0.043878
+Epoch 62, iteration 70: loss = 0.043643
+Epoch 62, iteration 80: loss = 0.041751
+Epoch 62, iteration 90: loss = 0.041983
+After Epoch 62: Validation loss = 0.634834, IoU Score = 0.782451, Dice Score = 0.873953, Precision = 0.872266, Recall = 0.883507, Specificity = 0.860311
+Epoch 63, iteration 10: loss = 0.041827
+Epoch 63, iteration 20: loss = 0.042078
+Epoch 63, iteration 30: loss = 0.043806
+Epoch 63, iteration 40: loss = 0.043929
+Epoch 63, iteration 50: loss = 0.044310
+Epoch 63, iteration 60: loss = 0.044985
+Epoch 63, iteration 70: loss = 0.043863
+Epoch 63, iteration 80: loss = 0.042133
+Epoch 63, iteration 90: loss = 0.044502
+After Epoch 63: Validation loss = 0.626083, IoU Score = 0.780883, Dice Score = 0.873013, Precision = 0.876415, Recall = 0.877643, Specificity = 0.864507
+Epoch 64, iteration 10: loss = 0.043537
+Epoch 64, iteration 20: loss = 0.043011
+Epoch 64, iteration 30: loss = 0.044870
+Epoch 64, iteration 40: loss = 0.043371
+Epoch 64, iteration 50: loss = 0.043530
+Epoch 64, iteration 60: loss = 0.041296
+Epoch 64, iteration 70: loss = 0.043931
+Epoch 64, iteration 80: loss = 0.042496
+Epoch 64, iteration 90: loss = 0.041710
+After Epoch 64: Validation loss = 0.642017, IoU Score = 0.780229, Dice Score = 0.872471, Precision = 0.880196, Recall = 0.872745, Specificity = 0.871356
+Epoch 65, iteration 10: loss = 0.042105
+Epoch 65, iteration 20: loss = 0.040957
+Epoch 65, iteration 30: loss = 0.042547
+Epoch 65, iteration 40: loss = 0.042643
+Epoch 65, iteration 50: loss = 0.040583
+Epoch 65, iteration 60: loss = 0.040988
+Epoch 65, iteration 70: loss = 0.040228
+Epoch 65, iteration 80: loss = 0.040983
+Epoch 65, iteration 90: loss = 0.042109
+After Epoch 65: Validation loss = 0.658279, IoU Score = 0.781903, Dice Score = 0.873662, Precision = 0.877683, Recall = 0.877529, Specificity = 0.866437
+Epoch 66, iteration 10: loss = 0.041525
+Epoch 66, iteration 20: loss = 0.040693
+Epoch 66, iteration 30: loss = 0.041356
+Epoch 66, iteration 40: loss = 0.042364
+Epoch 66, iteration 50: loss = 0.041936
+Epoch 66, iteration 60: loss = 0.039846
+Epoch 66, iteration 70: loss = 0.041334
+Epoch 66, iteration 80: loss = 0.039802
+Epoch 66, iteration 90: loss = 0.040158
+After Epoch 66: Validation loss = 0.660904, IoU Score = 0.782046, Dice Score = 0.873815, Precision = 0.877998, Recall = 0.877396, Specificity = 0.868004
+Epoch 67, iteration 10: loss = 0.039667
+Epoch 67, iteration 20: loss = 0.040764
+Epoch 67, iteration 30: loss = 0.040130
+Epoch 67, iteration 40: loss = 0.038983
+Epoch 67, iteration 50: loss = 0.040931
+Epoch 67, iteration 60: loss = 0.042243
+Epoch 67, iteration 70: loss = 0.040781
+Epoch 67, iteration 80: loss = 0.041744
+Epoch 67, iteration 90: loss = 0.039832
+After Epoch 67: Validation loss = 0.663830, IoU Score = 0.782873, Dice Score = 0.874335, Precision = 0.874055, Recall = 0.882305, Specificity = 0.862091
+Epoch 68, iteration 10: loss = 0.040231
+Epoch 68, iteration 20: loss = 0.040111
+Epoch 68, iteration 30: loss = 0.040909
+Epoch 68, iteration 40: loss = 0.040871
+Epoch 68, iteration 50: loss = 0.039354
+Epoch 68, iteration 60: loss = 0.040401
+Epoch 68, iteration 70: loss = 0.040035
+Epoch 68, iteration 80: loss = 0.039432
+Epoch 68, iteration 90: loss = 0.040857
+After Epoch 68: Validation loss = 0.661847, IoU Score = 0.782383, Dice Score = 0.873847, Precision = 0.874197, Recall = 0.881443, Specificity = 0.861728
+Epoch 69, iteration 10: loss = 0.041622
+Epoch 69, iteration 20: loss = 0.040913
+Epoch 69, iteration 30: loss = 0.040137
+Epoch 69, iteration 40: loss = 0.040031
+Epoch 69, iteration 50: loss = 0.038918
+Epoch 69, iteration 60: loss = 0.039219
+Epoch 69, iteration 70: loss = 0.038053
+Epoch 69, iteration 80: loss = 0.039632
+Epoch 69, iteration 90: loss = 0.038180
+After Epoch 69: Validation loss = 0.668664, IoU Score = 0.783221, Dice Score = 0.874474, Precision = 0.873265, Recall = 0.883541, Specificity = 0.860038
+Epoch 70, iteration 10: loss = 0.039501
+Epoch 70, iteration 20: loss = 0.038805
+Epoch 70, iteration 30: loss = 0.041014
+Epoch 70, iteration 40: loss = 0.041816
+Epoch 70, iteration 50: loss = 0.038770
+Epoch 70, iteration 60: loss = 0.039037
+Epoch 70, iteration 70: loss = 0.038524
+Epoch 70, iteration 80: loss = 0.038868
+Epoch 70, iteration 90: loss = 0.041284
+After Epoch 70: Validation loss = 0.679002, IoU Score = 0.778332, Dice Score = 0.871180, Precision = 0.886252, Recall = 0.864670, Specificity = 0.878336
+Epoch 71, iteration 10: loss = 0.039988
+Epoch 71, iteration 20: loss = 0.039936
+Epoch 71, iteration 30: loss = 0.039777
+Epoch 71, iteration 40: loss = 0.039163
+Epoch 71, iteration 50: loss = 0.037988
+Epoch 71, iteration 60: loss = 0.039517
+Epoch 71, iteration 70: loss = 0.038626
+Epoch 71, iteration 80: loss = 0.039664
+Epoch 71, iteration 90: loss = 0.038523
+After Epoch 71: Validation loss = 0.667887, IoU Score = 0.781661, Dice Score = 0.873373, Precision = 0.874431, Recall = 0.880206, Specificity = 0.861349
+Epoch 72, iteration 10: loss = 0.037314
+Epoch 72, iteration 20: loss = 0.039303
+Epoch 72, iteration 30: loss = 0.038954
+Epoch 72, iteration 40: loss = 0.037467
+Epoch 72, iteration 50: loss = 0.037991
+Epoch 72, iteration 60: loss = 0.039031
+Epoch 72, iteration 70: loss = 0.038383
+Epoch 72, iteration 80: loss = 0.038001
+Epoch 72, iteration 90: loss = 0.037166
+After Epoch 72: Validation loss = 0.686931, IoU Score = 0.781637, Dice Score = 0.873423, Precision = 0.878008, Recall = 0.876774, Specificity = 0.865828
+Epoch 73, iteration 10: loss = 0.036474
+Epoch 73, iteration 20: loss = 0.038697
+Epoch 73, iteration 30: loss = 0.038102
+Epoch 73, iteration 40: loss = 0.036349
+Epoch 73, iteration 50: loss = 0.038737
+Epoch 73, iteration 60: loss = 0.037163
+Epoch 73, iteration 70: loss = 0.037415
+Epoch 73, iteration 80: loss = 0.037144
+Epoch 73, iteration 90: loss = 0.037433
+After Epoch 73: Validation loss = 0.703788, IoU Score = 0.779427, Dice Score = 0.871927, Precision = 0.883307, Recall = 0.868722, Specificity = 0.873357
+Epoch 74, iteration 10: loss = 0.037839
+Epoch 74, iteration 20: loss = 0.037601
+Epoch 74, iteration 30: loss = 0.038933
+Epoch 74, iteration 40: loss = 0.038588
+Epoch 74, iteration 50: loss = 0.036887
+Epoch 74, iteration 60: loss = 0.036692
+Epoch 74, iteration 70: loss = 0.036602
+Epoch 74, iteration 80: loss = 0.040140
+Epoch 74, iteration 90: loss = 0.037234
+After Epoch 74: Validation loss = 0.689964, IoU Score = 0.782021, Dice Score = 0.873718, Precision = 0.873999, Recall = 0.881262, Specificity = 0.862120
+Epoch 75, iteration 10: loss = 0.037494
+Epoch 75, iteration 20: loss = 0.037928
+Epoch 75, iteration 30: loss = 0.039509
+Epoch 75, iteration 40: loss = 0.037598
+Epoch 75, iteration 50: loss = 0.038408
+Epoch 75, iteration 60: loss = 0.037443
+Epoch 75, iteration 70: loss = 0.037214
+Epoch 75, iteration 80: loss = 0.038349
+Epoch 75, iteration 90: loss = 0.037044
+After Epoch 75: Validation loss = 0.694997, IoU Score = 0.782666, Dice Score = 0.874135, Precision = 0.874671, Recall = 0.881341, Specificity = 0.862459
+Epoch 76, iteration 10: loss = 0.036858
+Epoch 76, iteration 20: loss = 0.037710
+Epoch 76, iteration 30: loss = 0.039446
+Epoch 76, iteration 40: loss = 0.037027
+Epoch 76, iteration 50: loss = 0.035883
+Epoch 76, iteration 60: loss = 0.036206
+Epoch 76, iteration 70: loss = 0.037713
+Epoch 76, iteration 80: loss = 0.036181
+Epoch 76, iteration 90: loss = 0.036722
+After Epoch 76: Validation loss = 0.708085, IoU Score = 0.780175, Dice Score = 0.872492, Precision = 0.879928, Recall = 0.873020, Specificity = 0.870291
+Epoch 77, iteration 10: loss = 0.036269
+Epoch 77, iteration 20: loss = 0.036727
+Epoch 77, iteration 30: loss = 0.037902
+Epoch 77, iteration 40: loss = 0.037964
+Epoch 77, iteration 50: loss = 0.038552
+Epoch 77, iteration 60: loss = 0.037004
+Epoch 77, iteration 70: loss = 0.038275
+Epoch 77, iteration 80: loss = 0.037601
+Epoch 77, iteration 90: loss = 0.035707
+After Epoch 77: Validation loss = 0.692034, IoU Score = 0.781012, Dice Score = 0.872949, Precision = 0.879056, Recall = 0.874848, Specificity = 0.868785
+Epoch 78, iteration 10: loss = 0.036160
+Epoch 78, iteration 20: loss = 0.037235
+Epoch 78, iteration 30: loss = 0.036595
+Epoch 78, iteration 40: loss = 0.036928
+Epoch 78, iteration 50: loss = 0.038987
+Epoch 78, iteration 60: loss = 0.037813
+Epoch 78, iteration 70: loss = 0.039570
+Epoch 78, iteration 80: loss = 0.037077
+Epoch 78, iteration 90: loss = 0.037042
+After Epoch 78: Validation loss = 0.691606, IoU Score = 0.783051, Dice Score = 0.874425, Precision = 0.875618, Recall = 0.880966, Specificity = 0.863463
+Epoch 79, iteration 10: loss = 0.037559
+Epoch 79, iteration 20: loss = 0.037252
+Epoch 79, iteration 30: loss = 0.038584
+Epoch 79, iteration 40: loss = 0.037164
+Epoch 79, iteration 50: loss = 0.037068
+Epoch 79, iteration 60: loss = 0.037346
+Epoch 79, iteration 70: loss = 0.036720
+Epoch 79, iteration 80: loss = 0.037649
+Epoch 79, iteration 90: loss = 0.039134
+After Epoch 79: Validation loss = 0.686962, IoU Score = 0.780952, Dice Score = 0.873124, Precision = 0.880031, Recall = 0.874006, Specificity = 0.871349
+Epoch 80, iteration 10: loss = 0.038169
+Epoch 80, iteration 20: loss = 0.037438
+Epoch 80, iteration 30: loss = 0.035936
+Epoch 80, iteration 40: loss = 0.036693
+Epoch 80, iteration 50: loss = 0.037914
+Epoch 80, iteration 60: loss = 0.036641
+Epoch 80, iteration 70: loss = 0.036513
+Epoch 80, iteration 80: loss = 0.035891
+Epoch 80, iteration 90: loss = 0.036438
+After Epoch 80: Validation loss = 0.705842, IoU Score = 0.779414, Dice Score = 0.872124, Precision = 0.885060, Recall = 0.867257, Specificity = 0.876142
+Epoch 81, iteration 10: loss = 0.035912
+Epoch 81, iteration 20: loss = 0.037024
+Epoch 81, iteration 30: loss = 0.037238
+Epoch 81, iteration 40: loss = 0.034980
+Epoch 81, iteration 50: loss = 0.036703
+Epoch 81, iteration 60: loss = 0.036689
+Epoch 81, iteration 70: loss = 0.035049
+Epoch 81, iteration 80: loss = 0.034108
+Epoch 81, iteration 90: loss = 0.034173
+After Epoch 81: Validation loss = 0.715662, IoU Score = 0.781926, Dice Score = 0.873687, Precision = 0.879286, Recall = 0.875825, Specificity = 0.868569
+Epoch 82, iteration 10: loss = 0.033472
+Epoch 82, iteration 20: loss = 0.033637
+Epoch 82, iteration 30: loss = 0.036890
+Epoch 82, iteration 40: loss = 0.034210
+Epoch 82, iteration 50: loss = 0.035514
+Epoch 82, iteration 60: loss = 0.033429
+Epoch 82, iteration 70: loss = 0.034332
+Epoch 82, iteration 80: loss = 0.035201
+Epoch 82, iteration 90: loss = 0.034181
+After Epoch 82: Validation loss = 0.741303, IoU Score = 0.781262, Dice Score = 0.873222, Precision = 0.881735, Recall = 0.872657, Specificity = 0.870987
+Epoch 83, iteration 10: loss = 0.032770
+Epoch 83, iteration 20: loss = 0.033191
+Epoch 83, iteration 30: loss = 0.034754
+Epoch 83, iteration 40: loss = 0.033632
+Epoch 83, iteration 50: loss = 0.034318
+Epoch 83, iteration 60: loss = 0.036004
+Epoch 83, iteration 70: loss = 0.034529
+Epoch 83, iteration 80: loss = 0.034940
+Epoch 83, iteration 90: loss = 0.033515
+After Epoch 83: Validation loss = 0.726462, IoU Score = 0.781440, Dice Score = 0.873460, Precision = 0.878675, Recall = 0.875891, Specificity = 0.869447
+Epoch 84, iteration 10: loss = 0.034330
+Epoch 84, iteration 20: loss = 0.034003
+Epoch 84, iteration 30: loss = 0.034720
+Epoch 84, iteration 40: loss = 0.033765
+Epoch 84, iteration 50: loss = 0.034448
+Epoch 84, iteration 60: loss = 0.033372
+Epoch 84, iteration 70: loss = 0.036544
+Epoch 84, iteration 80: loss = 0.035959
+Epoch 84, iteration 90: loss = 0.035087
+After Epoch 84: Validation loss = 0.726903, IoU Score = 0.779635, Dice Score = 0.872130, Precision = 0.881829, Recall = 0.870417, Specificity = 0.872087
+Epoch 85, iteration 10: loss = 0.035368
+Epoch 85, iteration 20: loss = 0.036644
+Epoch 85, iteration 30: loss = 0.035337
+Epoch 85, iteration 40: loss = 0.036481
+Epoch 85, iteration 50: loss = 0.035532
+Epoch 85, iteration 60: loss = 0.035334
+Epoch 85, iteration 70: loss = 0.033938
+Epoch 85, iteration 80: loss = 0.034391
+Epoch 85, iteration 90: loss = 0.034121
+After Epoch 85: Validation loss = 0.730894, IoU Score = 0.781257, Dice Score = 0.873302, Precision = 0.881126, Recall = 0.873263, Specificity = 0.870785
+Epoch 86, iteration 10: loss = 0.033502
+Epoch 86, iteration 20: loss = 0.035415
+Epoch 86, iteration 30: loss = 0.033693
+Epoch 86, iteration 40: loss = 0.036314
+Epoch 86, iteration 50: loss = 0.033575
+Epoch 86, iteration 60: loss = 0.034471
+Epoch 86, iteration 70: loss = 0.034498
+Epoch 86, iteration 80: loss = 0.034554
+Epoch 86, iteration 90: loss = 0.034400
+After Epoch 86: Validation loss = 0.734265, IoU Score = 0.781020, Dice Score = 0.872980, Precision = 0.879613, Recall = 0.874245, Specificity = 0.868639
+Epoch 87, iteration 10: loss = 0.034140
+Epoch 87, iteration 20: loss = 0.035333
+Epoch 87, iteration 30: loss = 0.033122
+Epoch 87, iteration 40: loss = 0.034601
+Epoch 87, iteration 50: loss = 0.034415
+Epoch 87, iteration 60: loss = 0.034099
+Epoch 87, iteration 70: loss = 0.033432
+Epoch 87, iteration 80: loss = 0.032421
+Epoch 87, iteration 90: loss = 0.034034
+After Epoch 87: Validation loss = 0.743902, IoU Score = 0.784499, Dice Score = 0.875351, Precision = 0.872879, Recall = 0.885657, Specificity = 0.859923
+Epoch 88, iteration 10: loss = 0.033883
+Epoch 88, iteration 20: loss = 0.033986
+Epoch 88, iteration 30: loss = 0.034500
+Epoch 88, iteration 40: loss = 0.034465
+Epoch 88, iteration 50: loss = 0.032600
+Epoch 88, iteration 60: loss = 0.033440
+Epoch 88, iteration 70: loss = 0.034639
+Epoch 88, iteration 80: loss = 0.032887
+Epoch 88, iteration 90: loss = 0.032638
+After Epoch 88: Validation loss = 0.750777, IoU Score = 0.781990, Dice Score = 0.873595, Precision = 0.879006, Recall = 0.876121, Specificity = 0.867235
+Epoch 89, iteration 10: loss = 0.032129
+Epoch 89, iteration 20: loss = 0.033337
+Epoch 89, iteration 30: loss = 0.034302
+Epoch 89, iteration 40: loss = 0.035683
+Epoch 89, iteration 50: loss = 0.033714
+Epoch 89, iteration 60: loss = 0.036230
+Epoch 89, iteration 70: loss = 0.036509
+Epoch 89, iteration 80: loss = 0.034569
+Epoch 89, iteration 90: loss = 0.034846
+After Epoch 89: Validation loss = 0.733813, IoU Score = 0.779325, Dice Score = 0.871972, Precision = 0.884978, Recall = 0.867034, Specificity = 0.876718
+Epoch 90, iteration 10: loss = 0.034609
+Epoch 90, iteration 20: loss = 0.034079
+Epoch 90, iteration 30: loss = 0.035583
+Epoch 90, iteration 40: loss = 0.035979
+Epoch 90, iteration 50: loss = 0.035533
+Epoch 90, iteration 60: loss = 0.032962
+Epoch 90, iteration 70: loss = 0.033671
+Epoch 90, iteration 80: loss = 0.034037
+Epoch 90, iteration 90: loss = 0.034204
+After Epoch 90: Validation loss = 0.739474, IoU Score = 0.781498, Dice Score = 0.873479, Precision = 0.882150, Recall = 0.872521, Specificity = 0.873647
+Epoch 91, iteration 10: loss = 0.032462
+Epoch 91, iteration 20: loss = 0.033845
+Epoch 91, iteration 30: loss = 0.033526
+Epoch 91, iteration 40: loss = 0.031701
+Epoch 91, iteration 50: loss = 0.033178
+Epoch 91, iteration 60: loss = 0.031666
+Epoch 91, iteration 70: loss = 0.033109
+Epoch 91, iteration 80: loss = 0.032017
+Epoch 91, iteration 90: loss = 0.033897
+After Epoch 91: Validation loss = 0.772679, IoU Score = 0.781519, Dice Score = 0.873489, Precision = 0.884264, Recall = 0.870548, Specificity = 0.875673
+Epoch 92, iteration 10: loss = 0.032760
+Epoch 92, iteration 20: loss = 0.032116
+Epoch 92, iteration 30: loss = 0.031711
+Epoch 92, iteration 40: loss = 0.032841
+Epoch 92, iteration 50: loss = 0.032922
+Epoch 92, iteration 60: loss = 0.030711
+Epoch 92, iteration 70: loss = 0.031936
+Epoch 92, iteration 80: loss = 0.030910
+Epoch 92, iteration 90: loss = 0.030961
+After Epoch 92: Validation loss = 0.770973, IoU Score = 0.782519, Dice Score = 0.874037, Precision = 0.878350, Recall = 0.877325, Specificity = 0.866894
+Epoch 93, iteration 10: loss = 0.030308
+Epoch 93, iteration 20: loss = 0.030987
+Epoch 93, iteration 30: loss = 0.033017
+Epoch 93, iteration 40: loss = 0.031422
+Epoch 93, iteration 50: loss = 0.031266
+Epoch 93, iteration 60: loss = 0.030547
+Epoch 93, iteration 70: loss = 0.031016
+Epoch 93, iteration 80: loss = 0.030982
+Epoch 93, iteration 90: loss = 0.031380
+After Epoch 93: Validation loss = 0.779794, IoU Score = 0.781634, Dice Score = 0.873557, Precision = 0.880984, Recall = 0.873711, Specificity = 0.871638
+Epoch 94, iteration 10: loss = 0.032065
+Epoch 94, iteration 20: loss = 0.032856
+Epoch 94, iteration 30: loss = 0.032425
+Epoch 94, iteration 40: loss = 0.031364
+Epoch 94, iteration 50: loss = 0.031593
+Epoch 94, iteration 60: loss = 0.031166
+Epoch 94, iteration 70: loss = 0.032119
+Epoch 94, iteration 80: loss = 0.031813
+Epoch 94, iteration 90: loss = 0.030672
+After Epoch 94: Validation loss = 0.781997, IoU Score = 0.779810, Dice Score = 0.872195, Precision = 0.882777, Recall = 0.869796, Specificity = 0.871679
+Epoch 95, iteration 10: loss = 0.032259
+Epoch 95, iteration 20: loss = 0.030257
+Epoch 95, iteration 30: loss = 0.032409
+Epoch 95, iteration 40: loss = 0.031825
+Epoch 95, iteration 50: loss = 0.031529
+Epoch 95, iteration 60: loss = 0.032388
+Epoch 95, iteration 70: loss = 0.031908
+Epoch 95, iteration 80: loss = 0.033487
+Epoch 95, iteration 90: loss = 0.034268
+After Epoch 95: Validation loss = 0.765475, IoU Score = 0.782499, Dice Score = 0.874141, Precision = 0.877568, Recall = 0.878238, Specificity = 0.868606
+Epoch 96, iteration 10: loss = 0.032448
+Epoch 96, iteration 20: loss = 0.034018
+Epoch 96, iteration 30: loss = 0.033971
+Epoch 96, iteration 40: loss = 0.034464
+Epoch 96, iteration 50: loss = 0.033182
+Epoch 96, iteration 60: loss = 0.032022
+Epoch 96, iteration 70: loss = 0.031992
+Epoch 96, iteration 80: loss = 0.031408
+Epoch 96, iteration 90: loss = 0.031060
+After Epoch 96: Validation loss = 0.766165, IoU Score = 0.780379, Dice Score = 0.872546, Precision = 0.881878, Recall = 0.871328, Specificity = 0.871147
+Epoch 97, iteration 10: loss = 0.031456
+Epoch 97, iteration 20: loss = 0.032457
+Epoch 97, iteration 30: loss = 0.032314
+Epoch 97, iteration 40: loss = 0.031183
+Epoch 97, iteration 50: loss = 0.031016
+Epoch 97, iteration 60: loss = 0.030044
+Epoch 97, iteration 70: loss = 0.032299
+Epoch 97, iteration 80: loss = 0.031783
+Epoch 97, iteration 90: loss = 0.034785
+After Epoch 97: Validation loss = 0.768773, IoU Score = 0.783335, Dice Score = 0.874496, Precision = 0.874688, Recall = 0.882159, Specificity = 0.862937
+Epoch 98, iteration 10: loss = 0.033292
+Epoch 98, iteration 20: loss = 0.031068
+Epoch 98, iteration 30: loss = 0.031865
+Epoch 98, iteration 40: loss = 0.033277
+Epoch 98, iteration 50: loss = 0.031152
+Epoch 98, iteration 60: loss = 0.031111
+Epoch 98, iteration 70: loss = 0.030567
+Epoch 98, iteration 80: loss = 0.032336
+Epoch 98, iteration 90: loss = 0.030601
+After Epoch 98: Validation loss = 0.776032, IoU Score = 0.781834, Dice Score = 0.873661, Precision = 0.879790, Recall = 0.875185, Specificity = 0.870154
+Epoch 99, iteration 10: loss = 0.030581
+Epoch 99, iteration 20: loss = 0.029576
+Epoch 99, iteration 30: loss = 0.030512
+Epoch 99, iteration 40: loss = 0.030658
+Epoch 99, iteration 50: loss = 0.030347
+Epoch 99, iteration 60: loss = 0.030780
+Epoch 99, iteration 70: loss = 0.032342
+Epoch 99, iteration 80: loss = 0.031074
+Epoch 99, iteration 90: loss = 0.031464
+After Epoch 99: Validation loss = 0.790228, IoU Score = 0.781025, Dice Score = 0.873135, Precision = 0.881864, Recall = 0.872178, Specificity = 0.873287
+Epoch 100, iteration 10: loss = 0.031648
+Epoch 100, iteration 20: loss = 0.031382
+Epoch 100, iteration 30: loss = 0.031140
+Epoch 100, iteration 40: loss = 0.030786
+Epoch 100, iteration 50: loss = 0.031077
+Epoch 100, iteration 60: loss = 0.029942
+Epoch 100, iteration 70: loss = 0.030292
+Epoch 100, iteration 80: loss = 0.031621
+Epoch 100, iteration 90: loss = 0.030528
+After Epoch 100: Validation loss = 0.786005, IoU Score = 0.783201, Dice Score = 0.874526, Precision = 0.873798, Recall = 0.882968, Specificity = 0.861125
+Training completed.
+Model trained with iou loss and 1:1 ratio but labeled only saved.
