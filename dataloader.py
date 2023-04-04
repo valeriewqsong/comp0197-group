@@ -134,8 +134,17 @@ def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
+    
+    input_files = [os.path.join(basedir, 'annotations/trainval.txt'), os.path.join(basedir, 'annotations/test.txt')]
+    output_file = os.path.join(basedir, 'annotations/combined.txt')
 
-    train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/mylist.txt')) 
+    with open(output_file, 'w') as outfile:
+        for file in input_files:
+            with open(file, 'r') as infile:
+                content = infile.read()
+                outfile.write(content)
+
+    train_data, val_data, test_data = split_data(output_file) 
     
     print(f"Training data length: {len(train_data)}")
     print(f"Validation data length: {len(val_data)}")
