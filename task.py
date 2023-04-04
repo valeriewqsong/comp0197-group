@@ -2,7 +2,7 @@ import torch
 from dataloader import get_data_loader
 from train import train_labeled_and_unlabeled, train_labeled_only
 
-base_dir = "../../comp-master/"
+base_dir = "./"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
