@@ -39,9 +39,8 @@ def txt_to_csv(input_txt, output_csv):
         csv_writer.writerow(['Epoch', 'Validation Loss', 'IoU Score', 'Dice Score', 'Precision', 'Recall', 'Specificity'])
         csv_writer.writerows(data)
 
-# This part assumes that you have already unzipped the zip files.
-txt_to_csv('output_txt/output_1to5_unlabeled.txt', 'metrics_1to5_unlabeled.csv')
-txt_to_csv('output_txt/output_1to5_labeled.txt', 'metrics_1to5_labeled.csv')
-txt_to_csv('output_txt/output_1to10_unlabeled.txt', 'metrics_1to10_unlabeled.csv')
-txt_to_csv('output_txt/output_1to10_labeled.txt', 'metrics_1to10_labeled.csv')
-txt_to_csv('output_txt/output_1to3_unlabeled.txt', 'metrics_1to3_unlabeled.csv')
+txt_to_csv('output_txt/output_1to3_semisup.txt', 'metrics_1to3_semisup.csv')
+txt_to_csv('output_txt/output_1to5_semisup.txt', 'metrics_1to5_semisup.csv')
+txt_to_csv('output_txt/output_1to5_sup.txt', 'metrics_1to5_sup.csv')
+txt_to_csv('output_txt/output_1to10_semisup.txt', 'metrics_1to10_semisup.csv')
+txt_to_csv('output_txt/output_1to10_sup.txt', 'metrics_1to10_sup.csv')
