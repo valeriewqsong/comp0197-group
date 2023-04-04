@@ -68,8 +68,8 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
             # optimise
             optimizer.step()
             
-            # print stats every iteration
-            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}, labeled loss = {labeled_loss.item():.6f}, unlabeled loss = {unlabeled_loss.item():.6f}, alpha = {alpha}")
+            # # print stats every iteration
+            # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}, labeled loss = {labeled_loss.item():.6f}, unlabeled loss = {unlabeled_loss.item():.6f}, alpha = {alpha}")
             
             # # print statistics every 100 iteratrions
             # running_loss += loss.item()
@@ -143,8 +143,8 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
             loss.backward()
             optimizer.step()
 
-            # print stats every iteration
-            print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}")
+            # # print stats every iteration
+            # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}")
             
             # # print statistics every 100 iteratrions
             # running_loss += loss.item()
