@@ -1,6 +1,6 @@
 import torch
 from data_loader import get_data_loader
-from train_new import train_labeled_and_unlabeled, train_labeled_only
+from train import train_labeled_and_unlabeled, train_labeled_only
 
 base_dir = "./"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
