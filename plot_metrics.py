@@ -49,20 +49,22 @@ def plot_metrics(csv_file):
     # Adjust layout for better appearance and provide space for the suptitle
     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
     
-    # Save the figure as a .png file with the same name as the .csv file, in the 'results_img' folder
-    # Note that the results_img folder must already exist
+    # Create the val_results folder if it doesn't exist
+    os.makedirs('val_results_img', exist_ok=True)
+    
+    # Save the figure as a .png file with the same name as the .csv file, in the 'val_results_img' folder
     png_file = os.path.join('val_results_img', fig_name + '.png')
     plt.savefig(png_file)
 
-# plot_metrics('val_results/fully_sup.csv')
-# plot_metrics('val_results/1to1_semisup.csv')
-# plot_metrics('val_results/1to1_sup.csv')
-# plot_metrics('val_results/1to3_sup.csv')
-# plot_metrics('val_results/1to3_semisup.csv')
-# plot_metrics('val_results/1to5_semisup.csv')
-# plot_metrics('val_results/1to5_sup.csv')
-# plot_metrics('val_results/1to10_semisup.csv')
-# plot_metrics('val_results/1to10_sup.csv')
+plot_metrics('val_results/fully_sup.csv')
+plot_metrics('val_results/1to1_semisup.csv')
+plot_metrics('val_results/1to1_sup.csv')
+plot_metrics('val_results/1to3_sup.csv')
+plot_metrics('val_results/1to3_semisup.csv')
+plot_metrics('val_results/1to5_semisup.csv')
+plot_metrics('val_results/1to5_sup.csv')
+plot_metrics('val_results/1to10_semisup.csv')
+plot_metrics('val_results/1to10_sup.csv')
 
 
 def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
@@ -115,8 +117,8 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
     # Get figure title from the first csv file name
     base_name = os.path.basename(semisup_csv)
     fig_name = os.path.splitext(base_name)[0]
-    suptitle = fig_name.split("_", 2)[1]
-    supertitle = 'semisup comparison w/ sup ' + suptitle
+    fig_name = fig_name.replace("_semisup", "")
+    supertitle = 'comparing_semisup_w_upper_lower_bounds_' + fig_name
 
     # Add an overall figure title
     fig.suptitle(supertitle, fontsize=16)
@@ -124,17 +126,17 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
     # Adjust layout for better appearance and provide space for the suptitle
     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
     
-    # Create the 'results_img' folder if it doesn't exist
-    os.makedirs('results_img', exist_ok=True)
+    # Create the 'val_results_img' folder if it doesn't exist
+    os.makedirs('val_results_img', exist_ok=True)
     
-    # Save the figure as a .png file with the same name as the first .csv file, in the 'results_img' folder
-    png_file = os.path.join('results_img', 'semisup_comparison_w_sup_' + suptitle + '.png')
+    # Save the figure as a .png file with the same name as the first .csv file, in the 'val_results_img' folder
+    png_file = os.path.join('val_results_img', supertitle + '.png')
     plt.savefig(png_file)
 
 plot_three_metrics('val_results/1to1_semisup.csv', 'val_results/1to1_sup.csv', 'val_results/fully_sup.csv')    
-# plot_three_metrics('val_results/1to3_semisup.csv', 'val_results/1to3_sup.csv', 'val_results/fully_sup.csv')    
-# plot_three_metrics('val_results/1to5_semisup.csv', 'val_results/1to5_sup.csv', 'val_results/fully_sup.csv')
-# plot_three_metrics('val_results/1to10_semisup.csv', 'val_results/1to10_sup.csv', 'val_results/fully_sup.csv')
+plot_three_metrics('val_results/1to3_semisup.csv', 'val_results/1to3_sup.csv', 'val_results/fully_sup.csv')    
+plot_three_metrics('val_results/1to5_semisup.csv', 'val_results/1to5_sup.csv', 'val_results/fully_sup.csv')
+plot_three_metrics('val_results/1to10_semisup.csv', 'val_results/1to10_sup.csv', 'val_results/fully_sup.csv')
 
 def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     '''Plot comparison between the different ratios of labeled to unlabeled data'''
@@ -179,19 +181,19 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
         ax.legend()
 
     # Add an overall figure title
-    fig.suptitle("Performance comparison between different ratios of labeled to unlabeled data", fontsize=16)
+    fig.suptitle("Performance comparison between different ratios of labeled to unlabeled data for semi supervised learning", fontsize=16)
     
     # Adjust layout for better appearance and provide space for the suptitle
     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
     
-    # Create the 'results_img' folder if it doesn't exist
-    os.makedirs('results_img', exist_ok=True)
+    # Create the 'val_results_img' folder if it doesn't exist
+    os.makedirs('val_results_img', exist_ok=True)
     
-    # Save the figure as a .png file with the same name as the first .csv file, in the 'results_img' folder
-    png_file = os.path.join('results_img', 'diff_ratio_comparison' + '.png')
+    # Save the figure as a .png file with the same name as the first .csv file, in the 'val_results_img' folder
+    png_file = os.path.join('val_results_img', 'comparing_semisup_ratios' + '.png')
     plt.savefig(png_file)
     
-# plot_four_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv')
+plot_four_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv')
 
 def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
     '''Plot comparison between the different ratios of labeled to unlabeled data'''
@@ -240,16 +242,16 @@ def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
         ax.legend()
 
     # Add an overall figure title
-    fig.suptitle("Performance comparison between different ratios of labeled to unlabeled data", fontsize=16)
+    fig.suptitle("Performance comparison between fully supervised learning and semi supervised learning with different ratios of labeled to unlabeled data", fontsize=16)
     
     # Adjust layout for better appearance and provide space for the suptitle
     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
     
-    # Create the 'results_img' folder if it doesn't exist
-    os.makedirs('results_img', exist_ok=True)
+    # Create the 'val_results_img' folder if it doesn't exist
+    os.makedirs('val_results_img', exist_ok=True)
     
-    # Save the figure as a .png file with the same name as the first .csv file, in the 'results_img' folder
-    png_file = os.path.join('results_img', 'diff_ratio_comparison_fullysup' + '.png')
+    # Save the figure as a .png file with the same name as the first .csv file, in the 'val_results_img' folder
+    png_file = os.path.join('val_results_img', 'comparing_full_semi_sup' + '.png')
     plt.savefig(png_file)
     
-# plot_five_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv', 'val_results/fully_sup.csv')
+plot_five_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv', 'val_results/fully_sup.csv')

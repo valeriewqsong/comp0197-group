@@ -53,8 +53,6 @@ class OxfordPetsDataset(Dataset):
         img_path = os.path.join(self.img_dir, self.img_labels[idx][0] + ".jpg")
         image = Image.open(img_path).convert("RGB")
         
-        label = self.img_labels[idx][1]
-        
         seg_mask_path = os.path.join(self.mask_dir, self.img_labels[idx][0] + ".png")
         seg_mask = preprocess_mask(Image.open(seg_mask_path), float(1))
         
@@ -66,12 +64,12 @@ class OxfordPetsDataset(Dataset):
         return image, seg_mask
 
 
-def split_data(annotations_file, split_ratios=(0.8, 0.1, 0.1), seed=42):
+def split_data(annotations_file='annotations/list.txt', split_ratios=(0.8, 0.1, 0.1), seed=42):
     """
-    Split the data into training, validation, and test sets based on the given ratios.
+    Split the data into training, validation, and test sets based on the given ratios. T
 
     Args:
-        annotations_file (str): Path to the annotations file containing image names and labels.
+        annotations_file (str): Path to the annotations file containing image names and labels. Default is 'annotations/list.txt'
         split_ratios (tuple): A tuple containing the ratios for training, validation, and test sets, respectively.
                               The sum of the ratios must be equal to 1. Default is (0.8, 0.1, 0.1).
         seed (int, optional): Random seed for reproducibility. Default is 42.
@@ -138,9 +136,9 @@ def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
     
     train_data, val_data, test_data = split_data(os.path.join(basedir, 'annotations/list.txt')) 
     
-    print(f"Training data length: {len(train_data)}")
-    print(f"Validation data length: {len(val_data)}")
-    print(f"Test data length: {len(test_data)}")
+    # print(f"Training data length: {len(train_data)}")
+    # print(f"Validation data length: {len(val_data)}")
+    # print(f"Test data length: {len(test_data)}")
 
     labeled_data, unlabeled_data = split_labeled_unlabeled(train_data, UtoL_ratio=UtoL_ratio)
 
@@ -149,10 +147,10 @@ def get_data_loader(basedir="./", batch_size=4, UtoL_ratio=4.0, num_workers=0):
     val_labeled_dataset = OxfordPetsDataset(os.path.join(basedir, 'images'), img_labels=val_data, transform=data_transforms)
     test_labeled_dataset = OxfordPetsDataset(os.path.join(basedir, 'images'), img_labels=test_data, transform=data_transforms)
 
-    print(f"Training labeled dataset length: {len(train_labeled_dataset)}")
-    print(f"Training unlabeled dataset length: {len(train_unlabeled_dataset)}")
-    print(f"Validation dataset length: {len(val_labeled_dataset)}")
-    print(f"Test dataset length: {len(test_labeled_dataset)}")
+    # print(f"Training labeled dataset length: {len(train_labeled_dataset)}")
+    # print(f"Training unlabeled dataset length: {len(train_unlabeled_dataset)}")
+    # print(f"Validation dataset length: {len(val_labeled_dataset)}")
+    # print(f"Test dataset length: {len(test_labeled_dataset)}")
     
     unlabeled_batch_size = int(batch_size * UtoL_ratio)
     
