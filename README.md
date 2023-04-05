@@ -1,7 +1,7 @@
 # comp0197-group
 
 # How to set up your environment, run our code and reproduce results used in report
-1. Ensure you have annotations.zip and images.zip from the Oxford-IIIT Pet Data-set https://www.robots.ox.ac.uk/~vgg/data/pets/ in your working folder.
+1. Ensure you have the "annotations" and "images" folders taken from the Oxford-IIIT Pet Data-set (https://www.robots.ox.ac.uk/~vgg/data/pets/) in your working directory.
 2. The conda environment to be used is created by running the terminal command here: "conda create -n comp0197-cw2-pt -c pytorch python=3.10 pytorch=1.13 torchvision=0.14"
 3. Activate the conda environment by entering into your terminal "conda activate comp0197-cw2-pt"
 4. Run "conda install -c conda-forge matplotlib" in your terminal as it is required to visualise results

@@ -181,7 +181,7 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
         ax.legend()
 
     # Add an overall figure title
-    fig.suptitle("Performance comparison between different ratios of labeled to unlabeled data for semi supervised learning", fontsize=16)
+    fig.suptitle("Comparison between different ratios of labeled to unlabeled data for semi supervised learning", fontsize=16)
     
     # Adjust layout for better appearance and provide space for the suptitle
     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
@@ -196,7 +196,7 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
 plot_four_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv')
 
 def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
-    '''Plot comparison between the different ratios of labeled to unlabeled data'''
+    '''Plot comparison between the different ratios of labeled to unlabeled data with the fully supervised model'''
     # Read data from both CSV files
     headers1, data1 = read_csv_data(csv_1to1)
     headers2, data2 = read_csv_data(csv_1to3)
@@ -242,7 +242,7 @@ def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
         ax.legend()
 
     # Add an overall figure title
-    fig.suptitle("Performance comparison between fully supervised learning and semi supervised learning with different ratios of labeled to unlabeled data", fontsize=16)
+    fig.suptitle("Comparison between semi supervised learning with different ratios of labeled to unlabeled data and fully supervised learning", fontsize=16)
     
     # Adjust layout for better appearance and provide space for the suptitle
     fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.9, wspace=0.3, hspace=0.3)
