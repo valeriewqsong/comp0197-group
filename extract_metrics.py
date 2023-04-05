@@ -33,22 +33,22 @@ def txt_to_csv(input_txt, output_csv):
     os.makedirs('csv_metrics', exist_ok=True)
 
     # Write .csv file in the 'csv_metrics' folder
-    output_csv_path = os.path.join('csv_metrics', output_csv)
+    output_csv_path = os.path.join('val_results', output_csv)
     with open(output_csv_path, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(['Epoch', 'Validation Loss', 'IoU Score', 'Dice Score', 'Precision', 'Recall', 'Specificity'])
         csv_writer.writerows(data)
 
-txt_to_csv('output_txt/output_fully_sup.txt', 'metrics_fully_sup.csv')
+# txt_to_csv('output_txt/output_fully_sup.txt', 'metrics_fully_sup.csv')
 
-txt_to_csv('output_txt/output_1to1_semisup.txt', 'metrics_1to1_semisup.csv')
-txt_to_csv('output_txt/output_1to1_sup.txt', 'metrics_1to1_sup.csv')
+# txt_to_csv('output_txt/output_1to1_semisup.txt', 'metrics_1to1_semisup.csv')
+# txt_to_csv('output_txt/output_1to1_sup.txt', 'metrics_1to1_sup.csv')
 
-txt_to_csv('output_txt/output_1to3_semisup.txt', 'metrics_1to3_semisup.csv')
-txt_to_csv('output_txt/output_1to3_sup.txt', 'metrics_1to3_sup.csv')
+# txt_to_csv('output_txt/output_1to3_semisup.txt', 'metrics_1to3_semisup.csv')
+# txt_to_csv('output_txt/output_1to3_sup.txt', 'metrics_1to3_sup.csv')
 
-txt_to_csv('output_txt/output_1to5_semisup.txt', 'metrics_1to5_semisup.csv')
-txt_to_csv('output_txt/output_1to5_sup.txt', 'metrics_1to5_sup.csv')
+txt_to_csv('output_txt/output_1to5_semisup.txt', '1to5_semisup.csv')
+# txt_to_csv('output_txt/output_1to5_sup.txt', 'metrics_1to5_sup.csv')
 
-txt_to_csv('output_txt/output_1to10_semisup.txt', 'metrics_1to10_semisup.csv')
-txt_to_csv('output_txt/output_1to10_sup.txt', 'metrics_1to10_sup.csv')
+# txt_to_csv('output_txt/output_1to10_semisup.txt', 'metrics_1to10_semisup.csv')
+# txt_to_csv('output_txt/output_1to10_sup.txt', 'metrics_1to10_sup.csv')

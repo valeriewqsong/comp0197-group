@@ -51,18 +51,18 @@ def plot_metrics(csv_file):
     
     # Save the figure as a .png file with the same name as the .csv file, in the 'results_img' folder
     # Note that the results_img folder must already exist
-    png_file = os.path.join('results_img', fig_name + '.png')
+    png_file = os.path.join('val_results_img', fig_name + '.png')
     plt.savefig(png_file)
 
-# plot_metrics('csv_metrics/metrics_fully_sup.csv')
-# plot_metrics('csv_metrics/metrics_1to1_semisup.csv')
-# plot_metrics('csv_metrics/metrics_1to1_sup.csv')
-# plot_metrics('csv_metrics/metrics_1to3_sup.csv')
-# plot_metrics('csv_metrics/metrics_1to3_semisup.csv')
-# plot_metrics('csv_metrics/metrics_1to5_semisup.csv')
-# plot_metrics('csv_metrics/metrics_1to5_sup.csv')
-# plot_metrics('csv_metrics/metrics_1to10_semisup.csv')
-# plot_metrics('csv_metrics/metrics_1to10_sup.csv')
+# plot_metrics('val_results/fully_sup.csv')
+# plot_metrics('val_results/1to1_semisup.csv')
+# plot_metrics('val_results/1to1_sup.csv')
+# plot_metrics('val_results/1to3_sup.csv')
+# plot_metrics('val_results/1to3_semisup.csv')
+# plot_metrics('val_results/1to5_semisup.csv')
+# plot_metrics('val_results/1to5_sup.csv')
+# plot_metrics('val_results/1to10_semisup.csv')
+# plot_metrics('val_results/1to10_sup.csv')
 
 
 def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
@@ -83,7 +83,7 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
     
     # Function to extract label from CSV file name
     def extract_label(file_name):
-        file_name = file_name.replace("csv_metrics/metrics_", "")
+        file_name = file_name.replace("val_results/", "")
         file_name = file_name.replace(".csv", "")
         return file_name
     
@@ -131,10 +131,10 @@ def plot_three_metrics(semisup_csv, sup_csv, fully_sup_csv):
     png_file = os.path.join('results_img', 'semisup_comparison_w_sup_' + suptitle + '.png')
     plt.savefig(png_file)
 
-plot_three_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to1_sup.csv', 'csv_metrics/metrics_fully_sup.csv')    
-# plot_three_metrics('csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to3_sup.csv', 'csv_metrics/metrics_fully_sup.csv')    
-# plot_three_metrics('csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to5_sup.csv', 'csv_metrics/metrics_fully_sup.csv')
-# plot_three_metrics('csv_metrics/metrics_1to10_semisup.csv', 'csv_metrics/metrics_1to10_sup.csv', 'csv_metrics/metrics_fully_sup.csv')
+plot_three_metrics('val_results/1to1_semisup.csv', 'val_results/1to1_sup.csv', 'val_results/fully_sup.csv')    
+# plot_three_metrics('val_results/1to3_semisup.csv', 'val_results/1to3_sup.csv', 'val_results/fully_sup.csv')    
+# plot_three_metrics('val_results/1to5_semisup.csv', 'val_results/1to5_sup.csv', 'val_results/fully_sup.csv')
+# plot_three_metrics('val_results/1to10_semisup.csv', 'val_results/1to10_sup.csv', 'val_results/fully_sup.csv')
 
 def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     '''Plot comparison between the different ratios of labeled to unlabeled data'''
@@ -156,7 +156,7 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     
     # Function to extract label from CSV file name
     def extract_label(file_name):
-        file_name = file_name.replace("csv_metrics/metrics_", "")
+        file_name = file_name.replace("val_results/", "")
         file_name = file_name.replace(".csv", "")
         return file_name
     
@@ -191,7 +191,7 @@ def plot_four_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10):
     png_file = os.path.join('results_img', 'diff_ratio_comparison' + '.png')
     plt.savefig(png_file)
     
-# plot_four_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv')
+# plot_four_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv')
 
 def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
     '''Plot comparison between the different ratios of labeled to unlabeled data'''
@@ -215,7 +215,7 @@ def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
     
     # Function to extract label from CSV file name
     def extract_label(file_name):
-        file_name = file_name.replace("csv_metrics/metrics_", "")
+        file_name = file_name.replace("val_results/", "")
         file_name = file_name.replace(".csv", "")
         return file_name
     
@@ -252,4 +252,4 @@ def plot_five_metrics(csv_1to1, csv_1to3, csv_1to5, csv_1to10, csv_fullsup):
     png_file = os.path.join('results_img', 'diff_ratio_comparison_fullysup' + '.png')
     plt.savefig(png_file)
     
-# plot_five_metrics('csv_metrics/metrics_1to1_semisup.csv', 'csv_metrics/metrics_1to3_semisup.csv', 'csv_metrics/metrics_1to5_semisup.csv', 'csv_metrics/metrics_1to10_semisup.csv', 'csv_metrics/metrics_fully_sup.csv')
+# plot_five_metrics('val_results/1to1_semisup.csv', 'val_results/1to3_semisup.csv', 'val_results/1to5_semisup.csv', 'val_results/1to10_semisup.csv', 'val_results/fully_sup.csv')

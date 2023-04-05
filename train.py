@@ -18,7 +18,7 @@ iou_trained_model = train_labeled_only(
     csv_filename="fully_sup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_all_labeled.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_fully_sup.pt')
 print('Model trained with bce loss and all labeled data saved.\n')
 
 
@@ -35,7 +35,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     csv_filename="1to1_semisup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to1.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to1_semisup.pt')
 print('Model trained with bce loss and 1:1 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
@@ -49,7 +49,7 @@ iou_trained_model = train_labeled_only(
     csv_filename="1to1_sup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to1_labeled_only.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to1_sup.pt')
 print('Model trained with bce loss and 1:1 ratio but labeled only saved.\n')
 
 
@@ -66,7 +66,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     csv_filename="1to3_semisup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to3.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to3_semisup.pt')
 print('Model trained with bce loss and 1:3 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
@@ -80,7 +80,7 @@ iou_trained_model = train_labeled_only(
     csv_filename="1to3_sup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to3_labeled_only.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to3_sup.pt')
 print('Model trained with bce loss and 1:3 ratio but labeled only saved.\n')
 
 
@@ -97,7 +97,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     csv_filename="1to5_semisup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to10.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to10_semisup.pt')
 print('Model trained with bce loss and 1:10 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
@@ -111,7 +111,7 @@ iou_trained_model = train_labeled_only(
     csv_filename="1to5_sup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to10_labeled_only.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to10_sup.pt')
 print('Model trained with bce loss and 1:10 ratio but labeled only saved.\n')
 
 
@@ -128,7 +128,7 @@ iou_trained_model = train_labeled_and_unlabeled(
     csv_filename="1to10_semisup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to5.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to5_semisup.pt')
 print('Model trained with bce loss and 1:5 ratio saved.\n')
 
 # Lower bound performance: only labeled data is used
@@ -142,7 +142,7 @@ iou_trained_model = train_labeled_only(
     csv_filename="1to10_sup.csv"
 )
 # save trained model
-torch.save(iou_trained_model.state_dict(), f'saved_model_1to5_labeled_only.pt')
+torch.save(iou_trained_model.state_dict(), f'saved_model_1to5_sup.pt')
 print('Model trained with bce loss and 1:5 ratio but labeled only saved.\n')
 
 
