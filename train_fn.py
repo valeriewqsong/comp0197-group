@@ -85,15 +85,16 @@ def train_labeled_and_unlabeled(train_loader_with_label, train_loader_without_la
                 # # print stats every iteration
                 # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}, labeled loss = {labeled_loss.item():.6f}, unlabeled loss = {unlabeled_loss.item():.6f}, alpha = {alpha}")
 
-                # print statistics every 10 iteratrions
-                running_loss += loss.item()
-                running_labeled_loss += labeled_loss.item()
-                running_unlabeled_loss += unlabeled_loss.item()
-                if i % 10 == 9:
-                    print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.6f},  labeled loss = {running_labeled_loss / 10:.6f}, unlabeled loss = {running_unlabeled_loss / 10:.6f}, alpha = {alpha}")
-                    running_loss = 0.0
-                    running_labeled_loss = 0.0
-                    running_unlabeled_loss = 0.0
+                # # print statistics every 10 iteratrions
+                # running_loss += loss.item()
+                # running_labeled_loss += labeled_loss.item()
+                # running_unlabeled_loss += unlabeled_loss.item()
+                # if i % 10 == 9:
+                #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.6f},  labeled loss = {running_labeled_loss / 10:.6f}, unlabeled loss = {running_unlabeled_loss / 10:.6f}, alpha = {alpha}")
+                #     running_loss = 0.0
+                #     running_labeled_loss = 0.0
+                #     running_unlabeled_loss = 0.0
+                    
             # Evaluate the model on the validation set
             model.eval()
 
@@ -159,7 +160,6 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Epoch', 'Validation Loss', 'IoU Score', 'Dice Score', 'Precision', 'Recall', 'Specificity'])
 
-
         for epoch in range(num_epochs):
             running_loss = 0.0
 
@@ -181,11 +181,11 @@ def train_labeled_only(train_loader_with_label, val_loader, device, num_epochs=5
                 # # print stats every iteration
                 # print(f"Epoch {epoch+1}, iteration {i+1}: loss = {loss.item():.6f}")
 
-                # print statistics every 10 iteratrions
-                running_loss += loss.item()
-                if i % 10 == 9:
-                    print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.6f}")
-                    running_loss = 0.0
+                # # print statistics every 10 iteratrions
+                # running_loss += loss.item()
+                # if i % 10 == 9:
+                #     print(f"Epoch {epoch+1}, iteration {i+1}: loss = {running_loss / 10:.6f}")
+                #     running_loss = 0.0
 
             # Evaluate the model on the validation set
             model.eval()

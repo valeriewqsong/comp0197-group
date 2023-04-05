@@ -15,6 +15,7 @@ iou_trained_model = train_labeled_only(
     device,
     num_epochs=100,        
     lr=1e-5,
+    csv_filename="fully_sup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_all_labeled.pt')
@@ -30,7 +31,8 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5, 
+    lr=1e-5,
+    csv_filename="1to1_semisup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to1.pt')
@@ -43,7 +45,8 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to1_sup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to1_labeled_only.pt')
@@ -59,7 +62,8 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to3_semisup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to3.pt')
@@ -72,7 +76,8 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to3_sup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to3_labeled_only.pt')
@@ -88,7 +93,8 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to5_semisup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to10.pt')
@@ -101,7 +107,8 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to5_sup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to10_labeled_only.pt')
@@ -117,7 +124,8 @@ iou_trained_model = train_labeled_and_unlabeled(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to10_semisup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to5.pt')
@@ -130,7 +138,8 @@ iou_trained_model = train_labeled_only(
     val_labeled_loader,
     device,
     num_epochs=100,        
-    lr=1e-5
+    lr=1e-5,
+    csv_filename="1to10_sup.csv"
 )
 # save trained model
 torch.save(iou_trained_model.state_dict(), f'saved_model_1to5_labeled_only.pt')
